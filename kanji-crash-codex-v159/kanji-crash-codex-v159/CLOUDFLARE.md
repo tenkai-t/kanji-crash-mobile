@@ -11,6 +11,10 @@
 旧ギフトのID・報酬・受取履歴は変更しません。旧Sitesへはデプロイしません。
 追加確認: `node tests/new-site-gift.cjs`。実ブラウザー操作は別途確認します。
 
+追加の文専用ギフト: `KH-10K-A8R5` は10,000文、`KH-30K-P9V2` は30,000文。
+それぞれ独立した受取IDで1回限り。段位ポイント・対人RPは変更しません。
+旧30,000文コードを含む既存ギフトの受取履歴は維持します。
+
 この手順は当初 `kanji-crash-mobile-test` と空の
 `kanji-crash-mobile-test-db` を準備したものです。Workerの希望名は現在
 `kanji-crash` です。既存Sitesの公開先・本番DBは変更しません。

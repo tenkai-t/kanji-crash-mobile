@@ -1,6 +1,6 @@
 (function(root,factory){const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;else root.KanjiGiftCodes=api;})(typeof window!=='undefined'?window:globalThis,function(){
  'use strict';
- const gifts=[{id:'coins-100000-20261011',code:'KH-100K-Q7M2',coins:100000},{id:'coins-30000-20261018',code:'KH-30K-M8R4',coins:30000},{id:'coins-100000-20261018',code:'KH-100K-T6N9',coins:100000},{id:'new-site-start-20261024',code:'KH-START-7M4Q',coins:500000,rating:10000}];
+ const gifts=[{id:'coins-100000-20261011',code:'KH-100K-Q7M2',coins:100000},{id:'coins-30000-20261018',code:'KH-30K-M8R4',coins:30000},{id:'coins-100000-20261018',code:'KH-100K-T6N9',coins:100000},{id:'new-site-start-20261024',code:'KH-START-7M4Q',coins:500000,rating:10000},{id:'coins-10000-20261024',code:'KH-10K-A8R5',coins:10000},{id:'coins-30000-20261024',code:'KH-30K-P9V2',coins:30000}];
  const normalize=code=>String(code||'').trim().normalize('NFKC').toUpperCase();
  const get=code=>gifts.find(g=>g.code===normalize(code))||null;
  function received(state,storage,gift){return !!(state.giftClaims?.includes(gift.id)||storage.getItem('kanji_gift_'+gift.id));}

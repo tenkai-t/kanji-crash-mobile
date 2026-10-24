@@ -1,0 +1,42 @@
+'use strict';
+let replayVideoModule=null,replayVideoLoading=null,replayVideoJob=null,replayVideoAudio=null,replayVideoGeneration=0,replayVideoBusy=false,replayVideoUrl=null,replayVideoFile=null;
+const videoEl=id=>document.getElementById(id);
+const videoViewer=videoEl('modal-replay-viewer');
+function replayVideoStatus(message){videoEl('replay-video-status').textContent=message;}
+function loadReplayVideoModule(){if(replayVideoModule)return Promise.resolve(replayVideoModule);if(replayVideoLoading)return replayVideoLoading;replayVideoLoading=new Promise((resolve,reject)=>{const script=document.createElement('script');script.src='/replay-video.js?v=156';script.onload=()=>{if(window.KanjiReplayVideo){replayVideoModule=window.KanjiReplayVideo;resolve(replayVideoModule);}else{script.remove();replayVideoLoading=null;reject(Error('動画機能を読み込めませんでした。再試行してください。'));}};script.onerror=()=>{script.remove();replayVideoLoading=null;reject(Error('動画機能を読み込めませんでした。接続を確認して再試行してください。'));};document.head.append(script);});return replayVideoLoading;}
+function clearReplayVideoFile(){const preview=videoEl('replay-video-preview');preview.pause();preview.removeAttribute('src');preview.load();preview.hidden=true;if(replayVideoUrl)URL.revokeObjectURL(replayVideoUrl);replayVideoUrl=null;replayVideoFile=null;const download=videoEl('replay-video-download');download.removeAttribute('href');download.removeAttribute('download');videoEl('replay-video-ready').hidden=true;}
+function replayVideoControls(busy){replayVideoBusy=busy;window.KanjiGameAudio?.setExporting(busy);for(const id of ['btn-replay-play','btn-replay-prev','btn-replay-next','replay-seek','replay-speed'])videoEl(id).disabled=busy;if(!busy&&replayViewer)renderReplayFrame();videoEl('btn-replay-video').disabled=busy;videoEl('replay-video-quality').disabled=busy;videoEl('replay-video-sound').disabled=busy;videoEl('replay-video-volume').disabled=busy||!videoEl('replay-video-sound').checked;videoEl('btn-replay-video-silent').hidden=true;videoEl('btn-replay-video-cancel').hidden=!busy;videoEl('replay-video-progress').hidden=!busy;videoEl('replay-video-canvas').hidden=!busy;}
+window.cancelReplayVideo=()=>{replayVideoGeneration++;replayVideoJob?.cancel();replayVideoJob=null;replayVideoAudio?.close();replayVideoAudio=null;replayVideoControls(false);replayVideoStatus('動画の作成を中止しました。リプレイは残っています。');};
+window.releaseReplayVideo=()=>{replayVideoGeneration++;replayVideoJob?.cancel();replayVideoJob=null;replayVideoAudio?.close();replayVideoAudio=null;replayVideoControls(false);clearReplayVideoFile();replayVideoStatus('');videoEl('btn-replay-video').textContent='動画を保存';videoEl('replay-video-progress').value=0;};
+window.saveReplayVideo=async()=>{
+ if(replayVideoBusy||!replayViewer)return;const record=structuredClone(replayViewer),generation=++replayVideoGeneration;pauseReplay();clearReplayVideoFile();replayVideoControls(true);replayVideoStatus('動画の準備中…');videoEl('replay-video-progress').value=0;const includeAudio=videoEl('replay-video-sound').checked,volume=Number(videoEl('replay-video-volume').value);let board=null,session=null;
+ try{
+  if(includeAudio){if(!window.KanjiReplayAudio)throw Error('音声機能を読み込めませんでした。音をオフにして保存できます。');session=window.KanjiReplayAudio.prepare(window,volume);replayVideoAudio=session;}
+  const api=await loadReplayVideoModule();if(generation!==replayVideoGeneration)return;if(!api.supported(window,includeAudio).length)throw Error('この環境は動画の書き出しに対応していません。SafariやChromeの対応版で開くか、端末の画面収録でリプレイを録画してください。');
+  const text='漢字クラッシュ勝利敗北引き分け自分相手'+record.pieces.map(p=>p.char+p.ruby).join('')+record.names.join('')+record.label+record.reason+record.turns.flatMap(t=>t.events.map(e=>e.name)).join('');
+  if(document.fonts?.load)await document.fonts.load('400 28px '+KanjiCharacterFont.stack(),text);if(generation!==replayVideoGeneration||videoViewer.classList.contains('hidden')||document.hidden)return;
+  if(session)await session.ready;if(generation!==replayVideoGeneration||document.hidden)return;
+  board=document.createElement('canvas');board.width=board.height=800;const canvas=videoEl('replay-video-canvas'),duration=KanjiReplays.duration(record),quality=videoEl('replay-video-quality').value,font=KanjiCharacterFont.stack();let lastPercent=-1;
+  replayVideoStatus('動画を作成中…画面を開いたままお待ちください（'+(session?'音声あり':'無音')+'）。');
+  replayVideoJob=api.create({canvas,record,duration,quality,env:window,audio:session,draw:(target,time,finished)=>api.paint(target,board,record,time,{records:KanjiReplays,drawBoard:drawReplayBoard,font,finished}),onProgress:value=>{const percent=Math.floor(value*100);videoEl('replay-video-progress').value=value;if(percent!==lastPercent){lastPercent=percent;replayVideoStatus(value>=1?'動画を仕上げています…':`動画を作成中… ${percent}％（画面を開いたままお待ちください）`);}}});
+  const result=await replayVideoJob.done;if(generation!==replayVideoGeneration||videoViewer.classList.contains('hidden'))return;
+  const stamp=new Date().toISOString().slice(0,19).replace(/[-:T]/g,'');replayVideoFile=new File([result.blob],'漢字クラッシュ_'+stamp+'.'+result.extension,{type:result.type});replayVideoUrl=URL.createObjectURL(result.blob);const preview=videoEl('replay-video-preview');preview.muted=!result.hasAudio;preview.defaultMuted=!result.hasAudio;preview.volume=1;preview.src=replayVideoUrl;preview.hidden=false;const download=videoEl('replay-video-download');download.href=replayVideoUrl;download.download=replayVideoFile.name;videoEl('replay-video-ready').hidden=false;
+  let canShare=false;try{canShare=!!navigator.share&&!!navigator.canShare?.({files:[replayVideoFile]});}catch{}videoEl('btn-replay-video-share').hidden=!canShare;videoEl('btn-replay-video').textContent='動画を作り直す';replayVideoStatus(`動画ができました：${result.extension.toUpperCase()}・${result.width}×${result.height}・${(result.blob.size/1048576).toFixed(1)}MB・${result.hasAudio?'音声トラックあり（音量'+volume+'％）':'無音'}。プレビューで音も確認し、保存先を選んでください。`);
+  videoEl('replay-video-save-help').textContent=result.extension==='mp4'?'「共有して保存」で、表示される「ビデオを保存」や「ファイルに保存」などを選んでください。項目は端末により異なります。共有できない場合は「ファイルをダウンロード」をお使いください。':'この端末ではWebMで作成しました。写真アプリで扱えない場合は「ファイルをダウンロード」で保存し、対応するアプリで再生してください。MP4への変換は行っていません。';
+ }catch(error){if(generation===replayVideoGeneration)replayVideoStatus(error.name==='AbortError'?'動画の作成を中止しました。リプレイは残っています。':error.message||'動画を作成できませんでした。リプレイは残っています。');}
+ finally{session?.close();if(board)board.width=board.height=1;if(generation===replayVideoGeneration){replayVideoAudio=null;replayVideoJob=null;replayVideoControls(false);videoEl('btn-replay-video-silent').hidden=!(includeAudio&&!replayVideoFile);}}
+};
+window.shareReplayVideo=()=>{
+ if(!replayVideoFile)return;const file=replayVideoFile,generation=replayVideoGeneration,button=videoEl('btn-replay-video-share');if(button.disabled)return;button.disabled=true;
+ try{const pending=navigator.share({files:[file],title:'漢字クラッシュの対局リプレイ'});Promise.resolve(pending).then(()=>{if(generation===replayVideoGeneration)replayVideoStatus('共有先へ動画を渡しました。保存先でご確認ください。');}).catch(error=>{if(generation===replayVideoGeneration)replayVideoStatus(error.name==='AbortError'?'共有を取り消しました。動画は残っています。もう一度保存できます。':'共有できませんでした。「ファイルをダウンロード」をお試しください。動画は残っています。');}).finally(()=>button.disabled=false);}catch{button.disabled=false;replayVideoStatus('共有できませんでした。「ファイルをダウンロード」をお試しください。');}
+};
+videoEl('replay-video-download').addEventListener('click',()=>replayVideoStatus('保存用ファイルを開きました。ブラウザのダウンロード一覧や、表示された保存メニューをご確認ください。'));
+new MutationObserver(()=>{if(videoViewer.classList.contains('hidden'))releaseReplayVideo();}).observe(videoViewer,{attributes:true,attributeFilter:['class']});
+new MutationObserver(()=>{if(replayVideoBusy||replayVideoFile)releaseReplayVideo();}).observe(document.body,{attributes:true,attributeFilter:['data-active-tab']});
+document.addEventListener('visibilitychange',()=>{if(document.hidden&&replayVideoBusy)cancelReplayVideo();});window.addEventListener('pagehide',releaseReplayVideo);
+
+videoEl('replay-video-preview').addEventListener('error',()=>{if(replayVideoFile)replayVideoStatus('このブラウザでは動画をプレビューできません。対応形式の再生アプリをお試しいただくか、別の対応ブラウザで作り直してください。');});
+
+window.updateReplayVideoSound=()=>{videoEl('replay-video-volume').disabled=replayVideoBusy||!videoEl('replay-video-sound').checked;videoEl('replay-video-volume-value').textContent=videoEl('replay-video-volume').value+'％';};
+window.saveReplayVideoSilent=()=>{if(replayVideoBusy)return;videoEl('replay-video-sound').checked=false;updateReplayVideoSound();return saveReplayVideo();};
+updateReplayVideoSound();

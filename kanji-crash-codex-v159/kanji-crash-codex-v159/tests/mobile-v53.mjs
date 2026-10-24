@@ -1,0 +1,13 @@
+import assert from 'node:assert/strict';
+import {createRequire} from 'node:module';
+import {fixture} from './friend-server.mjs';
+const require=createRequire(import.meta.url),{chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright'),f=fixture(),url=await f.start(),browser=await chromium.launch({headless:true}),errors=[];
+try{
+for(const [width,height] of [[320,568],[375,667],[390,844],[430,932],[844,390]]){
+ const c=await browser.newContext({viewport:{width,height},isMobile:true,hasTouch:true}),p=await c.newPage();p.on('pageerror',e=>errors.push(e.message));await c.addInitScript(()=>localStorage.setItem('kanji_beginner_v1',JSON.stringify({seen:true})));await p.goto(url);await p.waitForFunction(()=>soloBattlePending&&honorSyncReady);
+ await p.evaluate(()=>{switchTab('battle');openBattleMenu();});
+ const layout=await p.evaluate(()=>{const b=document.getElementById('btn-battle-menu-close'),r=b.getBoundingClientRect(),panel=b.closest('.editor-panel').getBoundingClientRect();return {width:r.width,height:r.height,font:getComputedStyle(b).fontSize,whiteSpace:getComputedStyle(b).whiteSpace,panel:{left:panel.left,right:panel.right,top:panel.top,bottom:panel.bottom},vw:innerWidth,vh:innerHeight};});assert(layout.width>=72&&layout.height>=44&&layout.font==='16px'&&layout.whiteSpace==='nowrap',JSON.stringify(layout));assert(layout.panel.left>=0&&layout.panel.right<=width&&layout.panel.top>=0&&layout.panel.bottom<=height,JSON.stringify(layout));await p.screenshot({path:`/tmp/kanji-v53-menu-${width}.png`});await p.locator('#btn-battle-menu-close').tap();assert(!(await p.locator('#modal-battle-menu').isVisible()));
+ await p.evaluate(async()=>{await startPreparedBattle();runner.enabled=false;clearTimeout(cpuTurnTimer);clearTimeout(playerTurnTimer);autoBattleEnabled=true;const item=gameState.inventory[0];giveExpToSpecificKanji(item.instanceId,1000);});await p.waitForFunction(()=>!document.getElementById('piece-level-up-notice').hidden);assert(await p.evaluate(()=>autoBattleEnabled));assert((await p.locator('#piece-level-up-notice').innerText()).includes('→'));assert(!(await p.locator('#modal-toast').isVisible()));
+ await p.screenshot({path:`/tmp/kanji-v53-${width}.png`});await p.evaluate(()=>openBattleInfo());assert(await p.locator('#btn-close-battle-info').isVisible());assert.equal(await p.locator('#btn-close-battle-info').evaluate(b=>getComputedStyle(b).fontSize),'16px');await p.locator('#btn-close-battle-info').tap();await c.close();console.log({width,height,menu:true,autoLevelUp:true});
+}assert.deepEqual(errors,[]);
+}finally{await browser.close();await f.stop();}

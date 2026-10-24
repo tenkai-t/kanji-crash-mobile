@@ -1,0 +1,31 @@
+{
+  "source": "IPAmj Mincho Ver.006.01",
+  "sourceMd5": "beee256d4ffec4c40493805a4d7e5cdd",
+  "gameCharacters": 10142,
+  "missing": [],
+  "primaryElementCharacters": 104,
+  "fallbackElementCharacters": 14,
+  "fallbackCharacters": [
+    "䥑",
+    "氡",
+    "鉳",
+    "錼",
+    "鍀",
+    "鍅",
+    "鍆",
+    "鐨",
+    "鑀",
+    "鿫",
+    "鿬",
+    "𨧀",
+    "𨨏",
+    "𨭆"
+  ],
+  "fallbackSource": "BabelStone Han",
+  "fallbackVersion": "Version 16.0.3",
+  "fallbackSourceSha256": "d8bb747b3fdccd84a60bd0aa56bb90937270d0bd15f1101cd8f2a5a3709dd0a3",
+  "fontBytes": 4045744,
+  "fontSha256": "4be559f9e141cf364a5aa1ef62cf31d42606d365612d89e37f76e23a220c3ea2",
+  "fallbackFontBytes": 10244,
+  "fallbackFontSha256": "3284992f8388a128d350fadfafb712949f6e045b670132ae54e644100039893f"
+}

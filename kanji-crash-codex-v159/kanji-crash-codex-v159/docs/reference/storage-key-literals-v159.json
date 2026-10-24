@@ -1,0 +1,35 @@
+{
+  "kanji_player_device_v1": [
+    "dist/player-friends.js"
+  ],
+  "kanji_friend_room": [
+    "dist/player-friends.js",
+    "dist/beginner-ui.js"
+  ],
+  "moji_otoshi_save_v5": [
+    "dist/save-protection.js",
+    "dist/beginner-ui.js"
+  ],
+  "kanji_guest_credentials_v1": [
+    "dist/guest-player.js"
+  ],
+  "kanji_online_search": [
+    "dist/online-play.js",
+    "dist/beginner-ui.js"
+  ],
+  "kanji_crash_sound_preferences_v1": [
+    "dist/game-audio.js"
+  ],
+  "kanji_crash_bgm_preferences_v1": [
+    "dist/game-audio.js"
+  ],
+  "kanji_beginner_v1": [
+    "dist/beginner-ui.js"
+  ],
+  "kanji_gift_": [
+    "dist/gift-codes.js"
+  ],
+  "kanji_update_notice": [
+    "dist/quality-updates.js"
+  ]
+}

@@ -1,0 +1,845 @@
+{
+  "environment": "Node Worker.fetch + isolated in-memory SQLite; no real HTTP network/D1 quotas/CDN; 1,000 minimal inventory entries per player",
+  "stages": [
+    {
+      "users": 50,
+      "phases": {
+        "backupWrites": {
+          "ms": 81.17,
+          "reads": 150,
+          "writes": 150,
+          "rowsWritten": 50
+        },
+        "backupReads": {
+          "ms": 61.47,
+          "reads": 150,
+          "writes": 0,
+          "rowsWritten": 0
+        },
+        "samePlayerWriteRace": {
+          "ms": 3,
+          "reads": 6,
+          "writes": 3,
+          "rowsWritten": 2
+        },
+        "rankingCold": {
+          "ms": 52.13,
+          "reads": 100,
+          "writes": 51,
+          "rowsWritten": 2
+        },
+        "rankingCached": {
+          "ms": 6.09,
+          "reads": 50,
+          "writes": 0,
+          "rowsWritten": 0
+        },
+        "matching": {
+          "ms": 75.83,
+          "reads": 525,
+          "writes": 150,
+          "rowsWritten": 175
+        },
+        "ready": {
+          "ms": 62.45,
+          "reads": 400,
+          "writes": 100,
+          "rowsWritten": 100
+        },
+        "heartbeat6Seconds": {
+          "ms": 71.38,
+          "reads": 700,
+          "writes": 100,
+          "rowsWritten": 100
+        },
+        "shots": {
+          "ms": 156.84,
+          "reads": 425,
+          "writes": 25,
+          "rowsWritten": 25
+        },
+        "finish": {
+          "ms": 42.86,
+          "reads": 475,
+          "writes": 350,
+          "rowsWritten": 250
+        },
+        "finishRepeated": {
+          "ms": 71.87,
+          "reads": 1300,
+          "writes": 0,
+          "rowsWritten": 0
+        }
+      },
+      "snapshotBytes": 45980,
+      "rooms": 25,
+      "heartbeatBytes": 43800,
+      "elapsedMs": 849.17,
+      "dbTotals": {
+        "readStatements": 5034,
+        "writeStatements": 1334
+      },
+      "overallLatency": {
+        "p50": 11.58,
+        "p95": 63.24,
+        "p99": 90.27
+      },
+      "expectedConflicts": 1,
+      "requests": 1053,
+      "requestBodyBytes": 2424280,
+      "responseBodyBytes": 5872912,
+      "unexpected": [],
+      "latency": {
+        "POST /api/guest": {
+          "calls": 50,
+          "p50": 0.37,
+          "p95": 1.47,
+          "p99": 8.06,
+          "max": 8.06
+        },
+        "PUT /api/profile": {
+          "calls": 50,
+          "p50": 14.38,
+          "p95": 23.83,
+          "p99": 24.41,
+          "max": 24.41
+        },
+        "PUT /api/guest/state": {
+          "calls": 52,
+          "p50": 41.92,
+          "p95": 56.35,
+          "p99": 57.54,
+          "max": 57.54
+        },
+        "GET /api/guest/state": {
+          "calls": 51,
+          "p50": 32.04,
+          "p95": 57.58,
+          "p99": 59.72,
+          "max": 59.72
+        },
+        "POST /api/challenges/score": {
+          "calls": 50,
+          "p50": 44.82,
+          "p95": 69.38,
+          "p99": 71.15,
+          "max": 71.15
+        },
+        "GET /api/leaderboard": {
+          "calls": 100,
+          "p50": 5,
+          "p95": 49.13,
+          "p99": 49.73,
+          "max": 49.73
+        },
+        "POST /api/online/queue": {
+          "calls": 50,
+          "p50": 40.81,
+          "p95": 71.98,
+          "p99": 74.97,
+          "max": 74.97
+        },
+        "GET /api/online/queue": {
+          "calls": 50,
+          "p50": 9.59,
+          "p95": 16.96,
+          "p99": 17.52,
+          "max": 17.52
+        },
+        "GET /api/friends/rooms/:code": {
+          "calls": 500,
+          "p50": 8.47,
+          "p95": 54.38,
+          "p99": 67.04,
+          "max": 70.91
+        },
+        "POST /api/friends/rooms/:code/ready": {
+          "calls": 50,
+          "p50": 15.66,
+          "p95": 35.48,
+          "p99": 37.33,
+          "max": 37.33
+        },
+        "POST /api/friends/rooms/:code/shot": {
+          "calls": 50,
+          "p50": 67.17,
+          "p95": 107.55,
+          "p99": 112.21,
+          "max": 112.21
+        }
+      }
+    },
+    {
+      "users": 100,
+      "phases": {
+        "backupWrites": {
+          "ms": 127.22,
+          "reads": 300,
+          "writes": 300,
+          "rowsWritten": 100
+        },
+        "backupReads": {
+          "ms": 113.18,
+          "reads": 300,
+          "writes": 0,
+          "rowsWritten": 0
+        },
+        "samePlayerWriteRace": {
+          "ms": 2.73,
+          "reads": 6,
+          "writes": 3,
+          "rowsWritten": 2
+        },
+        "rankingCold": {
+          "ms": 58.77,
+          "reads": 200,
+          "writes": 101,
+          "rowsWritten": 2
+        },
+        "rankingCached": {
+          "ms": 11.56,
+          "reads": 100,
+          "writes": 0,
+          "rowsWritten": 0
+        },
+        "matching": {
+          "ms": 140.42,
+          "reads": 1050,
+          "writes": 300,
+          "rowsWritten": 350
+        },
+        "ready": {
+          "ms": 105.08,
+          "reads": 800,
+          "writes": 200,
+          "rowsWritten": 200
+        },
+        "heartbeat6Seconds": {
+          "ms": 139.68,
+          "reads": 1400,
+          "writes": 200,
+          "rowsWritten": 200
+        },
+        "shots": {
+          "ms": 243.54,
+          "reads": 850,
+          "writes": 50,
+          "rowsWritten": 50
+        },
+        "finish": {
+          "ms": 90.31,
+          "reads": 950,
+          "writes": 700,
+          "rowsWritten": 500
+        },
+        "finishRepeated": {
+          "ms": 130.97,
+          "reads": 2600,
+          "writes": 0,
+          "rowsWritten": 0
+        }
+      },
+      "snapshotBytes": 45980,
+      "rooms": 50,
+      "heartbeatBytes": 87600,
+      "elapsedMs": 1398.75,
+      "dbTotals": {
+        "readStatements": 10059,
+        "writeStatements": 2659
+      },
+      "overallLatency": {
+        "p50": 19.38,
+        "p95": 112.83,
+        "p99": 135.11
+      },
+      "expectedConflicts": 1,
+      "requests": 2103,
+      "requestBodyBytes": 4756632,
+      "responseBodyBytes": 11699872,
+      "unexpected": [],
+      "latency": {
+        "POST /api/guest": {
+          "calls": 100,
+          "p50": 0.28,
+          "p95": 0.52,
+          "p99": 1.35,
+          "max": 1.35
+        },
+        "PUT /api/profile": {
+          "calls": 100,
+          "p50": 18.09,
+          "p95": 30.09,
+          "p99": 31.05,
+          "max": 31.05
+        },
+        "PUT /api/guest/state": {
+          "calls": 102,
+          "p50": 65.78,
+          "p95": 92.62,
+          "p99": 95.21,
+          "max": 95.29
+        },
+        "GET /api/guest/state": {
+          "calls": 101,
+          "p50": 54.84,
+          "p95": 106.69,
+          "p99": 111.44,
+          "max": 112.3
+        },
+        "POST /api/challenges/score": {
+          "calls": 100,
+          "p50": 75.01,
+          "p95": 127.77,
+          "p99": 132.04,
+          "max": 132.04
+        },
+        "GET /api/leaderboard": {
+          "calls": 200,
+          "p50": 9.01,
+          "p95": 55.26,
+          "p99": 56.31,
+          "max": 56.42
+        },
+        "POST /api/online/queue": {
+          "calls": 100,
+          "p50": 77.65,
+          "p95": 134.11,
+          "p99": 139.09,
+          "max": 139.09
+        },
+        "GET /api/online/queue": {
+          "calls": 100,
+          "p50": 11.39,
+          "p95": 19.72,
+          "p99": 20.51,
+          "max": 20.51
+        },
+        "GET /api/friends/rooms/:code": {
+          "calls": 1000,
+          "p50": 15.96,
+          "p95": 99.44,
+          "p99": 123.4,
+          "max": 129.75
+        },
+        "POST /api/friends/rooms/:code/ready": {
+          "calls": 100,
+          "p50": 18.1,
+          "p95": 68.76,
+          "p99": 73.81,
+          "max": 73.81
+        },
+        "POST /api/friends/rooms/:code/shot": {
+          "calls": 100,
+          "p50": 102.44,
+          "p95": 154.56,
+          "p99": 161.63,
+          "max": 161.63
+        }
+      }
+    },
+    {
+      "users": 200,
+      "phases": {
+        "backupWrites": {
+          "ms": 277.71,
+          "reads": 600,
+          "writes": 600,
+          "rowsWritten": 200
+        },
+        "backupReads": {
+          "ms": 215.77,
+          "reads": 600,
+          "writes": 0,
+          "rowsWritten": 0
+        },
+        "samePlayerWriteRace": {
+          "ms": 4.65,
+          "reads": 6,
+          "writes": 3,
+          "rowsWritten": 2
+        },
+        "rankingCold": {
+          "ms": 67.72,
+          "reads": 400,
+          "writes": 201,
+          "rowsWritten": 2
+        },
+        "rankingCached": {
+          "ms": 20.44,
+          "reads": 200,
+          "writes": 0,
+          "rowsWritten": 0
+        },
+        "matching": {
+          "ms": 266,
+          "reads": 2100,
+          "writes": 600,
+          "rowsWritten": 700
+        },
+        "ready": {
+          "ms": 199.61,
+          "reads": 1600,
+          "writes": 400,
+          "rowsWritten": 400
+        },
+        "heartbeat6Seconds": {
+          "ms": 270.41,
+          "reads": 2800,
+          "writes": 400,
+          "rowsWritten": 400
+        },
+        "shots": {
+          "ms": 460.33,
+          "reads": 1700,
+          "writes": 100,
+          "rowsWritten": 100
+        },
+        "finish": {
+          "ms": 153.55,
+          "reads": 1900,
+          "writes": 1400,
+          "rowsWritten": 1000
+        },
+        "finishRepeated": {
+          "ms": 292.74,
+          "reads": 5200,
+          "writes": 0,
+          "rowsWritten": 0
+        }
+      },
+      "snapshotBytes": 45980,
+      "rooms": 100,
+      "heartbeatBytes": 175200,
+      "elapsedMs": 2654.52,
+      "dbTotals": {
+        "readStatements": 20109,
+        "writeStatements": 5309
+      },
+      "overallLatency": {
+        "p50": 38.32,
+        "p95": 214.43,
+        "p99": 271.16
+      },
+      "expectedConflicts": 1,
+      "requests": 4203,
+      "requestBodyBytes": 9421518,
+      "responseBodyBytes": 23357607,
+      "unexpected": [],
+      "latency": {
+        "POST /api/guest": {
+          "calls": 200,
+          "p50": 0.24,
+          "p95": 0.4,
+          "p99": 0.66,
+          "max": 3.57
+        },
+        "PUT /api/profile": {
+          "calls": 200,
+          "p50": 46.24,
+          "p95": 70.64,
+          "p99": 73.05,
+          "max": 73.26
+        },
+        "PUT /api/guest/state": {
+          "calls": 202,
+          "p50": 155.97,
+          "p95": 202.71,
+          "p99": 207.61,
+          "max": 208.6
+        },
+        "GET /api/guest/state": {
+          "calls": 201,
+          "p50": 119.04,
+          "p95": 204.87,
+          "p99": 212.4,
+          "max": 214.38
+        },
+        "POST /api/challenges/score": {
+          "calls": 200,
+          "p50": 115.33,
+          "p95": 217.85,
+          "p99": 224.89,
+          "max": 226.35
+        },
+        "GET /api/leaderboard": {
+          "calls": 400,
+          "p50": 16.09,
+          "p95": 63.19,
+          "p99": 64.57,
+          "max": 64.83
+        },
+        "POST /api/online/queue": {
+          "calls": 200,
+          "p50": 132.69,
+          "p95": 248.28,
+          "p99": 258.31,
+          "max": 259.95
+        },
+        "GET /api/online/queue": {
+          "calls": 200,
+          "p50": 23.47,
+          "p95": 40.29,
+          "p99": 41.81,
+          "max": 42.12
+        },
+        "GET /api/friends/rooms/:code": {
+          "calls": 2000,
+          "p50": 30.82,
+          "p95": 208.56,
+          "p99": 276.16,
+          "max": 290.61
+        },
+        "POST /api/friends/rooms/:code/ready": {
+          "calls": 200,
+          "p50": 39.09,
+          "p95": 109.48,
+          "p99": 124.42,
+          "max": 125.06
+        },
+        "POST /api/friends/rooms/:code/shot": {
+          "calls": 200,
+          "p50": 188.87,
+          "p95": 281.11,
+          "p99": 293.51,
+          "max": 295.35
+        }
+      }
+    },
+    {
+      "users": 500,
+      "phases": {
+        "backupWrites": {
+          "ms": 692.52,
+          "reads": 1500,
+          "writes": 1500,
+          "rowsWritten": 500
+        },
+        "backupReads": {
+          "ms": 631.22,
+          "reads": 1500,
+          "writes": 0,
+          "rowsWritten": 0
+        },
+        "samePlayerWriteRace": {
+          "ms": 2.63,
+          "reads": 6,
+          "writes": 3,
+          "rowsWritten": 2
+        },
+        "rankingCold": {
+          "ms": 127.9,
+          "reads": 1000,
+          "writes": 501,
+          "rowsWritten": 2
+        },
+        "rankingCached": {
+          "ms": 60.59,
+          "reads": 500,
+          "writes": 0,
+          "rowsWritten": 0
+        },
+        "matching": {
+          "ms": 702.89,
+          "reads": 5250,
+          "writes": 1500,
+          "rowsWritten": 1750
+        },
+        "ready": {
+          "ms": 476.35,
+          "reads": 4000,
+          "writes": 1000,
+          "rowsWritten": 1000
+        },
+        "heartbeat6Seconds": {
+          "ms": 715.63,
+          "reads": 7000,
+          "writes": 1000,
+          "rowsWritten": 1000
+        },
+        "shots": {
+          "ms": 1321.11,
+          "reads": 4250,
+          "writes": 250,
+          "rowsWritten": 250
+        },
+        "finish": {
+          "ms": 440.94,
+          "reads": 4750,
+          "writes": 3500,
+          "rowsWritten": 2500
+        },
+        "finishRepeated": {
+          "ms": 668.34,
+          "reads": 13000,
+          "writes": 0,
+          "rowsWritten": 0
+        }
+      },
+      "snapshotBytes": 45980,
+      "rooms": 250,
+      "heartbeatBytes": 438000,
+      "elapsedMs": 6918.47,
+      "dbTotals": {
+        "readStatements": 50259,
+        "writeStatements": 13259
+      },
+      "overallLatency": {
+        "p50": 92.96,
+        "p95": 574.52,
+        "p99": 682.84
+      },
+      "expectedConflicts": 1,
+      "requests": 10503,
+      "requestBodyBytes": 23416216,
+      "responseBodyBytes": 58331602,
+      "unexpected": [],
+      "latency": {
+        "POST /api/guest": {
+          "calls": 500,
+          "p50": 0.24,
+          "p95": 0.46,
+          "p99": 0.75,
+          "max": 10.95
+        },
+        "PUT /api/profile": {
+          "calls": 500,
+          "p50": 138.61,
+          "p95": 193.45,
+          "p99": 198.04,
+          "max": 198.97
+        },
+        "PUT /api/guest/state": {
+          "calls": 502,
+          "p50": 365.72,
+          "p95": 508.43,
+          "p99": 518.72,
+          "max": 521.84
+        },
+        "GET /api/guest/state": {
+          "calls": 501,
+          "p50": 353.89,
+          "p95": 605.58,
+          "p99": 623.38,
+          "max": 627.9
+        },
+        "POST /api/challenges/score": {
+          "calls": 500,
+          "p50": 304.49,
+          "p95": 553.38,
+          "p99": 574.52,
+          "max": 578.51
+        },
+        "GET /api/leaderboard": {
+          "calls": 1000,
+          "p50": 49.63,
+          "p95": 114.88,
+          "p99": 118.57,
+          "max": 119.72
+        },
+        "POST /api/online/queue": {
+          "calls": 500,
+          "p50": 357.61,
+          "p95": 663.08,
+          "p99": 690.66,
+          "max": 695.24
+        },
+        "GET /api/online/queue": {
+          "calls": 500,
+          "p50": 54.72,
+          "p95": 98.02,
+          "p99": 102.6,
+          "max": 103.29
+        },
+        "GET /api/friends/rooms/:code": {
+          "calls": 5000,
+          "p50": 75.85,
+          "p95": 492.72,
+          "p99": 621.99,
+          "max": 663.18
+        },
+        "POST /api/friends/rooms/:code/ready": {
+          "calls": 500,
+          "p50": 107.05,
+          "p95": 272.81,
+          "p99": 297.01,
+          "max": 300.07
+        },
+        "POST /api/friends/rooms/:code/shot": {
+          "calls": 500,
+          "p50": 557.17,
+          "p95": 746.31,
+          "p99": 767.86,
+          "max": 772.69
+        }
+      }
+    },
+    {
+      "users": 1000,
+      "phases": {
+        "backupWrites": {
+          "ms": 1247.97,
+          "reads": 3000,
+          "writes": 3000,
+          "rowsWritten": 1000
+        },
+        "backupReads": {
+          "ms": 1144.17,
+          "reads": 3000,
+          "writes": 0,
+          "rowsWritten": 0
+        },
+        "samePlayerWriteRace": {
+          "ms": 2.64,
+          "reads": 6,
+          "writes": 3,
+          "rowsWritten": 2
+        },
+        "rankingCold": {
+          "ms": 162.53,
+          "reads": 2000,
+          "writes": 1001,
+          "rowsWritten": 2
+        },
+        "rankingCached": {
+          "ms": 105.09,
+          "reads": 1000,
+          "writes": 0,
+          "rowsWritten": 0
+        },
+        "matching": {
+          "ms": 1296.75,
+          "reads": 10500,
+          "writes": 3000,
+          "rowsWritten": 3500
+        },
+        "ready": {
+          "ms": 915.72,
+          "reads": 8000,
+          "writes": 2000,
+          "rowsWritten": 2000
+        },
+        "heartbeat6Seconds": {
+          "ms": 1385.85,
+          "reads": 14000,
+          "writes": 2000,
+          "rowsWritten": 2000
+        },
+        "shots": {
+          "ms": 2474.41,
+          "reads": 8500,
+          "writes": 500,
+          "rowsWritten": 500
+        },
+        "finish": {
+          "ms": 983.32,
+          "reads": 9500,
+          "writes": 7000,
+          "rowsWritten": 5000
+        },
+        "finishRepeated": {
+          "ms": 1322.93,
+          "reads": 26000,
+          "writes": 0,
+          "rowsWritten": 0
+        }
+      },
+      "snapshotBytes": 45980,
+      "rooms": 500,
+      "heartbeatBytes": 876000,
+      "elapsedMs": 12909.37,
+      "dbTotals": {
+        "readStatements": 100509,
+        "writeStatements": 26509
+      },
+      "overallLatency": {
+        "p50": 155.35,
+        "p95": 1076.58,
+        "p99": 1326.74
+      },
+      "expectedConflicts": 1,
+      "requests": 21003,
+      "requestBodyBytes": 46740742,
+      "responseBodyBytes": 116617399,
+      "unexpected": [],
+      "latency": {
+        "POST /api/guest": {
+          "calls": 1000,
+          "p50": 0.27,
+          "p95": 0.34,
+          "p99": 0.57,
+          "max": 9.02
+        },
+        "PUT /api/profile": {
+          "calls": 1000,
+          "p50": 150.84,
+          "p95": 270.3,
+          "p99": 279.49,
+          "max": 281.6
+        },
+        "PUT /api/guest/state": {
+          "calls": 1002,
+          "p50": 641.67,
+          "p95": 909.19,
+          "p99": 928.41,
+          "max": 934.59
+        },
+        "GET /api/guest/state": {
+          "calls": 1001,
+          "p50": 587.76,
+          "p95": 1086.91,
+          "p99": 1126,
+          "max": 1135.16
+        },
+        "POST /api/challenges/score": {
+          "calls": 1000,
+          "p50": 516.77,
+          "p95": 937.17,
+          "p99": 973,
+          "max": 980.79
+        },
+        "GET /api/leaderboard": {
+          "calls": 2000,
+          "p50": 82.95,
+          "p95": 141.21,
+          "p99": 147.91,
+          "max": 150.56
+        },
+        "POST /api/online/queue": {
+          "calls": 1000,
+          "p50": 650.67,
+          "p95": 1220.97,
+          "p99": 1272.11,
+          "max": 1286.44
+        },
+        "GET /api/online/queue": {
+          "calls": 1000,
+          "p50": 111.66,
+          "p95": 197.72,
+          "p99": 230.91,
+          "max": 232.83
+        },
+        "GET /api/friends/rooms/:code": {
+          "calls": 10000,
+          "p50": 136.25,
+          "p95": 997.08,
+          "p99": 1258.37,
+          "max": 1313.53
+        },
+        "POST /api/friends/rooms/:code/ready": {
+          "calls": 1000,
+          "p50": 195.33,
+          "p95": 549.56,
+          "p99": 578.68,
+          "max": 594.61
+        },
+        "POST /api/friends/rooms/:code/shot": {
+          "calls": 1000,
+          "p50": 1007.99,
+          "p95": 1504.62,
+          "p99": 1555.87,
+          "max": 1567.46
+        }
+      }
+    }
+  ]
+}

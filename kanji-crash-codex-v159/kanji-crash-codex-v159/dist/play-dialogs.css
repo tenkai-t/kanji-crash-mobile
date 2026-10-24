@@ -1,0 +1,10 @@
+:is(#modal-practice,#modal-practice-deck,#modal-cpu-skill,#modal-tutorial) .editor-panel{max-width:620px;background:#0f172a;border:1px solid #475569;border-radius:18px;color:#e2e8f0;box-shadow:0 16px 48px #0005}
+:is(#modal-practice,#modal-practice-deck,#modal-cpu-skill,#modal-tutorial) .editor-title{gap:12px;align-items:center;border-bottom:1px solid #334155;padding-bottom:12px}
+:is(#modal-practice,#modal-practice-deck,#modal-cpu-skill,#modal-tutorial) .editor-title h2{min-width:0;flex:1;font-size:20px;line-height:1.4;color:#fcd34d}
+:is(#modal-practice,#modal-practice-deck,#modal-cpu-skill,#modal-tutorial) .editor-title button{flex:0 0 44px;width:44px;min-width:44px;height:44px;font-size:26px;line-height:1;border:1px solid #64748b;border-radius:10px;background:#1e293b;color:#cbd5e1}
+:is(#modal-practice,#modal-practice-deck,#modal-cpu-skill) .inventory-action{min-height:48px;font-size:15px;border-radius:10px}
+:is(#modal-practice,#modal-cpu-skill) .practice-card{background:#111c2e;border:1px solid #475569;border-radius:12px;padding:14px}
+#battle-prepare .prepare-panel{max-width:620px;background:#0f172a;border:1px solid #475569;border-radius:18px;padding:14px}
+#battle-prepare .prepare-intro{border-bottom:1px solid #334155;margin-bottom:12px}#battle-prepare .prepare-intro h2{font-size:20px;color:#fcd34d;line-height:1.4}#battle-prepare .prepare-intro .prepare-heading{margin-top:0}
+#battle-prepare .prepare-footer{background:linear-gradient(transparent,#0f172a 12px)}
+.practice-picker-filters{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.practice-picker-filters label,.practice-draft-presets label{display:block;font-size:13px;color:#cbd5e1;min-width:0}.practice-picker-filters select,.practice-draft-presets select{display:block;width:100%;max-width:100%;min-height:44px;font-size:16px;background:#020617;color:#e2e8f0;border:1px solid #64748b;border-radius:8px;padding:8px;margin-top:5px}.practice-draft-presets{border:1px solid #475569;border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:8px;background:#111c2e}.practice-draft-presets .quiet-action{max-width:none}.practice-draft-presets p{margin:0}

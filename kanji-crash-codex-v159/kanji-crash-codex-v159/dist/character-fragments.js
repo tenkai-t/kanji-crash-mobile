@@ -1,0 +1,11 @@
+(function(root,factory){const api=factory(root.KanjiTraits||(typeof require==='function'?require('./character-traits.js'):null),root.KanjiInventory||(typeof require==='function'?require('./inventory-rules.js'):null));if(typeof module==='object'&&module.exports)module.exports=api;else root.KanjiFragments=api;})(typeof window!=='undefined'?window:globalThis,function(Traits,Inventory){
+ 'use strict';
+ const rewards=Object.freeze({1:1,2:3,3:10,4:30,5:10}),costs=Object.freeze({1:10,2:30,3:100,4:300,5:100});
+ const balance=state=>state.characterFragments??0;
+ const validSave=state=>state.characterFragments===undefined||Number.isSafeInteger(state.characterFragments)&&state.characterFragments>=0;
+ function summonReward(state,base,getReadings,source='normal'){const all=getReadings(base.char);if(!all.length||!rewards[base.jis])return 0;return state.inventory.some(i=>i.char===base.char&&all.every(r=>Inventory.unlocked(i,getReadings).includes(r)))?(source==='element'?1:rewards[base.jis]):0;}
+ function award(state,base,getReadings,source='normal'){const amount=summonReward(state,base,getReadings,source);if(!validSave(state)||!Number.isSafeInteger(balance(state)+amount))throw Error('fragment-balance');state.characterFragments=balance(state)+amount;return amount;}
+ function eligible(state,base,getReadings){return [1,2,3,4].includes(base.jis)&&!!costs[base.jis]&&!Traits.get(base)&&getReadings(base.char).length>0&&((state.characterDiscoveries||[]).includes(base.char)||state.inventory.some(i=>i.char===base.char));}
+ function exchange(state,id,database,getReadings,createItem){const base=database.find(i=>i.id===id);if(!base||!validSave(state)||!eligible(state,base,getReadings))throw Error('fragment-target');const cost=costs[base.jis];if(balance(state)<cost)throw Error('fragment-shortage');const item=createItem(base);if(item.char!==base.char||item.id!==base.id||item.level!==1||state.inventory.some(i=>i.instanceId===item.instanceId))throw Error('fragment-item');return {state:{...state,characterFragments:balance(state)-cost,inventory:[...state.inventory,item]},item,cost,duplicate:state.inventory.some(i=>i.char===base.char)};}
+ return {rewards,costs,balance,validSave,summonReward,award,eligible,exchange};
+});

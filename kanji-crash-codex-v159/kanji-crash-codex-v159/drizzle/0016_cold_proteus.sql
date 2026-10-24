@@ -1,0 +1,1 @@
+ALTER TABLE `play_usage` ADD `honor_wins` integer DEFAULT 0 NOT NULL;

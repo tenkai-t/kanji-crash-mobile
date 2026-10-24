@@ -1,0 +1,58 @@
+{
+  "note": "Static dependency union. Manifest alternatives and conditional font assets may not all download on one device. gzip is local estimation, not measured production transfer.",
+  "files": 122,
+  "uncompressedBytes": 9013728,
+  "gzipEstimateBytes": 5769696,
+  "largest": [
+    {
+      "file": "vendor/fonts/kanji-unified-mincho.woff2",
+      "bytes": 4045744,
+      "gzip": 4043346
+    },
+    {
+      "file": "vendor/fontawesome.min.js",
+      "bytes": 1468161,
+      "gzip": 530325
+    },
+    {
+      "file": "index.html",
+      "bytes": 1337795,
+      "gzip": 195989
+    },
+    {
+      "file": "readings.js",
+      "bytes": 423476,
+      "gzip": 117777
+    },
+    {
+      "file": "icon-512-v152.png",
+      "bytes": 360163,
+      "gzip": 360234
+    },
+    {
+      "file": "kanji-reference.js",
+      "bytes": 206653,
+      "gzip": 53441
+    },
+    {
+      "file": "strokes.js",
+      "bytes": 89341,
+      "gzip": 33424
+    },
+    {
+      "file": "vendor/matter.min.js",
+      "bytes": 80807,
+      "gzip": 25178
+    },
+    {
+      "file": "adventure-content.js",
+      "bytes": 66198,
+      "gzip": 30212
+    },
+    {
+      "file": "icon-192-v152.png",
+      "bytes": 48651,
+      "gzip": 48684
+    }
+  ]
+}

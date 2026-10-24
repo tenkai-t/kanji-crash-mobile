@@ -1,0 +1,5292 @@
+{
+  "version": 1,
+  "unicodeVersion": "17.0.0",
+  "source": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+  "items": {
+    "鬥": {
+      "readings": [
+        "トウ",
+        "カク",
+        "ツ",
+        "たたかいがまえ",
+        "とうがまえ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㐂": {
+      "readings": [
+        "キ",
+        "よろこぶ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "僲": {
+      "readings": [
+        "セン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "凃": {
+      "readings": [
+        "ト",
+        "チョ",
+        "トウ",
+        "トオ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㓛": {
+      "readings": [
+        "コウ",
+        "ク"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "匇": {
+      "readings": [
+        "ソウ",
+        "いそがしい",
+        "あわただしい",
+        "あわてる",
+        "あわただし"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𡈽": {
+      "readings": [
+        "ド",
+        "ト",
+        "つち"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "圡": {
+      "readings": [
+        "ド",
+        "ト",
+        "つち"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "﨏": {
+      "readings": [
+        "さこ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𡌛": {
+      "readings": [
+        "ヤ",
+        "ショ",
+        "の",
+        "しもやしき"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𡑮": {
+      "readings": [
+        "ソク"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𡢽": {
+      "readings": [
+        "おんななるかみ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㞍": {
+      "readings": [
+        "コウ",
+        "しり"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𡚴": {
+      "readings": [
+        "あけん"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𡸴": {
+      "readings": [
+        "ケン",
+        "けわしい"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㟢": {
+      "readings": [
+        "さき"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "嶤": {
+      "readings": [
+        "ギョウ",
+        "けわしい"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "廹": {
+      "readings": [
+        "ハク",
+        "ヒャク",
+        "せまる"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "开": {
+      "readings": [
+        "カイ",
+        "ひらく"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "抅": {
+      "readings": [
+        "コウ",
+        "かかわる"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "摹": {
+      "readings": [
+        "ボ",
+        "モ",
+        "うつす",
+        "かた",
+        "ならう",
+        "のっとる",
+        "のり"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "昺": {
+      "readings": [
+        "ヘイ",
+        "ホウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "晈": {
+      "readings": [
+        "キョウ",
+        "コウ",
+        "しろい"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𣇄": {
+      "readings": [
+        "セツ",
+        "セイ",
+        "あきらか"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "晥": {
+      "readings": [
+        "カン",
+        "ゲン",
+        "ガン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㬢": {
+      "readings": [
+        "ギ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "柼": {
+      "readings": [
+        "オウ",
+        "ヨウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "栁": {
+      "readings": [
+        "リュウ",
+        "やなぎ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𣗄": {
+      "readings": [
+        "たらのき"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "﨔": {
+      "readings": [
+        "キョ",
+        "コ",
+        "けやき"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "槏": {
+      "readings": [
+        "ケン",
+        "タイ",
+        "カネ",
+        "かね"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㮶": {
+      "readings": [
+        "サク"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㯃": {
+      "readings": [
+        "シツ",
+        "シチ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "槩": {
+      "readings": [
+        "ガイ",
+        "カイ",
+        "とかき",
+        "おおむね",
+        "おもむき"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "槶": {
+      "readings": [
+        "カイ",
+        "ケ",
+        "くるみ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𣜿": {
+      "readings": [
+        "ゆすりは",
+        "ゆずりは",
+        "いずりは",
+        "ゆずり"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𣝣": {
+      "readings": [
+        "シャク",
+        "ジャク"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "檔": {
+      "readings": [
+        "トウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㰏": {
+      "readings": [
+        "コウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "歷": {
+      "readings": [
+        "レキ",
+        "リャク",
+        "へる"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "毗": {
+      "readings": [
+        "ヒ",
+        "ビ",
+        "すたれる",
+        "たすける",
+        "はげる",
+        "もだえる"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "沪": {
+      "readings": [
+        "ロ",
+        "リョ",
+        "ル"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "泻": {
+      "readings": [
+        "シャ",
+        "かた",
+        "そそぐ",
+        "はく"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𣳾": {
+      "readings": [
+        "タイ",
+        "やすい",
+        "おおきい"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "浘": {
+      "readings": [
+        "ビ",
+        "ミ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "漐": {
+      "readings": [
+        "チュウ",
+        "ジュウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "爕": {
+      "readings": [
+        "ショウ",
+        "やわらげる"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㸿": {
+      "readings": [
+        "トク",
+        "ドク",
+        "こうし"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𤟱": {
+      "readings": [
+        "タジヒ",
+        "ワ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㽲": {
+      "readings": [
+        "キュウ",
+        "ク"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "皞": {
+      "readings": [
+        "コウ",
+        "ゴウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𥒎": {
+      "readings": [
+        "セン",
+        "ゼン",
+        "かけ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "硑": {
+      "readings": [
+        "ヒョウ",
+        "ホウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𥔎": {
+      "readings": [
+        "さき"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "礮": {
+      "readings": [
+        "ホウ",
+        "ヒョウ",
+        "おおづつ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𥝱": {
+      "readings": [
+        "シ",
+        "ジョ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𥧄": {
+      "readings": [
+        "ソウ",
+        "かま",
+        "かまど"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "笒": {
+      "readings": [
+        "シン",
+        "キン",
+        "ゴン",
+        "カン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "笻": {
+      "readings": [
+        "キョウ",
+        "つえ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䉤": {
+      "readings": [
+        "ソウ",
+        "シュ",
+        "ス",
+        "やぶ",
+        "ざる",
+        "こめあげざる"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𥶡": {
+      "readings": [
+        "たが"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䑓": {
+      "readings": [
+        "ダイ",
+        "うてな"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䑛": {
+      "readings": [
+        "シ",
+        "ジ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𦫿": {
+      "readings": [
+        "ガイ",
+        "おさめる",
+        "かる",
+        "もぐさ",
+        "よもぎ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "荢": {
+      "readings": [
+        "ウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "菡": {
+      "readings": [
+        "カン",
+        "ゴン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "葟": {
+      "readings": [
+        "コウ",
+        "オウ",
+        "はな"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𦹀": {
+      "readings": [
+        "くご",
+        "くごい"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "﨟": {
+      "readings": [
+        "ロウ",
+        "カツ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𧃴": {
+      "readings": [
+        "つづら"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䖝": {
+      "readings": [
+        "チュウ",
+        "むし"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䗪": {
+      "readings": [
+        "シャ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𧚄": {
+      "readings": [
+        "ガ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "諐": {
+      "readings": [
+        "ケン",
+        "あやまち"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "譩": {
+      "readings": [
+        "イ",
+        "エ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "讝": {
+      "readings": [
+        "セン",
+        "ダン",
+        "ネン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𨉷": {
+      "readings": [
+        "ヨウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䡄": {
+      "readings": [
+        "キ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𨏍": {
+      "readings": [
+        "いえづと"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䦰": {
+      "readings": [
+        "キュウ",
+        "キ",
+        "くじ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "霻": {
+      "readings": [
+        "フウ",
+        "フ",
+        "ホウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "靍": {
+      "readings": [
+        "カク",
+        "つる"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "馞": {
+      "readings": [
+        "ホツ",
+        "ボチ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䰗": {
+      "readings": [
+        "キュウ",
+        "ク"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "鱥": {
+      "readings": [
+        "ケイ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "鵒": {
+      "readings": [
+        "ヨク"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "鷀": {
+      "readings": [
+        "ジ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𪆐": {
+      "readings": [
+        "とり"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㐬": {
+      "readings": [
+        "リュウ",
+        "ル",
+        "コウ",
+        "トツ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㐮": {
+      "readings": [
+        "ジョウ",
+        "ショウ",
+        "ソウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "亻": {
+      "readings": [
+        "イ",
+        "にんべん"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "仫": {
+      "readings": [
+        "ムー"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "佤": {
+      "readings": [
+        "ワ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "俦": {
+      "readings": [
+        "チュウ",
+        "ともがら"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㑪": {
+      "readings": [
+        "サイ",
+        "ザイ",
+        "セイ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㑨": {
+      "readings": [
+        "また"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "傣": {
+      "readings": [
+        "タイ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𠌫": {
+      "readings": [
+        "ヒツ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "僳": {
+      "readings": [
+        "ス"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𠍱": {
+      "readings": [
+        "シュウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "僡": {
+      "readings": [
+        "ケイ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㒒": {
+      "readings": [
+        "ボク",
+        "しもべ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𠑊": {
+      "readings": [
+        "ゲン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "兠": {
+      "readings": [
+        "トウ",
+        "かぶと"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𠔉": {
+      "readings": [
+        "ケン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "关": {
+      "readings": [
+        "ショウ",
+        "わらう",
+        "えむ",
+        "わらい",
+        "え",
+        "えみ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㒼": {
+      "readings": [
+        "バン",
+        "マン",
+        "ベン",
+        "メン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㓇": {
+      "readings": [
+        "ヨク"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𠗖": {
+      "readings": [
+        "にご"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𠘨": {
+      "readings": [
+        "シュ",
+        "ジュ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𠝏": {
+      "readings": [
+        "ケン",
+        "つるぎ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𠠇": {
+      "readings": [
+        "タク",
+        "トク",
+        "トウ",
+        "ツ",
+        "きる"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𠠺": {
+      "readings": [
+        "コウ",
+        "ちから",
+        "つよし"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "勊": {
+      "readings": [
+        "コク"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㔟": {
+      "readings": [
+        "セイ",
+        "いきおい"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𠢹": {
+      "readings": [
+        "カク",
+        "キャク"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𠥼": {
+      "readings": [
+        "とと"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "卧": {
+      "readings": [
+        "ガ",
+        "ふす"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𠫓": {
+      "readings": [
+        "トツ",
+        "トチ",
+        "うむ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𠬝": {
+      "readings": [
+        "フク",
+        "ブク"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㕝": {
+      "readings": [
+        "シ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㕞": {
+      "readings": [
+        "セツ",
+        "セチ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㕣": {
+      "readings": [
+        "エン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "叴": {
+      "readings": [
+        "キュウ",
+        "グ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "呕": {
+      "readings": [
+        "オウ",
+        "うたう"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㕮": {
+      "readings": [
+        "フ",
+        "かむ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𠵅": {
+      "readings": [
+        "カ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㖦": {
+      "readings": [
+        "トウ",
+        "ツ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㖨": {
+      "readings": [
+        "ロク"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𠷡": {
+      "readings": [
+        "ゆり"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㗅": {
+      "readings": [
+        "コ",
+        "ゴ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𠺕": {
+      "readings": [
+        "ル"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𠹭": {
+      "readings": [
+        "ころろほるむ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㗚": {
+      "readings": [
+        "リツ",
+        "リチ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𠹤": {
+      "readings": [
+        "イ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𠽟": {
+      "readings": [
+        "ずき",
+        "つき",
+        "づき"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "嘇": {
+      "readings": [
+        "サン",
+        "ものもう"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㗴": {
+      "readings": [
+        "ガン",
+        "ゲン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㘅": {
+      "readings": [
+        "カン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "囍": {
+      "readings": [
+        "ヨシ",
+        "そうき"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𡈁": {
+      "readings": [
+        "くに"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𡉕": {
+      "readings": [
+        "くろ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𡉻": {
+      "readings": [
+        "サイ",
+        "スイ",
+        "そね"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𡉴": {
+      "readings": [
+        "コ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𡋤": {
+      "readings": [
+        "まま"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𡋗": {
+      "readings": [
+        "くれ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "埗": {
+      "readings": [
+        "プ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𡌶": {
+      "readings": [
+        "はが"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𡍄": {
+      "readings": [
+        "イ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㙊": {
+      "readings": [
+        "チョウ",
+        "ジョウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𡏄": {
+      "readings": [
+        "ソ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "墪": {
+      "readings": [
+        "トン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𡑭": {
+      "readings": [
+        "くれ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "壃": {
+      "readings": [
+        "キョウ",
+        "さかい"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "复": {
+      "readings": [
+        "フク",
+        "ブク"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㚑": {
+      "readings": [
+        "レイ",
+        "リョウ",
+        "みたま",
+        "たま",
+        "くし"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "夽": {
+      "readings": [
+        "グン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㚙": {
+      "readings": [
+        "カ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㚖": {
+      "readings": [
+        "コウ",
+        "タク",
+        "セキ",
+        "シャク",
+        "ジャク"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𡙇": {
+      "readings": [
+        "ケツ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𡜆": {
+      "readings": [
+        "ケツ",
+        "つや"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𡝂": {
+      "readings": [
+        "ショウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㛏": {
+      "readings": [
+        "キュウ",
+        "グ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "嫰": {
+      "readings": [
+        "ドン",
+        "わかい"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𡧃": {
+      "readings": [
+        "ウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㝡": {
+      "readings": [
+        "サイ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㝢": {
+      "readings": [
+        "ウ",
+        "のき"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㝬": {
+      "readings": [
+        "コ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㝫": {
+      "readings": [
+        "リュウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㝵": {
+      "readings": [
+        "ガイ",
+        "トク"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𡴭": {
+      "readings": [
+        "アツ",
+        "エチ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𡵅": {
+      "readings": [
+        "ほき"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𡵸": {
+      "readings": [
+        "エキ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𡵢": {
+      "readings": [
+        "なぎ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㟁": {
+      "readings": [
+        "ガン",
+        "きし"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𡶡": {
+      "readings": [
+        "さこ",
+        "ざこ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𡶜": {
+      "readings": [
+        "ガン",
+        "キン",
+        "きし"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𡶒": {
+      "readings": [
+        "フツ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𡷠": {
+      "readings": [
+        "トウ",
+        "ズ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𡸳": {
+      "readings": [
+        "ギョウ",
+        "たかし"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㟨": {
+      "readings": [
+        "タン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㟴": {
+      "readings": [
+        "カイ",
+        "ケ",
+        "イ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𡼞": {
+      "readings": [
+        "セイ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㟽": {
+      "readings": [
+        "ヒョウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㠀": {
+      "readings": [
+        "トウ",
+        "しま"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "嶗": {
+      "readings": [
+        "ロウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𡽶": {
+      "readings": [
+        "はな"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "巗": {
+      "readings": [
+        "ゲン",
+        "ガン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𡿺": {
+      "readings": [
+        "ドウ",
+        "ノウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㠯": {
+      "readings": [
+        "イ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㠶": {
+      "readings": [
+        "ハン",
+        "ボン",
+        "ほ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㡀": {
+      "readings": [
+        "ヘイ",
+        "ベイ",
+        "ヘツ",
+        "ヘチ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㡜": {
+      "readings": [
+        "セツ",
+        "セイ",
+        "セチ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㡡": {
+      "readings": [
+        "チュウ",
+        "チュ",
+        "ジュ",
+        "とばり",
+        "かや"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𢅻": {
+      "readings": [
+        "ソウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "庹": {
+      "readings": [
+        "タ",
+        "ダ",
+        "タク"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𢌞": {
+      "readings": [
+        "カイ",
+        "まわる"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𢎭": {
+      "readings": [
+        "キン",
+        "コン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "弞": {
+      "readings": [
+        "シン",
+        "イン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㣺": {
+      "readings": [
+        "シン",
+        "こころ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㤗": {
+      "readings": [
+        "タイ",
+        "やす"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "怢": {
+      "readings": [
+        "トツ",
+        "トチ",
+        "テツ",
+        "テチ",
+        "タイ",
+        "テ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㤚": {
+      "readings": [
+        "コウ",
+        "ゴウ",
+        "よろこぶ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𢛳": {
+      "readings": [
+        "トク"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "惮": {
+      "readings": [
+        "タ",
+        "タン",
+        "はばかり",
+        "はばかる"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "愺": {
+      "readings": [
+        "ソウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㥯": {
+      "readings": [
+        "イン",
+        "オン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𢡛": {
+      "readings": [
+        "マン",
+        "もだえる"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𢢫": {
+      "readings": [
+        "ことぶき",
+        "たまつばき"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "懵": {
+      "readings": [
+        "ボウ",
+        "おろか",
+        "くらい"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𢦏": {
+      "readings": [
+        "サイ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "扡": {
+      "readings": [
+        "デ",
+        "タイ",
+        "イ",
+        "タ",
+        "シ",
+        "ジ",
+        "チ",
+        "ダ",
+        "ひく"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "扻": {
+      "readings": [
+        "シツ",
+        "シチ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "抙": {
+      "readings": [
+        "ホウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𢪸": {
+      "readings": [
+        "ワン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𢭏": {
+      "readings": [
+        "トウ",
+        "つく"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𢭐": {
+      "readings": [
+        "ロウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "挲": {
+      "readings": [
+        "サ",
+        "シャ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "挻": {
+      "readings": [
+        "セン",
+        "テン",
+        "エン",
+        "こねる",
+        "のばす"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𢭆": {
+      "readings": [
+        "チュウ",
+        "チュ",
+        "シュク",
+        "すかす"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "捙": {
+      "readings": [
+        "エイ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𢰝": {
+      "readings": [
+        "もて"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𢮦": {
+      "readings": [
+        "ケン",
+        "くくる",
+        "さぐる",
+        "しらべる",
+        "とりしまる",
+        "みまわる"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𢰤": {
+      "readings": [
+        "キ",
+        "カ",
+        "イ",
+        "ひく"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "揫": {
+      "readings": [
+        "シュウ",
+        "シュ",
+        "ジュ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𢷡": {
+      "readings": [
+        "ちゃく"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㩮": {
+      "readings": [
+        "ケン",
+        "コン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㩳": {
+      "readings": [
+        "ショウ",
+        "シュ",
+        "ソウ",
+        "とる"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "敄": {
+      "readings": [
+        "ム",
+        "ブ",
+        "ボウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "斄": {
+      "readings": [
+        "リ",
+        "タイ",
+        "レイ",
+        "ライ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "斵": {
+      "readings": [
+        "タク",
+        "きる"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "斸": {
+      "readings": [
+        "ショク",
+        "ソク",
+        "サク"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㫖": {
+      "readings": [
+        "シ",
+        "むね"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "旼": {
+      "readings": [
+        "ビン",
+        "ミン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㫪": {
+      "readings": [
+        "ショウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𣇃": {
+      "readings": [
+        "ショウ",
+        "つく"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "晣": {
+      "readings": [
+        "セイ",
+        "セツ",
+        "あきらか"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𣇵": {
+      "readings": [
+        "さやけし"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𣆶": {
+      "readings": [
+        "バン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "晭": {
+      "readings": [
+        "シュウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㬎": {
+      "readings": [
+        "キン",
+        "ゴン",
+        "ゴウ",
+        "ケン",
+        "あらわれる"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㬚": {
+      "readings": [
+        "テツ",
+        "テチ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㬜": {
+      "readings": [
+        "シン",
+        "すすむ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㫗": {
+      "readings": [
+        "コウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "朁": {
+      "readings": [
+        "サン",
+        "セン",
+        "ゼン",
+        "ソン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𣍲": {
+      "readings": [
+        "さおとめ",
+        "そうとめ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𣏓": {
+      "readings": [
+        "オ",
+        "こて"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𣏒": {
+      "readings": [
+        "くるみ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "杍": {
+      "readings": [
+        "シ",
+        "リ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𣏐": {
+      "readings": [
+        "シャク"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𣏤": {
+      "readings": [
+        "と"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𣏕": {
+      "readings": [
+        "ハイ",
+        "ビ",
+        "ミ",
+        "バイ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𣏚": {
+      "readings": [
+        "シ",
+        "ジ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "枒": {
+      "readings": [
+        "ヤ",
+        "ガ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𣏟": {
+      "readings": [
+        "ハイ",
+        "ヘ",
+        "あさ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "荣": {
+      "readings": [
+        "エイ",
+        "さかえる"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "栐": {
+      "readings": [
+        "エイ",
+        "ヨウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "柛": {
+      "readings": [
+        "シン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𣑊": {
+      "readings": [
+        "やまぶき"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𣑑": {
+      "readings": [
+        "する"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𣑋": {
+      "readings": [
+        "ついくし"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "栘": {
+      "readings": [
+        "イ",
+        "ザイ",
+        "ゲイ",
+        "セイ",
+        "ケイ",
+        "サイ",
+        "エ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𣑥": {
+      "readings": [
+        "コウ",
+        "たえ",
+        "たく"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "栾": {
+      "readings": [
+        "ラン",
+        "ひじき"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "桉": {
+      "readings": [
+        "アン",
+        "つくえ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㭷": {
+      "readings": [
+        "おうこ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "梐": {
+      "readings": [
+        "ヘイ",
+        "ベイ",
+        "こまよけ",
+        "ひとや"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㭭": {
+      "readings": [
+        "ハツ",
+        "ハチ",
+        "ハイ",
+        "ヘ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "梙": {
+      "readings": [
+        "カン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "梫": {
+      "readings": [
+        "シン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "梴": {
+      "readings": [
+        "テン",
+        "セン",
+        "レン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𣓤": {
+      "readings": [
+        "ドウ",
+        "ギョウ",
+        "トウ",
+        "かじ",
+        "たわむ",
+        "たわめる"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𣕚": {
+      "readings": [
+        "もて"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "﨓": {
+      "readings": [
+        "たぶ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "棃": {
+      "readings": [
+        "リ",
+        "なし"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "棤": {
+      "readings": [
+        "セキ",
+        "シャク",
+        "サク"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "棷": {
+      "readings": [
+        "サイ",
+        "セ",
+        "シュウ",
+        "ソウ",
+        "シュ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "椃": {
+      "readings": [
+        "コウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "椇": {
+      "readings": [
+        "キョ",
+        "ク"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㮇": {
+      "readings": [
+        "テン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㮈": {
+      "readings": [
+        "ナ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𣖔": {
+      "readings": [
+        "ホウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㮍": {
+      "readings": [
+        "サン",
+        "セン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "楆": {
+      "readings": [
+        "ヨウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㮤": {
+      "readings": [
+        "ショウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "榰": {
+      "readings": [
+        "シ",
+        "ささえる"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "槀": {
+      "readings": [
+        "コウ",
+        "かれる"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𣙇": {
+      "readings": [
+        "つぐ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𣘸": {
+      "readings": [
+        "コク",
+        "べんと"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𣘺": {
+      "readings": [
+        "キョウ",
+        "ギョウ",
+        "コウ",
+        "はし"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "槣": {
+      "readings": [
+        "キ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㯍": {
+      "readings": [
+        "ショウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "槴": {
+      "readings": [
+        "コ",
+        "ゴ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𣜜": {
+      "readings": [
+        "とち"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "樳": {
+      "readings": [
+        "ジン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "橺": {
+      "readings": [
+        "カン",
+        "ゲン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𣜌": {
+      "readings": [
+        "くろべ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㯰": {
+      "readings": [
+        "チ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "檡": {
+      "readings": [
+        "タク",
+        "ジャク",
+        "ダク",
+        "エキ",
+        "ヤク",
+        "セキ",
+        "シャク",
+        "ト"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𣝤": {
+      "readings": [
+        "サイ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𣟿": {
+      "readings": [
+        "ナギ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𣟧": {
+      "readings": [
+        "ひし"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "櫳": {
+      "readings": [
+        "ロウ",
+        "ル",
+        "おり"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𣠤": {
+      "readings": [
+        "カン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "欋": {
+      "readings": [
+        "ク",
+        "グ",
+        "チュ",
+        "くまで",
+        "つく"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㰦": {
+      "readings": [
+        "キョ",
+        "コ",
+        "カ",
+        "あくび"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "歬": {
+      "readings": [
+        "ゼン",
+        "すすむ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "歺": {
+      "readings": [
+        "ガツ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "毇": {
+      "readings": [
+        "キ",
+        "サク",
+        "ソク"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "毈": {
+      "readings": [
+        "ダン",
+        "タン",
+        "タ",
+        "ダ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "氊": {
+      "readings": [
+        "セン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𣱿": {
+      "readings": [
+        "ぬか"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "沄": {
+      "readings": [
+        "ウン",
+        "コン",
+        "ゴン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㳃": {
+      "readings": [
+        "サイ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "沭": {
+      "readings": [
+        "ジュツ",
+        "シュツ",
+        "イツ",
+        "イチ",
+        "ジュチ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㳒": {
+      "readings": [
+        "ホウ",
+        "のり"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "泭": {
+      "readings": [
+        "フ",
+        "フウ",
+        "ブ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𣴀": {
+      "readings": [
+        "す"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "洀": {
+      "readings": [
+        "シュウ",
+        "シュ",
+        "ハン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "洤": {
+      "readings": [
+        "セン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "浛": {
+      "readings": [
+        "カン",
+        "ゴン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "浠": {
+      "readings": [
+        "キ",
+        "ケ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "涀": {
+      "readings": [
+        "ケン",
+        "ゲン",
+        "ケイ",
+        "ゲイ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "涁": {
+      "readings": [
+        "シン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "涊": {
+      "readings": [
+        "デン",
+        "ジン",
+        "ネン",
+        "ニン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "涍": {
+      "readings": [
+        "コウ",
+        "キョウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𣵀": {
+      "readings": [
+        "デツ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𣷺": {
+      "readings": [
+        "そま"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𣷹": {
+      "readings": [
+        "テン",
+        "そう",
+        "そえる",
+        "そえ",
+        "ぞえ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𣷓": {
+      "readings": [
+        "なぎ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "涫": {
+      "readings": [
+        "カン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "涮": {
+      "readings": [
+        "サン",
+        "セン",
+        "セツ",
+        "セチ",
+        "すすぐ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "淂": {
+      "readings": [
+        "トク",
+        "チョク",
+        "チキ",
+        "える",
+        "うる"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "洴": {
+      "readings": [
+        "ヘイ",
+        "ホウ",
+        "ビョウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "淐": {
+      "readings": [
+        "ショウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㴑": {
+      "readings": [
+        "ソ",
+        "さかのぼる"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "湌": {
+      "readings": [
+        "サン",
+        "ソン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㴞": {
+      "readings": [
+        "トウ",
+        "ドウ",
+        "はびこる"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "溴": {
+      "readings": [
+        "シュ",
+        "シュウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "滙": {
+      "readings": [
+        "カイ",
+        "ワイ",
+        "めぐる"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "漵": {
+      "readings": [
+        "ジョ",
+        "ショ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "漥": {
+      "readings": [
+        "ワ",
+        "くぼ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𣽾": {
+      "readings": [
+        "いと"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "潠": {
+      "readings": [
+        "ソン",
+        "セン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "澘": {
+      "readings": [
+        "サン",
+        "セン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "澾": {
+      "readings": [
+        "タツ",
+        "タチ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㵤": {
+      "readings": [
+        "ソウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "濉": {
+      "readings": [
+        "スイ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𤂖": {
+      "readings": [
+        "コウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "瀊": {
+      "readings": [
+        "ハン",
+        "バン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𤄃": {
+      "readings": [
+        "カツ",
+        "ひろい",
+        "ひろ",
+        "ひろし"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "瀺": {
+      "readings": [
+        "サン",
+        "ザン",
+        "セン",
+        "ゼン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "灇": {
+      "readings": [
+        "ソウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "炻": {
+      "readings": [
+        "セツ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𤇆": {
+      "readings": [
+        "エン",
+        "かま"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "炟": {
+      "readings": [
+        "タツ",
+        "タチ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "焈": {
+      "readings": [
+        "キ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㷀": {
+      "readings": [
+        "ケイ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "煓": {
+      "readings": [
+        "タン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㷔": {
+      "readings": [
+        "エン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "熖": {
+      "readings": [
+        "エン",
+        "ほのお"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "熮": {
+      "readings": [
+        "リュウ",
+        "ル",
+        "リョウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𤎼": {
+      "readings": [
+        "にぎ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㸅": {
+      "readings": [
+        "ショク",
+        "セツ",
+        "セチ",
+        "ソキ",
+        "シツ",
+        "シチ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "爫": {
+      "readings": [
+        "つめかんむり"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "丬": {
+      "readings": [
+        "ショウ",
+        "ゾウ",
+        "しょうへん"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "牗": {
+      "readings": [
+        "ユウ",
+        "ユ",
+        "まど"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𤘩": {
+      "readings": [
+        "ぐし"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𤚥": {
+      "readings": [
+        "バン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "犭": {
+      "readings": [
+        "けものへん"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "犰": {
+      "readings": [
+        "キュウ",
+        "グ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㹦": {
+      "readings": [
+        "チョウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㹨": {
+      "readings": [
+        "ユウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㺃": {
+      "readings": [
+        "コウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "猹": {
+      "readings": [
+        "チャー"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "猳": {
+      "readings": [
+        "カ",
+        "ケ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㺔": {
+      "readings": [
+        "キ",
+        "カイ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𤢖": {
+      "readings": [
+        "ショウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "玊": {
+      "readings": [
+        "シュク",
+        "キュウ",
+        "ショク",
+        "ク",
+        "ソク"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "玔": {
+      "readings": [
+        "セン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "玨": {
+      "readings": [
+        "カク"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "琓": {
+      "readings": [
+        "カン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "瑓": {
+      "readings": [
+        "レン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "璈": {
+      "readings": [
+        "ゴウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𤩍": {
+      "readings": [
+        "つまごと"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "璗": {
+      "readings": [
+        "トウ",
+        "ドウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "璥": {
+      "readings": [
+        "ケイ",
+        "キョウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "璺": {
+      "readings": [
+        "ブン",
+        "モン",
+        "キン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "瓖": {
+      "readings": [
+        "ショウ",
+        "ソウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𤭖": {
+      "readings": [
+        "チョウ",
+        "みか"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𤭯": {
+      "readings": [
+        "はんぞう"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㽗": {
+      "readings": [
+        "セ",
+        "うね"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𤰖": {
+      "readings": [
+        "セ",
+        "うね"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𤴔": {
+      "readings": [
+        "ショ",
+        "ソ",
+        "カ",
+        "ゲ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "疌": {
+      "readings": [
+        "ジョウ",
+        "ニョウ",
+        "チ",
+        "ショウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㽵": {
+      "readings": [
+        "ソウ",
+        "ショウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㽷": {
+      "readings": [
+        "スイ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "疰": {
+      "readings": [
+        "シュ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "疷": {
+      "readings": [
+        "チ",
+        "テイ",
+        "タイ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "痓": {
+      "readings": [
+        "シ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "痝": {
+      "readings": [
+        "ボウ",
+        "モウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "瘘": {
+      "readings": [
+        "ロウ",
+        "こぶ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㾮": {
+      "readings": [
+        "コウ",
+        "オウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𤸎": {
+      "readings": [
+        "エツ",
+        "カツ",
+        "カチ",
+        "エチ",
+        "カイ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𤸷": {
+      "readings": [
+        "クン",
+        "ガン",
+        "グン",
+        "しびれる"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "瘨": {
+      "readings": [
+        "テン",
+        "デン",
+        "シン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𤹪": {
+      "readings": [
+        "ク",
+        "グ",
+        "くぐせ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㿉": {
+      "readings": [
+        "タイ",
+        "デ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𤺋": {
+      "readings": [
+        "シン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㿗": {
+      "readings": [
+        "タイ",
+        "デ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "皡": {
+      "readings": [
+        "コウ",
+        "しろい"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "皯": {
+      "readings": [
+        "カン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𥁊": {
+      "readings": [
+        "ハチ",
+        "ハ",
+        "はち"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𥁕": {
+      "readings": [
+        "オン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𥄢": {
+      "readings": [
+        "もく"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𥆩": {
+      "readings": [
+        "ゲイ",
+        "にらむ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䀹": {
+      "readings": [
+        "ショウ",
+        "コウ",
+        "ソウ",
+        "ゴウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𥇥": {
+      "readings": [
+        "ケン",
+        "まぶた"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𥇍": {
+      "readings": [
+        "タク",
+        "チョク"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "睘": {
+      "readings": [
+        "ケイ",
+        "ギョウ",
+        "セン",
+        "ゼン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𥈞": {
+      "readings": [
+        "マン",
+        "だます"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "睼": {
+      "readings": [
+        "テイ",
+        "タイ",
+        "テン",
+        "ダイ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𥉌": {
+      "readings": [
+        "トウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䁘": {
+      "readings": [
+        "ヨウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "瞤": {
+      "readings": [
+        "シュン",
+        "ジュン",
+        "ニュン",
+        "ゼン",
+        "ネン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "瞩": {
+      "readings": [
+        "ショク"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䂓": {
+      "readings": [
+        "キ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𥐮": {
+      "readings": [
+        "じゃく"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "砙": {
+      "readings": [
+        "ゴ",
+        "ゴウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "砬": {
+      "readings": [
+        "リュウ",
+        "ロウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𥓙": {
+      "readings": [
+        "うす"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "磹": {
+      "readings": [
+        "テン",
+        "デン",
+        "タン",
+        "ドン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "磾": {
+      "readings": [
+        "テイ",
+        "タイ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𥖧": {
+      "readings": [
+        "はし"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "礛": {
+      "readings": [
+        "カン",
+        "ケン",
+        "ラン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "礰": {
+      "readings": [
+        "レキ",
+        "リャク"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䄅": {
+      "readings": [
+        "ケン",
+        "まつり"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "秌": {
+      "readings": [
+        "シュウ",
+        "シュ",
+        "あき",
+        "とき"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䅈": {
+      "readings": [
+        "イン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𥞩": {
+      "readings": [
+        "カ",
+        "ワ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𥞴": {
+      "readings": [
+        "コク"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䅏": {
+      "readings": [
+        "ビ",
+        "ミ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䅣": {
+      "readings": [
+        "コウ",
+        "オウ",
+        "ギョウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𥧔": {
+      "readings": [
+        "ヒ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䆴": {
+      "readings": [
+        "ソウ",
+        "かま",
+        "かまど"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "窾": {
+      "readings": [
+        "カン",
+        "コウ",
+        "カ",
+        "ク",
+        "サン",
+        "むなしい"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䆿": {
+      "readings": [
+        "ゲイ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "竧": {
+      "readings": [
+        "セイ",
+        "ジョウ",
+        "シン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𥫤": {
+      "readings": [
+        "ヤ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𥫣": {
+      "readings": [
+        "ヨ",
+        "そうけ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𥫱": {
+      "readings": [
+        "トン",
+        "ドン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䇦": {
+      "readings": [
+        "オウ",
+        "ヨウ",
+        "エイ",
+        "はな",
+        "はなぶさ",
+        "ひいでる"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䇳": {
+      "readings": [
+        "セン",
+        "かきもの"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䇮": {
+      "readings": [
+        "ジン",
+        "ニン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "筹": {
+      "readings": [
+        "チョウ",
+        "チュウ",
+        "ジュ",
+        "トウ",
+        "ドウ",
+        "はかりごと",
+        "かずとり"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𥮲": {
+      "readings": [
+        "チョウ",
+        "おさ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䈇": {
+      "readings": [
+        "トウ",
+        "タク"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䈎": {
+      "readings": [
+        "ヨウ",
+        "チョウ",
+        "ジョウ",
+        "は"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𥱋": {
+      "readings": [
+        "リョウ",
+        "やな"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𥱤": {
+      "readings": [
+        "いざき",
+        "いざさ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "篰": {
+      "readings": [
+        "ホウ",
+        "ブ",
+        "フ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "籅": {
+      "readings": [
+        "ヨ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "籗": {
+      "readings": [
+        "タク"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "籯": {
+      "readings": [
+        "エイ",
+        "ヨウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𥸮": {
+      "readings": [
+        "ソウ",
+        "くわ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𥹖": {
+      "readings": [
+        "ハ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𥹥": {
+      "readings": [
+        "あめ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𥹢": {
+      "readings": [
+        "ブン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𥻘": {
+      "readings": [
+        "リン",
+        "すはま"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𥻂": {
+      "readings": [
+        "ラン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𥻨": {
+      "readings": [
+        "サク",
+        "シャク",
+        "ひめ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𥼣": {
+      "readings": [
+        "しいな"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𥽜": {
+      "readings": [
+        "はぜ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䋆": {
+      "readings": [
+        "かせ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𥿠": {
+      "readings": [
+        "かたびら"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𥿔": {
+      "readings": [
+        "ひきづな"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𦀌": {
+      "readings": [
+        "のみ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𥿻": {
+      "readings": [
+        "シ",
+        "きぬ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䋖": {
+      "readings": [
+        "イツ",
+        "イチ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䋝": {
+      "readings": [
+        "エイ",
+        "ヨウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𦀗": {
+      "readings": [
+        "ショク"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𦁠": {
+      "readings": [
+        "あき"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "緀": {
+      "readings": [
+        "セイ",
+        "サイ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䌂": {
+      "readings": [
+        "オウ",
+        "オ",
+        "ゆる"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𦃭": {
+      "readings": [
+        "しま"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "繵": {
+      "readings": [
+        "テン",
+        "デン",
+        "タン",
+        "ダン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䌫": {
+      "readings": [
+        "ラン",
+        "ともづな"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䍃": {
+      "readings": [
+        "ユウ",
+        "ユ",
+        "ヨウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "㓁": {
+      "readings": [
+        "ボウ",
+        "モウ",
+        "あみがしら",
+        "あみ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𦉰": {
+      "readings": [
+        "ボウ",
+        "モウ",
+        "あみがしら",
+        "あみ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𦊆": {
+      "readings": [
+        "コウ",
+        "おか"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𦍌": {
+      "readings": [
+        "ジン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "养": {
+      "readings": [
+        "ビ",
+        "うつくしい"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𣴎": {
+      "readings": [
+        "ショウ",
+        "ジョウ",
+        "セイ",
+        "ソウ",
+        "ゾウ",
+        "チョウ",
+        "うけたまわる",
+        "うける"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𦐂": {
+      "readings": [
+        "ヨク"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "耂": {
+      "readings": [
+        "おいかんむり"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "聃": {
+      "readings": [
+        "タン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "聻": {
+      "readings": [
+        "ジ",
+        "ニ",
+        "セキ",
+        "シャク"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "肙": {
+      "readings": [
+        "エン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "肤": {
+      "readings": [
+        "フ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𦙾": {
+      "readings": [
+        "ケイ",
+        "すね",
+        "はぎ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "胅": {
+      "readings": [
+        "テツ",
+        "デチ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "胦": {
+      "readings": [
+        "オウ",
+        "ヨウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𦚰": {
+      "readings": [
+        "キョウ",
+        "わき"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "脍": {
+      "readings": [
+        "す"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "胵": {
+      "readings": [
+        "シ",
+        "チ",
+        "チツ",
+        "チチ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "胻": {
+      "readings": [
+        "ギョウ",
+        "コウ",
+        "ゴウ",
+        "はぎ",
+        "はら"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䏮": {
+      "readings": [
+        "キョウ",
+        "コウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䏰": {
+      "readings": [
+        "ジン",
+        "ニン",
+        "ジュン",
+        "ニュン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𦜝": {
+      "readings": [
+        "へそ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "脽": {
+      "readings": [
+        "スイ",
+        "シュウ",
+        "シュ",
+        "しり"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䐈": {
+      "readings": [
+        "ショク",
+        "シキ",
+        "チョク",
+        "チキ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䐗": {
+      "readings": [
+        "チョ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䐜": {
+      "readings": [
+        "シン",
+        "シ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䐢": {
+      "readings": [
+        "シュウ",
+        "シュ",
+        "ソウ",
+        "ス"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "臁": {
+      "readings": [
+        "レン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "臖": {
+      "readings": [
+        "キョウ",
+        "コウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𦣝": {
+      "readings": [
+        "イ",
+        "アイ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𦣪": {
+      "readings": [
+        "エン",
+        "しお"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𦥑": {
+      "readings": [
+        "キョク",
+        "コク",
+        "キク",
+        "キョ",
+        "キュウ",
+        "うす"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𦧝": {
+      "readings": [
+        "テン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𦨞": {
+      "readings": [
+        "かわら"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "舼": {
+      "readings": [
+        "キョウ",
+        "コウ",
+        "グ",
+        "こぶね"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "艉": {
+      "readings": [
+        "ビ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𦩘": {
+      "readings": [
+        "たぎし"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䑶": {
+      "readings": [
+        "セン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䑺": {
+      "readings": [
+        "ハン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "艗": {
+      "readings": [
+        "ゲキ",
+        "ギャク",
+        "ふね",
+        "へさき"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𦪌": {
+      "readings": [
+        "よりあい"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𦪷": {
+      "readings": [
+        "ボク",
+        "モク"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "艹": {
+      "readings": [
+        "ソウ",
+        "くさかんむり"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䒑": {
+      "readings": [
+        "ソウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "芓": {
+      "readings": [
+        "シ",
+        "ジ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "茌": {
+      "readings": [
+        "シ",
+        "ジ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䒾": {
+      "readings": [
+        "イ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䓔": {
+      "readings": [
+        "こも"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䒳": {
+      "readings": [
+        "タ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "菥": {
+      "readings": [
+        "セキ",
+        "シャク",
+        "シ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𦱳": {
+      "readings": [
+        "シ",
+        "しげる"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "萗": {
+      "readings": [
+        "サク",
+        "ソウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𦳝": {
+      "readings": [
+        "チョウ",
+        "ヨウ",
+        "トウ",
+        "ドウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䔍": {
+      "readings": [
+        "バ",
+        "たつ",
+        "つた"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "蒗": {
+      "readings": [
+        "ロウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䔈": {
+      "readings": [
+        "コウ",
+        "ク"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "蓎": {
+      "readings": [
+        "トウ",
+        "ドウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𦹥": {
+      "readings": [
+        "イン",
+        "かげ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "蔛": {
+      "readings": [
+        "コク",
+        "ゴク"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䔥": {
+      "readings": [
+        "シュク",
+        "ショウ",
+        "よもぎ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䕃": {
+      "readings": [
+        "イン",
+        "かげ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "蔾": {
+      "readings": [
+        "リ",
+        "レイ",
+        "ライ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𦾔": {
+      "readings": [
+        "キュウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𦿸": {
+      "readings": [
+        "タン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𦿶": {
+      "readings": [
+        "なぎ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𦿷": {
+      "readings": [
+        "おぎ",
+        "はぎ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "藙": {
+      "readings": [
+        "ギ",
+        "ゲ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "藡": {
+      "readings": [
+        "テキ",
+        "おぎ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "蘤": {
+      "readings": [
+        "イ",
+        "ハ",
+        "バ",
+        "カ",
+        "ケ",
+        "はな"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𧄍": {
+      "readings": [
+        "ギョウ",
+        "キョウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "蘹": {
+      "readings": [
+        "カイ",
+        "エ",
+        "ウイ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𧄹": {
+      "readings": [
+        "ショク",
+        "シキ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "蚇": {
+      "readings": [
+        "セキ",
+        "シャク"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "蚝": {
+      "readings": [
+        "シ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "﨡": {
+      "readings": [
+        "に"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "蛦": {
+      "readings": [
+        "イ",
+        "テイ",
+        "ダイ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䖸": {
+      "readings": [
+        "ガ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "蝑": {
+      "readings": [
+        "ショ",
+        "シャ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "蝼": {
+      "readings": [
+        "ロウ",
+        "ル"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𧏛": {
+      "readings": [
+        "きさ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𧏚": {
+      "readings": [
+        "コク"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𧏾": {
+      "readings": [
+        "ジョク",
+        "ニキ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䗥": {
+      "readings": [
+        "ショウ",
+        "シュ",
+        "ソウ",
+        "ス",
+        "ショ",
+        "ジョ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𧐐": {
+      "readings": [
+        "セキ",
+        "サク",
+        "シャク"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "蟵": {
+      "readings": [
+        "チュ",
+        "かや"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𧑉": {
+      "readings": [
+        "フ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "蟥": {
+      "readings": [
+        "コウ",
+        "オウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "蟦": {
+      "readings": [
+        "ヒ",
+        "ビ",
+        "ホン",
+        "フン",
+        "ブン",
+        "すくもむし"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䘏": {
+      "readings": [
+        "ジュツ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𧘕": {
+      "readings": [
+        "かみ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𧘔": {
+      "readings": [
+        "しも"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𧘱": {
+      "readings": [
+        "ふき"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "衯": {
+      "readings": [
+        "フン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "袼": {
+      "readings": [
+        "ラク",
+        "カク"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𧚓": {
+      "readings": [
+        "かみこ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䙁": {
+      "readings": [
+        "セン",
+        "サン",
+        "ザン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𧜎": {
+      "readings": [
+        "たすき"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "褷": {
+      "readings": [
+        "シ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𧜣": {
+      "readings": [
+        "チョウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𧝒": {
+      "readings": [
+        "コウ",
+        "オウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䙥": {
+      "readings": [
+        "レイ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "覀": {
+      "readings": [
+        "ア",
+        "エ",
+        "カ",
+        "ケ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䚡": {
+      "readings": [
+        "サイ",
+        "セ",
+        "シ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䚯": {
+      "readings": [
+        "ケン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𧦅": {
+      "readings": [
+        "オウ",
+        "ウ",
+        "ク",
+        "うたう"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "訡": {
+      "readings": [
+        "ギン",
+        "うたう"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𧪄": {
+      "readings": [
+        "キ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "謍": {
+      "readings": [
+        "エイ",
+        "ヨウ",
+        "オウ",
+        "コウ",
+        "ケイ",
+        "ギョウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䜌": {
+      "readings": [
+        "レン",
+        "ラン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "譑": {
+      "readings": [
+        "キョウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "譿": {
+      "readings": [
+        "ケイ",
+        "エ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𧮳": {
+      "readings": [
+        "カン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𧮾": {
+      "readings": [
+        "ケイ",
+        "たにがわ",
+        "たに"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𧯇": {
+      "readings": [
+        "ロウ",
+        "ながたに"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𧲸": {
+      "readings": [
+        "テン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䝤": {
+      "readings": [
+        "ロウ",
+        "トウ",
+        "チョウ",
+        "リョウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𧶠": {
+      "readings": [
+        "イク"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "賱": {
+      "readings": [
+        "ウン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𧸐": {
+      "readings": [
+        "ジ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "贎": {
+      "readings": [
+        "バン",
+        "ライ",
+        "レイ",
+        "たから"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𧾷": {
+      "readings": [
+        "ソク",
+        "あし"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "踌": {
+      "readings": [
+        "チュウ",
+        "ためらう"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䟽": {
+      "readings": [
+        "ショ",
+        "ソ",
+        "ス",
+        "とおる",
+        "うとい",
+        "おろそか",
+        "うとむ",
+        "あらい",
+        "まばら"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𨂊": {
+      "readings": [
+        "はす"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𨂻": {
+      "readings": [
+        "トウ",
+        "ふむ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䠖": {
+      "readings": [
+        "シ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "躘": {
+      "readings": [
+        "リョウ",
+        "リュ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "躶": {
+      "readings": [
+        "ラ",
+        "はだか"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𨊂": {
+      "readings": [
+        "ジョウ",
+        "ニョウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䡎": {
+      "readings": [
+        "ロ",
+        "ル"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𨋳": {
+      "readings": [
+        "とこ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "輫": {
+      "readings": [
+        "ハイ",
+        "バイ",
+        "ベ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "轊": {
+      "readings": [
+        "エイ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𨐌": {
+      "readings": [
+        "シン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "辴": {
+      "readings": [
+        "チ",
+        "チン",
+        "チツ",
+        "チチ",
+        "シン",
+        "わらう"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𨑕": {
+      "readings": [
+        "はさ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "﨤": {
+      "readings": [
+        "ヘン",
+        "ハン",
+        "ホン",
+        "バン",
+        "かえす",
+        "かわる",
+        "かえる"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𨕫": {
+      "readings": [
+        "しめ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𨗈": {
+      "readings": [
+        "おもい"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𨗉": {
+      "readings": [
+        "スイ",
+        "ふかい",
+        "ふかし"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䢵": {
+      "readings": [
+        "ウン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𨛗": {
+      "readings": [
+        "むら"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𨛺": {
+      "readings": [
+        "キ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "郲": {
+      "readings": [
+        "ライ",
+        "レ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "釄": {
+      "readings": [
+        "ビ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𨥉": {
+      "readings": [
+        "もじきり"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𨥆": {
+      "readings": [
+        "なた"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "鈗": {
+      "readings": [
+        "イン",
+        "エイ",
+        "タイ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𨥫": {
+      "readings": [
+        "リュウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "鉖": {
+      "readings": [
+        "トウ",
+        "ズ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𨦇": {
+      "readings": [
+        "キョウ",
+        "はさみ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𨦈": {
+      "readings": [
+        "なた"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𨦺": {
+      "readings": [
+        "かま"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𨦻": {
+      "readings": [
+        "なた"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𨨞": {
+      "readings": [
+        "おの"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𨨩": {
+      "readings": [
+        "チュウ",
+        "ただ",
+        "ただし"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "鋷": {
+      "readings": [
+        "スイ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𨩱": {
+      "readings": [
+        "なら"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𨩃": {
+      "readings": [
+        "シュン",
+        "はる"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "鍫": {
+      "readings": [
+        "シュウ",
+        "ショウ",
+        "すき"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𨪙": {
+      "readings": [
+        "ソウ",
+        "ショウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𨫍": {
+      "readings": [
+        "ケイ",
+        "セイ",
+        "エイ",
+        "エ",
+        "ゼ",
+        "するどい"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "鏵": {
+      "readings": [
+        "カ",
+        "ゲ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𨫝": {
+      "readings": [
+        "カン",
+        "かね"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "鏱": {
+      "readings": [
+        "ショウ",
+        "あきら"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𨯁": {
+      "readings": [
+        "ヒ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𨯯": {
+      "readings": [
+        "やり"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "閆": {
+      "readings": [
+        "エン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𨴐": {
+      "readings": [
+        "シン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𨵱": {
+      "readings": [
+        "かずき"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𨷻": {
+      "readings": [
+        "ラン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𨸟": {
+      "readings": [
+        "ク"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "阴": {
+      "readings": [
+        "イン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𨸶": {
+      "readings": [
+        "なる"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𨻫": {
+      "readings": [
+        "ロウ",
+        "おか",
+        "うね"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𨼲": {
+      "readings": [
+        "イン",
+        "オン",
+        "かげ",
+        "かくれる"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䧧": {
+      "readings": [
+        "ギ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "隽": {
+      "readings": [
+        "シュン",
+        "セン",
+        "すぐれる"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䧺": {
+      "readings": [
+        "ユウ",
+        "おす"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𨿸": {
+      "readings": [
+        "ケ",
+        "ケイ",
+        "にわとり",
+        "とり"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䨄": {
+      "readings": [
+        "アン",
+        "オン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "霔": {
+      "readings": [
+        "シュ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䨩": {
+      "readings": [
+        "レイ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "霶": {
+      "readings": [
+        "ホウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "靇": {
+      "readings": [
+        "ロウ",
+        "ル",
+        "レイ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𩊠": {
+      "readings": [
+        "ぬめかわ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𩊱": {
+      "readings": [
+        "しころ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "頄": {
+      "readings": [
+        "キュウ",
+        "グ",
+        "キ",
+        "ギ",
+        "キン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䪼": {
+      "readings": [
+        "セツ",
+        "セチ",
+        "コツ",
+        "クチ",
+        "シュツ",
+        "シュチ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𩒐": {
+      "readings": [
+        "シ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𩗏": {
+      "readings": [
+        "ならい"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "颼": {
+      "readings": [
+        "シュウ",
+        "シュ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "飋": {
+      "readings": [
+        "シツ",
+        "シチ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "飠": {
+      "readings": [
+        "しょくへん"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𩙿": {
+      "readings": [
+        "ショク",
+        "くう",
+        "しょくへん"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "飱": {
+      "readings": [
+        "ソン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䬻": {
+      "readings": [
+        "セン",
+        "はなむけ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𩛰": {
+      "readings": [
+        "あさる"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𩜙": {
+      "readings": [
+        "ジョウ",
+        "ニョウ",
+        "ゆたか",
+        "おおい",
+        "たとい"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𩝐": {
+      "readings": [
+        "ジ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𩣆": {
+      "readings": [
+        "ばち"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "駼": {
+      "readings": [
+        "ト",
+        "ズ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "騊": {
+      "readings": [
+        "トウ",
+        "ドウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "騚": {
+      "readings": [
+        "セン",
+        "ゼン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "騱": {
+      "readings": [
+        "ケイ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "驘": {
+      "readings": [
+        "ラ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䯂": {
+      "readings": [
+        "シン",
+        "シュウ",
+        "ジュウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䯊": {
+      "readings": [
+        "カ",
+        "ケ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䯒": {
+      "readings": [
+        "コウ",
+        "ギョウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𩩲": {
+      "readings": [
+        "カツ",
+        "ガチ",
+        "ケツ",
+        "ケチ",
+        "カイ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䯨": {
+      "readings": [
+        "コウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䰠": {
+      "readings": [
+        "シン",
+        "ジン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "魶": {
+      "readings": [
+        "ドウ",
+        "トウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𩷛": {
+      "readings": [
+        "こち"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𩸽": {
+      "readings": [
+        "ほっけ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "鯮": {
+      "readings": [
+        "ソウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𩸕": {
+      "readings": [
+        "はも",
+        "かます"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𩺊": {
+      "readings": [
+        "あら"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𩹉": {
+      "readings": [
+        "ヒ",
+        "とびうお",
+        "ぼら"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "鰝": {
+      "readings": [
+        "コウ",
+        "ゴウ",
+        "カク"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𩻄": {
+      "readings": [
+        "カン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𩻩": {
+      "readings": [
+        "まぐろ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "鱭": {
+      "readings": [
+        "セイ",
+        "シ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "鱺": {
+      "readings": [
+        "レイ",
+        "ライ",
+        "リ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𩿎": {
+      "readings": [
+        "ア"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𪀯": {
+      "readings": [
+        "うそ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䳄": {
+      "readings": [
+        "シ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𪀚": {
+      "readings": [
+        "シュウ",
+        "シュ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䳑": {
+      "readings": [
+        "ユウ",
+        "イク",
+        "イウ",
+        "ウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𪂂": {
+      "readings": [
+        "カン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "鵳": {
+      "readings": [
+        "ケン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "鶙": {
+      "readings": [
+        "テイ",
+        "ダイ",
+        "タイ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "鶽": {
+      "readings": [
+        "シュン"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "鷣": {
+      "readings": [
+        "イン",
+        "ヨウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䴇": {
+      "readings": [
+        "レイ",
+        "リョウ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "鸍": {
+      "readings": [
+        "シ",
+        "ビ",
+        "ミ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𪎌": {
+      "readings": [
+        "こむぎ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "麽": {
+      "readings": [
+        "マ",
+        "バ",
+        "こまかい"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𪐷": {
+      "readings": [
+        "くろい",
+        "くろ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "䵷": {
+      "readings": [
+        "ワイ",
+        "エ",
+        "カイ",
+        "カ",
+        "ゲ",
+        "アイ",
+        "ワ",
+        "ア"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𪗱": {
+      "readings": [
+        "そ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𪘂": {
+      "readings": [
+        "ゲツ",
+        "ゲッ",
+        "かじる",
+        "かむ"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𪘚": {
+      "readings": [
+        "ご"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "𪚲": {
+      "readings": [
+        "わき"
+      ],
+      "source": "Unihan 17.0 kJapanese"
+    },
+    "欄": {
+      "readings": [
+        "ラン",
+        "てすり"
+      ],
+      "source": "Unicode compatibility decomposition + KANJIDIC2",
+      "equivalent": "欄"
+    },
+    "廊": {
+      "readings": [
+        "ロウ"
+      ],
+      "source": "Unicode compatibility decomposition + KANJIDIC2",
+      "equivalent": "廊"
+    },
+    "殺": {
+      "readings": [
+        "サツ",
+        "サイ",
+        "セツ",
+        "ころ.す",
+        "-ごろ.し",
+        "そ.ぐ",
+        "あや.める"
+      ],
+      "source": "Unicode compatibility decomposition + KANJIDIC2",
+      "equivalent": "殺"
+    },
+    "類": {
+      "readings": [
+        "ルイ",
+        "たぐ.い"
+      ],
+      "source": "Unicode compatibility decomposition + KANJIDIC2",
+      "equivalent": "類"
+    },
+    "隆": {
+      "readings": [
+        "リュウ",
+        "お",
+        "たか",
+        "たかし"
+      ],
+      "source": "Unicode compatibility decomposition + KANJIDIC2",
+      "equivalent": "隆"
+    },
+    "㐆": {
+      "readings": [
+        "イン"
+      ],
+      "source": "https://kanji.jitenon.jp/kanjin/6688"
+    },
+    "𠎁": {
+      "readings": [
+        "み"
+      ],
+      "source": "https://kanjitisiki.com/jis4/0483.html"
+    },
+    "𡶷": {
+      "readings": [
+        "ぎゃく"
+      ],
+      "source": "https://kanjitisiki.com/jis4/0748.html"
+    },
+    "𣘹": {
+      "readings": [
+        "イン",
+        "たら"
+      ],
+      "source": "https://kanjitisiki.com/jis4/1038.html"
+    },
+    "𣪘": {
+      "readings": [
+        "キ"
+      ],
+      "source": "https://kanjitisiki.com/jis4/1095.html"
+    }
+  }
+}

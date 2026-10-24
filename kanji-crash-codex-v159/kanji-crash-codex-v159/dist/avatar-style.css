@@ -1,0 +1,218 @@
+/* Crisp vector frames. The glyph stays at the measured centre at every size. */
+.player-avatar{--frame-color:var(--avatar-color);color:var(--glyph-color,var(--avatar-color));border-color:var(--frame-color);isolation:isolate;background:none;box-shadow:none;text-shadow:none}
+.player-avatar[data-frame=double],.player-avatar[data-frame=ornate]{outline-color:var(--frame-color);background:none}
+.player-avatar[data-glow=soft]{box-shadow:0 0 3px color-mix(in srgb,var(--frame-color) 25%,transparent)}
+.player-avatar[data-glow=bright]{box-shadow:0 0 5px color-mix(in srgb,var(--frame-color) 75%,transparent),0 0 14px color-mix(in srgb,var(--frame-color) 60%,transparent)}
+.player-avatar[data-honor]{border:0;outline:none;box-shadow:none;border-radius:0;background:none;color:var(--glyph-color,var(--avatar-color))}
+.player-avatar[data-honor]::before{content:none!important;background:none!important;mask-image:none!important;-webkit-mask-image:none!important}
+.player-avatar .avatar-surface{position:absolute;inset:0;z-index:0;border-radius:inherit;overflow:hidden;pointer-events:none;--surface:#14212d;--pattern:#afbdce1c;background:var(--surface)}
+.player-avatar[data-honor] .avatar-surface{inset:17%;border-radius:50%;box-shadow:inset 0 0 12px #00000020}
+.player-avatar[data-background-tone=paper]{--surface:#e8dfca;--pattern:#6c58411c}
+.player-avatar[data-background-tone=paper] .avatar-surface{--surface:#e8dfca;--pattern:#6c58411c}
+.player-avatar[data-background-tone=black] .avatar-surface{--surface:#11181d;--pattern:#afbdce1c}
+.player-avatar[data-background-tone=celadon] .avatar-surface{--surface:#c0d4c7;--pattern:#315a451c}
+.player-avatar[data-background-tone=rose] .avatar-surface{--surface:#e4cbd0;--pattern:#6942521c}
+.player-avatar[data-background=washi] .avatar-surface{background-color:var(--surface);background-image:repeating-linear-gradient(11deg,transparent 0 2px,var(--pattern) 2px 2.5px),repeating-linear-gradient(104deg,transparent 0 3px,var(--pattern) 3px 3.4px)}
+.player-avatar[data-background=sumi] .avatar-surface{background-color:var(--surface);background-image:radial-gradient(ellipse at 12% 85%,var(--pattern),transparent 66%),radial-gradient(ellipse at 95% 10%,var(--pattern),transparent 58%)}
+.player-avatar[data-background=shippo] .avatar-surface{background-color:var(--surface);background-image:radial-gradient(circle at 0 50%,transparent 43%,var(--pattern) 45% 48%,transparent 50%),radial-gradient(circle at 100% 50%,transparent 43%,var(--pattern) 45% 48%,transparent 50%);background-size:12px 12px}
+.player-avatar[data-background=asanoha] .avatar-surface{background-color:var(--surface);background-image:repeating-linear-gradient(60deg,transparent 0 7px,var(--pattern) 7px 7.7px),repeating-linear-gradient(-60deg,transparent 0 7px,var(--pattern) 7px 7.7px),repeating-linear-gradient(0deg,transparent 0 7px,var(--pattern) 7px 7.7px)}
+.player-avatar[data-background=ichimatsu] .avatar-surface{background-color:var(--surface);background-image:conic-gradient(var(--pattern) 25%,transparent 0 50%,var(--pattern) 0 75%,transparent 0);background-size:14px 14px}
+.player-avatar .avatar-frame{position:absolute;inset:0;width:100%;height:100%;color:var(--frame-color);z-index:2;overflow:visible;pointer-events:none}
+.player-avatar .avatar-badge{position:absolute;left:50%;bottom:-4%;transform:translateX(-50%);width:24%;min-width:9px;color:var(--frame-color);z-index:3;line-height:0;pointer-events:none}
+.avatar-badge svg{display:block;width:100%;height:auto}
+.avatar-orbit{opacity:0}.avatar-dust{display:none}
+[data-motion=orbit] .avatar-orbit{opacity:1;animation:avatar-orbit 5s linear infinite}
+[data-motion=dust] .avatar-dust{display:block}
+[data-motion=dust] .avatar-spark-light{opacity:.06;transform-box:fill-box;transform-origin:center;animation:avatar-spark 2s ease-in-out infinite;filter:drop-shadow(0 0 2px var(--frame-color))}
+.avatar-spark:nth-child(2) .avatar-spark-light{animation-delay:-.65s}.avatar-spark:nth-child(3) .avatar-spark-light{animation-delay:-1.3s}.avatar-spark:nth-child(4) .avatar-spark-light{animation-delay:-.3s}.avatar-spark:nth-child(5) .avatar-spark-light{animation-delay:-1s}.avatar-spark:nth-child(6) .avatar-spark-light{animation-delay:-1.65s}
+.player-avatar .avatar-orbit-layer{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none}
+.player-avatar[data-honor].small{font-size:16px}.player-avatar[data-honor].large{font-size:28px}.player-avatar[data-honor].preview{font-size:38px}#header-profile .player-avatar[data-honor]{font-size:18px}
+@keyframes avatar-orbit{from{stroke-dashoffset:0}to{stroke-dashoffset:-100}}
+@keyframes avatar-spark{0%,15%,85%,100%{opacity:.06;transform:scale(.65)}45%,55%{opacity:1;transform:scale(1.25)}}
+@media(prefers-reduced-motion:reduce){[data-motion] .avatar-orbit,[data-motion] .avatar-spark-light{animation:none!important}[data-motion=orbit] .avatar-orbit{opacity:.8!important}[data-motion=dust] .avatar-spark-light{opacity:.75;transform:none;filter:none}}
+.avatar-settings{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 10px}.avatar-settings label{display:flex;flex-direction:column;gap:6px;min-width:0}.avatar-settings label:last-child{grid-column:1/-1}.avatar-settings select{min-width:0;width:100%}
+#avatar-presets{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.avatar-preset{display:flex;flex-direction:column;align-items:center;gap:8px;min-width:0;padding:12px 5px;border:1px solid #45505e;border-radius:12px;background:#0b1622}.avatar-preset strong{font-size:13px;color:#d4c7ad}.avatar-preset-empty{height:56px;display:flex;align-items:center;font-size:13px;color:#788b9b}.avatar-preset button{width:100%;min-height:44px;border:1px solid #516173;border-radius:8px;color:#e4ddcf;font-size:14px;background:#14212d}.avatar-preset button:last-child{background:#27302f;color:#e4d2a9;border-color:#847557}
+.profile-honor-choice{border-color:#3e4b59;background:linear-gradient(155deg,#192530,#0b1420);gap:8px;padding-top:16px;min-height:178px}
+.profile-honor-choice strong{color:#dfd1b0;letter-spacing:.08em}.profile-honor-choice[aria-pressed=true]{border-color:#c4ac78;background:linear-gradient(155deg,#313631,#141e26)}
+.profile-honor-choice:disabled .player-avatar{filter:saturate(.5);opacity:.65}.profile-honor-choice .player-avatar.large{width:70px;height:70px;font-size:34px}
+.profile-preview{border:1px solid #46525f;border-radius:14px;background:linear-gradient(130deg,#202c38,#0d1926);min-height:112px}
+.profile-preview>span:last-child{color:#e0d3b9}.profile-section-title{color:#dac7a2}.honor-note{color:#aebbc8}
+.avatar-settings select:focus-visible,.avatar-preset button:focus-visible{outline:2px solid #dac18a;outline-offset:2px}
+@media(max-width:350px){.avatar-settings{gap:10px 8px}.avatar-preset strong{font-size:12px;letter-spacing:-.03em}.avatar-preset{padding:10px 4px}#avatar-presets{gap:5px}}
+.profile-panel input,.profile-panel select{box-sizing:border-box;max-width:100%;min-width:0}
+.avatar-settings label{overflow-wrap:anywhere}
+.avatar-settings select{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.avatar-badge-info{font-size:14px;color:#aebbc8;line-height:1.65}.avatar-badge-info summary{cursor:pointer;min-height:44px;padding:9px 0;color:#d4c7ad}.avatar-badge-info p{padding:8px 0;overflow-wrap:anywhere}
+
+/* Keep the current icon visible while only the selected settings scroll. */
+#modal-profile .profile-shell{width:100%;max-width:640px;height:min(880px,calc(var(--app-height,100dvh) - 24px));max-height:calc(var(--app-height,100dvh) - 24px);display:flex;flex-direction:column;overflow:hidden;gap:8px;padding:12px;min-width:0}
+#modal-profile .profile-shell>.editor-title{position:static;padding:0 0 4px;min-height:44px;flex-shrink:0;z-index:auto}
+#modal-profile .profile-preview{margin:0;min-height:100px;padding:8px 12px;gap:16px;justify-content:flex-start;flex-shrink:0;overflow:hidden}
+.profile-preview-copy{min-width:0;flex:1;display:flex;flex-direction:column;gap:6px}
+#profile-preview-name{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;overflow-wrap:anywhere;line-height:1.4;font-size:16px;color:#e8dabc}
+#profile-selected-character{margin:0;font-size:14px;color:#9dacbb;line-height:1.5;overflow-wrap:anywhere}
+.profile-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;flex-shrink:0;padding:3px;border:1px solid #3d4a57;border-radius:10px;background:#0b1622}
+.profile-tabs button{min-width:0;min-height:44px;padding:6px 2px;border-radius:7px;font-size:14px;color:#aab9c8;line-height:1.5;white-space:nowrap}
+.profile-tabs [aria-selected=true]{color:#f1dfb7;background:#30382f;box-shadow:inset 0 0 0 1px #b09b6b}.profile-tabs button:focus-visible{outline:2px solid #d6bd82;outline-offset:1px}
+.profile-editor-body{flex:1;min-height:0;min-width:0;overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain;padding:6px 4px 12px 0;scroll-padding:6px}
+.profile-tab-panel{display:grid;gap:10px;min-width:0}.profile-tab-panel[hidden]{display:none!important}
+.profile-tab-panel h3{font-size:16px;font-weight:700;color:#dac7a2;line-height:1.5}.profile-tab-panel .profile-section-title{border-top:0;padding-top:6px}.profile-tab-panel p{margin:0;line-height:1.6}
+.profile-tab-panel #profile-character-picker{max-height:none;overflow:visible;padding:4px;grid-template-columns:repeat(auto-fill,minmax(48px,1fr))}
+.profile-style-group{display:grid;gap:8px;padding:0 0 14px;border-bottom:1px solid #334251;min-width:0}.profile-style-group>.avatar-settings label:last-child{grid-column:auto}
+.profile-advanced{font-size:14px;color:#aebbc8;line-height:1.65}.profile-advanced summary{cursor:pointer;min-height:44px;padding:9px 0;color:#d4c7ad}.profile-advanced .avatar-settings label:last-child{grid-column:auto}
+.profile-footer{display:flex;flex-direction:column;gap:6px;flex-shrink:0;border-top:1px solid #334251;padding-top:8px;min-width:0;background:#0f172a}
+.profile-footer #profile-save-status{margin:0;min-height:0;max-height:64px;overflow:auto;font-size:14px;line-height:1.5}.profile-footer #profile-save-status:empty{display:none}
+.profile-footer #btn-profile-save{min-height:44px;background:#d6bd82;border:1px solid #d6bd82;color:#18212a;font-weight:700;flex-shrink:0}
+#modal-profile .profile-honor-choice{min-height:178px;padding:12px 7px;gap:6px}.profile-tab-panel .honor-note{font-size:14px}.profile-tab-panel #profile-frame:disabled,.profile-tab-panel #avatar-glyphColor:disabled{opacity:.5}#profile-frame-help:empty{display:none}
+@media(min-width:680px) and (max-height:600px){
+ #modal-profile .profile-shell{max-width:900px;display:grid;grid-template-columns:180px minmax(0,1fr);grid-template-rows:48px 52px minmax(0,1fr) auto;gap:8px 16px}
+ #modal-profile .editor-title{grid-column:1/-1}
+ #modal-profile .profile-preview{grid-column:1;grid-row:2/4;flex-direction:column;justify-content:center;text-align:center;padding:12px;gap:12px;min-height:0}
+ #modal-profile .profile-preview-copy{flex:0}
+ #modal-profile .profile-tabs{grid-column:2;grid-row:2}
+ #modal-profile .profile-editor-body{grid-column:2;grid-row:3}
+ #modal-profile .profile-footer{grid-column:1/-1;grid-row:4;display:grid;grid-template-columns:minmax(0,1fr) minmax(160px,250px);align-items:center}
+ #modal-profile .profile-footer #btn-profile-save{grid-column:2}
+ #modal-profile .profile-footer #profile-save-status{max-height:42px}
+}
+/* Honor SVG owns the entire frame, regardless of the selected basic border. */
+.player-avatar[data-honor][data-frame]{border:0!important;outline:0!important;box-shadow:none!important;border-radius:0;background:none!important;overflow:visible}
+.player-avatar[data-honor] .avatar-frame{overflow:hidden}.player-avatar[data-honor] .avatar-badge{bottom:1%;width:20%}.profile-honor-choice{overflow:hidden}.profile-honor-choice .player-avatar{margin:4px 8px}.player-avatar[data-honor] .avatar-surface{inset:25%}
+
+.avatar-preset button:last-child{padding:7px 4px;font-size:12px;line-height:1.5;overflow-wrap:anywhere}
+
+.player-avatar{--badge-size:12px}.player-avatar.large{--badge-size:18px}.player-avatar.small{--badge-size:10px}.player-avatar:has(.avatar-badge){margin-bottom:calc(var(--badge-size) + 6px)}.player-avatar .avatar-badge,.player-avatar[data-honor] .avatar-badge{left:50%;top:calc(100% + 4px);bottom:auto;width:var(--badge-size);height:var(--badge-size);min-width:0;transform:translateX(-50%);color:var(--frame-color);z-index:3}.profile-honor-choice .player-avatar:has(.avatar-badge){margin-bottom:calc(var(--badge-size) + 8px)}
+
+.player-avatar:has(.avatar-badge){margin-bottom:0}.player-name-badge{display:inline-flex;vertical-align:middle;align-items:center;justify-content:center;width:16px;height:16px;margin-left:5px;flex-shrink:0}.player-name-badge svg{width:100%;height:100%}#profile-preview-name .player-name-badge,#profile-card-name .player-name-badge{width:20px;height:20px}.player-avatar .avatar-badge{display:none}
+
+#avatar-badge-conditions{white-space:pre-line;line-height:1.8} .friend-row-actions{flex-wrap:wrap} .friend-row-actions button{min-height:44px;white-space:normal;overflow-wrap:anywhere}
+
+/* Apply glow to the actual outline: ornate icons suppress the container shadow. */
+.player-avatar[data-glow=none] .avatar-frame{filter:none}
+.player-avatar[data-glow=soft] .avatar-frame{filter:drop-shadow(0 0 1px color-mix(in srgb,var(--frame-color) 30%,transparent))}
+.player-avatar[data-glow=bright] .avatar-frame{filter:drop-shadow(0 0 2px color-mix(in srgb,var(--frame-color) 90%,transparent)) drop-shadow(0 0 6px color-mix(in srgb,var(--frame-color) 65%,transparent))}
+.player-name-badge{--medal-halo:2px;--medal-light:#ecd5a76b}
+.player-name-badge[data-medal-tier="0"]{--medal-halo:1px;--medal-light:#c8996b55}
+.player-name-badge[data-medal-tier="1"]{--medal-halo:2px;--medal-light:#cadce899}
+.player-name-badge[data-medal-tier="2"]{--medal-halo:3px;--medal-light:#f6d478cc}
+.player-name-badge[data-glow=none] svg{filter:none}
+.player-name-badge[data-glow=soft] svg{filter:drop-shadow(0 0 var(--medal-halo) var(--medal-light))}
+.player-name-badge[data-glow=bright] svg{filter:drop-shadow(0 0 1px #fff1cbaa) drop-shadow(0 0 var(--medal-halo) #f5cf75bb)}
+.collection-stroke-count{display:block;font-size:11px;line-height:1.5;color:#e2e8f0;background:#1e293b;border:1px solid #475569;border-radius:5px;padding:1px 6px;font-weight:700;margin:2px 0}
+#element-summon-panel button{min-height:44px;white-space:normal}
+#modal-profile .profile-medal-choice{min-height:180px;overflow:visible}
+#modal-profile .medal-preview{width:48px;height:48px;margin:10px 0;flex-shrink:0}
+#modal-profile .profile-medal-choice:disabled .medal-preview{opacity:.7;filter:saturate(.65)}
+#profile-medal-picker .profile-medal-choice>span:not(.medal-preview){font-size:12px;line-height:1.6;overflow-wrap:anywhere}
+#profile-medal-picker .profile-medal-choice small{font-size:12px;line-height:1.5}
+/* Extra basic shapes use scalable outlines; only the background is clipped. */
+.player-avatar:not([data-honor]):is([data-frame=rounded-square],[data-frame=square],[data-frame=hexagon],[data-frame=octagon],[data-frame=diamond],[data-frame=petal]){border:0;outline:0;border-radius:0;background:none}
+.avatar-basic-outline{opacity:0}
+.player-avatar:not([data-honor]):is([data-frame=rounded-square],[data-frame=square],[data-frame=hexagon],[data-frame=octagon],[data-frame=diamond],[data-frame=petal]) .avatar-basic-outline{opacity:1}
+.player-avatar:not([data-honor])[data-frame=rounded-square] .avatar-surface{inset:6%;border-radius:18%}
+.player-avatar:not([data-honor])[data-frame=square] .avatar-surface{inset:6%;border-radius:3%}
+.player-avatar:not([data-honor])[data-frame=hexagon] .avatar-surface{inset:6%;clip-path:polygon(25% 7%,75% 7%,100% 50%,75% 93%,25% 93%,0 50%);border-radius:0}
+.player-avatar:not([data-honor])[data-frame=octagon] .avatar-surface{inset:6%;clip-path:polygon(22% 0,78% 0,100% 22%,100% 78%,78% 100%,22% 100%,0 78%,0 22%);border-radius:0}
+.player-avatar:not([data-honor])[data-frame=diamond] .avatar-surface{inset:6%;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);border-radius:0}
+.player-avatar:not([data-honor])[data-frame=petal] .avatar-surface{inset:8%;clip-path:polygon(50% 0,64% 0,73% 12%,88% 12%,88% 27%,100% 36%,100% 64%,88% 73%,88% 88%,73% 88%,64% 100%,36% 100%,27% 88%,12% 88%,12% 73%,0 64%,0 36%,12% 27%,12% 12%,27% 12%,36% 0);border-radius:12%}
+.player-avatar[data-background-tone=indigo] .avatar-surface{--surface:#b7c9df;--pattern:#344f701f}
+.player-avatar[data-background-tone=lilac] .avatar-surface{--surface:#d4cce4;--pattern:#5b45651f}
+.player-avatar[data-background-tone=mint] .avatar-surface{--surface:#bdd5c2;--pattern:#3455411f}
+.player-avatar[data-background-tone=sand] .avatar-surface{--surface:#dbc9a9;--pattern:#6954311f}
+.player-avatar[data-background-tone=vermilion] .avatar-surface{--surface:#66372e;--pattern:#f3d8bf26}
+.player-avatar[data-background-tone=sea] .avatar-surface{--surface:#103139;--pattern:#9dd8d526}
+.player-avatar[data-background-tone=grape] .avatar-surface{--surface:#312340;--pattern:#d7bce326}
+.player-avatar[data-background=seigaiha] .avatar-surface{background-color:var(--surface);background-image:repeating-radial-gradient(circle at 50% 100%,transparent 0 3px,var(--pattern) 3px 4px,transparent 4px 7px);background-size:20px 14px}
+.player-avatar[data-background=uroko] .avatar-surface{background-color:var(--surface);background-image:conic-gradient(from 30deg at 50% 75%,var(--pattern) 0 60deg,transparent 60deg 300deg,var(--pattern) 300deg);background-size:16px 14px}
+.player-avatar[data-background=koushi] .avatar-surface{background-color:var(--surface);background-image:linear-gradient(var(--pattern) 1px,transparent 1px),linear-gradient(90deg,var(--pattern) 1px,transparent 1px);background-size:10px 10px}
+.player-avatar[data-background=stripes] .avatar-surface{background-color:var(--surface);background-image:repeating-linear-gradient(135deg,transparent 0 5px,var(--pattern) 5px 7px)}
+.player-avatar[data-background=dots] .avatar-surface{background-color:var(--surface);background-image:radial-gradient(circle,var(--pattern) 1.6px,transparent 1.8px);background-size:10px 10px}
+.player-avatar[data-background=linen] .avatar-surface{background-color:var(--surface);background-image:repeating-linear-gradient(0deg,transparent 0 2px,var(--pattern) 2px 2.7px),repeating-linear-gradient(90deg,transparent 0 3px,var(--pattern) 3px 3.7px)}
+[data-motion=pulse] :is(.avatar-basic-outline,.avatar-frame){opacity:1;animation:avatar-frame-breathe 3.8s ease-in-out infinite}
+[data-motion=comet] .avatar-orbit{opacity:1;stroke-dasharray:6 94;animation:avatar-orbit 3.4s linear infinite;filter:drop-shadow(0 0 2px var(--frame-color))}
+[data-motion=shimmer] .avatar-dust{display:block}
+[data-motion=shimmer] .avatar-spark-light{transform-box:fill-box;transform-origin:center;animation:avatar-spark 1.9s ease-in-out infinite;filter:drop-shadow(0 0 2px var(--frame-color))}
+@keyframes avatar-frame-breathe{0%,100%{opacity:.55;filter:brightness(.85)}50%{opacity:1;filter:brightness(1.35)}}
+@media(prefers-reduced-motion:reduce){[data-motion=pulse] :is(.avatar-basic-outline,.avatar-frame){animation:none!important;opacity:1!important;filter:none!important}[data-motion=comet] .avatar-orbit{animation:none!important;opacity:.8;filter:none}[data-motion=shimmer] .avatar-spark-light{animation:none!important;opacity:.75;transform:none;filter:none}}
+.player-avatar:not([data-honor]):is([data-frame=rounded-square],[data-frame=square],[data-frame=hexagon],[data-frame=octagon],[data-frame=diamond],[data-frame=petal])[data-glow]{box-shadow:none}
+.player-avatar:not([data-honor]):is([data-frame=rounded-square],[data-frame=square],[data-frame=hexagon],[data-frame=octagon],[data-frame=diamond],[data-frame=petal])[data-glow=soft] .avatar-basic-outline{filter:drop-shadow(0 0 1px color-mix(in srgb,var(--frame-color) 35%,transparent))}
+.player-avatar:not([data-honor]):is([data-frame=rounded-square],[data-frame=square],[data-frame=hexagon],[data-frame=octagon],[data-frame=diamond],[data-frame=petal])[data-glow=bright] .avatar-basic-outline{filter:drop-shadow(0 0 2px var(--frame-color)) drop-shadow(0 0 4px color-mix(in srgb,var(--frame-color) 50%,transparent))}
+
+/* Separate rim ribbons, a tapered comet, and slow drifting motes. */
+.avatar-orbit-tail,.avatar-orbit-head{opacity:0}
+.avatar-drift{display:none}
+[data-motion=orbit] .avatar-orbit{stroke-width:1.4;stroke-dasharray:12 88;animation:avatar-orbit 7s linear infinite;filter:drop-shadow(0 0 1px var(--frame-color))}
+[data-motion=orbit] .avatar-orbit-tail{opacity:.22;animation:avatar-ribbon-tail 7s linear infinite;filter:blur(.65px)}
+[data-motion=orbit] .avatar-orbit-head{opacity:.85;animation:avatar-orbit 7s linear infinite}
+[data-motion=comet] .avatar-orbit{stroke-width:1.2;stroke-dasharray:9 91;opacity:.7;animation:avatar-orbit 4.8s linear infinite;filter:drop-shadow(0 0 1px var(--frame-color))}
+[data-motion=comet] .avatar-orbit-tail{opacity:.22;animation:avatar-ribbon-tail 4.8s linear infinite;filter:blur(.9px)}
+[data-motion=comet] .avatar-orbit-head{opacity:1;stroke-width:2.2;stroke-dasharray:1 99;animation:avatar-orbit 4.8s linear infinite;filter:drop-shadow(0 0 1.5px var(--frame-color))}
+[data-motion=dust] .avatar-dust{display:none}
+[data-motion=dust] .avatar-drift{display:block}
+.avatar-drift-ring{transform-origin:60px 60px;transform-box:view-box}
+[data-motion=dust] .avatar-drift-ring{animation:avatar-drift-turn 19s linear infinite}
+[data-motion=dust] .avatar-drift-ring-1{animation-duration:27s;animation-direction:reverse}
+[data-motion=dust] .avatar-drift-ring-2{animation-duration:34s}
+@keyframes avatar-ribbon-tail{from{stroke-dashoffset:29}to{stroke-dashoffset:-71}}
+@keyframes avatar-drift-turn{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){[data-motion] .avatar-orbit-tail,[data-motion] .avatar-orbit-head,[data-motion] .avatar-drift-ring{animation:none!important;filter:none!important}}
+
+/* Bright leading light fades smoothly behind its direction of travel. */
+.avatar-comet-gradient{display:none}
+[data-motion=comet] .avatar-orbit,[data-motion=comet] .avatar-orbit-tail{opacity:0;animation:none;filter:none}
+[data-motion=comet] .avatar-comet-gradient{display:block;animation:avatar-comet-gradient 4.8s linear infinite}
+@keyframes avatar-comet-gradient{from{stroke-dashoffset:var(--trail-offset)}to{stroke-dashoffset:calc(var(--trail-offset) - 100)}}
+[data-motion=shimmer] .avatar-spark-light{animation-name:avatar-shimmer-size;animation-duration:2.6s;transform-box:view-box;transform-origin:0px 0px}
+.avatar-spark:nth-child(2) .avatar-spark-light{animation-duration:2.2s}.avatar-spark:nth-child(3) .avatar-spark-light{animation-duration:3.1s}.avatar-spark:nth-child(4) .avatar-spark-light{animation-duration:2.8s}.avatar-spark:nth-child(5) .avatar-spark-light{animation-duration:2.4s}.avatar-spark:nth-child(6) .avatar-spark-light{animation-duration:3.3s}
+@keyframes avatar-shimmer-size{0%,12%,90%,100%{opacity:.04;transform:scale(.3)}36%{opacity:.6;transform:scale(.8)}48%{opacity:1;transform:scale(1.35)}64%{opacity:.5;transform:scale(.65)}}
+@media(prefers-reduced-motion:reduce){[data-motion=comet] .avatar-comet-gradient{animation:none!important;stroke-dashoffset:var(--trail-offset)}[data-motion=shimmer] .avatar-spark-light{animation:none!important;transform:none!important;opacity:.75}}
+
+/* Six distinct choices: jewel flashes, intermittent shooting stars, and ripples. */
+.avatar-ripple,.avatar-jewel-spark{display:none}
+[data-motion=orbit] :is(.avatar-orbit,.avatar-orbit-tail,.avatar-orbit-head){opacity:0!important;animation:none!important}
+[data-motion=orbit] .avatar-ripple{display:block;transform-box:view-box;transform-origin:60px 60px;animation:avatar-ripple-expand 4.8s ease-out infinite}
+[data-motion=orbit] .avatar-ripple-1{animation-delay:-2.4s}
+[data-motion=orbit] :is(.avatar-frame,.avatar-orbit-layer){overflow:visible}
+@keyframes avatar-ripple-expand{0%{opacity:0;transform:scale(.95)}15%{opacity:.55}80%,100%{opacity:0;transform:scale(1.08)}}
+[data-motion=comet] .avatar-comet-stream{animation:avatar-meteor-visibility 6s linear infinite}
+[data-motion=comet] .avatar-comet-gradient{animation:avatar-meteor-tail 6s linear infinite}
+[data-motion=comet] .avatar-orbit-head{animation:avatar-meteor-head 6s linear infinite;stroke-width:2;stroke-dasharray:.65 99.35}
+@keyframes avatar-meteor-visibility{0%{opacity:0}5%,32%{opacity:1}43%,100%{opacity:0}}
+@keyframes avatar-meteor-tail{0%{stroke-dashoffset:var(--trail-offset)}43%,100%{stroke-dashoffset:calc(var(--trail-offset) - 72)}}
+@keyframes avatar-meteor-head{0%{opacity:0;stroke-dashoffset:0}5%{opacity:1}32%{opacity:1}43%,100%{opacity:0;stroke-dashoffset:-72}}
+[data-motion=shimmer] .avatar-spark-light{animation:avatar-jewel-glow var(--jewel-duration,5.5s) ease-in-out infinite}
+[data-motion=shimmer] .avatar-jewel-spark{display:block;transform-box:view-box;transform-origin:0px 0px;animation:avatar-jewel-flash var(--jewel-duration) ease-in-out var(--jewel-delay) infinite;filter:drop-shadow(0 0 .8px var(--frame-color))}
+@keyframes avatar-jewel-flash{0%,27%,60%,100%{opacity:0;transform:scale(.3) rotate(-12deg)}40%{opacity:1;transform:scale(1) rotate(0deg)}48%{opacity:.35;transform:scale(.65) rotate(8deg)}}
+@keyframes avatar-jewel-glow{0%,18%,75%,100%{opacity:.06;transform:scale(.3)}35%{opacity:.65;transform:scale(.8)}44%{opacity:.3;transform:scale(.5)}}
+[data-motion=dust] .avatar-drift-ring{animation-duration:var(--drift-duration)}
+[data-motion=dust] .avatar-drift-ring:nth-child(even){animation-direction:reverse}
+@media(prefers-reduced-motion:reduce){[data-motion] :is(.avatar-ripple,.avatar-jewel-spark,.avatar-comet-stream,.avatar-comet-gradient,.avatar-orbit-head){animation:none!important;filter:none!important}[data-motion=orbit] .avatar-ripple{opacity:.25;transform:none}[data-motion=orbit] .avatar-ripple-1{display:none}[data-motion=shimmer] .avatar-jewel-spark{opacity:.65;transform:none}[data-motion=comet] .avatar-comet-stream{opacity:.8}[data-motion=comet] .avatar-orbit-head{opacity:.8;stroke-dashoffset:0}}
+
+/* A continuous filled tail uses a true SVG gradient, with no dashed particles. */
+.avatar-smooth-meteor{display:none}
+[data-motion=comet] .avatar-smooth-meteor{display:block;transform-box:view-box;transform-origin:60px 60px;animation:avatar-smooth-shoot 6s linear infinite;filter:drop-shadow(0 0 .65px #b9ddff)}
+@keyframes avatar-smooth-shoot{0%{opacity:0;transform:rotate(0deg)}5%{opacity:1}32%{opacity:1}43%,100%{opacity:0;transform:rotate(-260deg)}}
+[data-motion=orbit] .avatar-ripple{stroke-width:1.8;stroke:#edf7ff;filter:drop-shadow(0 0 1.5px var(--frame-color));animation-name:avatar-visible-ripple;animation-duration:4s}
+[data-motion=orbit] .avatar-ripple-1{animation-delay:-2s}
+@keyframes avatar-visible-ripple{0%{opacity:0;transform:scale(.94)}12%{opacity:.95}42%{opacity:.7}85%,100%{opacity:0;transform:scale(1.15)}}
+@media(prefers-reduced-motion:reduce){[data-motion=comet] .avatar-smooth-meteor{animation:none!important;opacity:.85;transform:none;filter:none}[data-motion=orbit] .avatar-ripple{animation:none!important;opacity:.6;transform:none;filter:none}[data-motion=orbit] .avatar-ripple-1{display:none}}
+
+/* Smooth angular light is clipped by a fixed outline; the frame itself stays still. */
+.avatar-circling-light,.avatar-veil{display:none}
+.avatar-circling-gradient{background:conic-gradient(from 0deg,transparent 0deg,transparent 245deg,rgba(170,224,255,.06) 265deg,rgba(187,231,255,.25) 300deg,rgba(221,244,255,.65) 335deg,#fff 360deg)}
+[data-motion=comet] .avatar-circling-light{display:block}
+.avatar-circling-turn{transform-box:view-box;transform-origin:60px 60px}
+[data-motion=comet] .avatar-circling-turn{animation:avatar-circling-lap 7s linear infinite}
+@keyframes avatar-circling-lap{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+[data-motion=orbit] .avatar-veil{display:block;animation:avatar-veil-soften 6s ease-in-out infinite}
+.avatar-veil-haze{filter:blur(1.8px);opacity:.65}
+.avatar-veil-rim{opacity:.7}
+[data-motion=orbit] .avatar-veil-stop-a{animation:avatar-veil-color 10s ease-in-out infinite}
+[data-motion=orbit] .avatar-veil-stop-b{animation:avatar-veil-color 10s ease-in-out -3.3s infinite}
+[data-motion=orbit] .avatar-veil-stop-c{animation:avatar-veil-color 10s ease-in-out -6.6s infinite}
+@keyframes avatar-veil-soften{0%,100%{opacity:.5}50%{opacity:.95}}
+@keyframes avatar-veil-color{0%,100%{stop-color:#93e2eb}33%{stop-color:#b6a1ef}66%{stop-color:#91e5c8}}
+@media(prefers-reduced-motion:reduce){[data-motion] :is(.avatar-circling-turn,.avatar-veil,.avatar-veil-stop-a,.avatar-veil-stop-b,.avatar-veil-stop-c){animation:none!important}[data-motion=orbit] .avatar-veil{opacity:.75}}
+
+.player-avatar[data-motion-paused=true] *,:root[data-avatar-paused=true] .player-avatar *{animation-play-state:paused!important}.player-avatar.small .avatar-veil-haze{filter:blur(.8px)}.player-avatar.small .avatar-jewel-spark{filter:none}.profile-reward-filter{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:center}.profile-reward-filter select{min-width:0;min-height:44px}.ability-guide{display:grid;gap:6px;margin:8px 0;font-size:13px;line-height:1.6}.ability-guide>div{display:grid;grid-template-columns:4.5em minmax(0,1fr);gap:8px}.ability-guide dt{color:#a5b4c6}.ability-guide dd{margin:0;overflow-wrap:anywhere}

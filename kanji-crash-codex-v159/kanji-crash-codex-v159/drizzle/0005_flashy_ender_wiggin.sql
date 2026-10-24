@@ -1,0 +1,1 @@
+ALTER TABLE `friend_rooms` ADD `lineup_revision` integer DEFAULT 0 NOT NULL;

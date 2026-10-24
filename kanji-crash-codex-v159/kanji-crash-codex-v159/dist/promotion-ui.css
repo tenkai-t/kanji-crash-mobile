@@ -1,0 +1,3 @@
+.promotion-card{display:grid;gap:10px;padding:14px;border:1px solid #334155;border-radius:14px;background:#0f172a80}.promotion-card h4{color:#fde68a;font-weight:700}.promotion-card button{width:100%;min-height:44px;white-space:normal}.promotion-card button:disabled{opacity:.5;cursor:default}#rank-trials{display:grid;gap:12px}.promotion-help{font-size:12px;line-height:1.8;color:#cbd5e1}.variant-note{font-size:10px;color:#cbd5e1;line-height:1.4}
+
+.promotion-card h4{font-size:16px}.promotion-card button{font-size:14px}.promotion-help{font-size:14px}.promotion-card .inventory-note{font-size:12px}

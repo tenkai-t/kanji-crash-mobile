@@ -1,0 +1,13 @@
+{
+  "scannedTextFiles": 480,
+  "findings": [],
+  "excluded": [
+    "node_modules",
+    ".git",
+    ".env*",
+    ".dev.vars*",
+    "runtime DB files",
+    "generated duplicate outputs"
+  ],
+  "note": "Pattern scan plus exclusion policy; no production credentials or user DB were acquired."
+}

@@ -1,0 +1,1337 @@
+{
+  "tables": [
+    {
+      "name": "battle_replays",
+      "sql": "CREATE TABLE `battle_replays` (\n\t`key` text NOT NULL,\n\t`id` text NOT NULL,\n\t`created_at` integer NOT NULL,\n\t`summary` text NOT NULL,\n\t`payload` text NOT NULL, `favorite` integer DEFAULT 0 NOT NULL,\n\tPRIMARY KEY(`key`, `id`)\n)",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "key",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "id",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 2
+        },
+        {
+          "cid": 2,
+          "name": "created_at",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "summary",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 4,
+          "name": "payload",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 5,
+          "name": "favorite",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": "0",
+          "pk": 0
+        }
+      ]
+    },
+    {
+      "name": "challenge_scores",
+      "sql": "CREATE TABLE `challenge_scores` (\n\t`key` text NOT NULL,\n\t`mode` text NOT NULL,\n\t`wins` integer NOT NULL,\n\t`kills` integer DEFAULT 0 NOT NULL,\n\t`estimated` integer DEFAULT 0 NOT NULL,\n\t`profile` text NOT NULL,\n\t`team` text,\n\t`updated_at` integer NOT NULL,\n\tPRIMARY KEY(`key`, `mode`)\n)",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "key",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "mode",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 2
+        },
+        {
+          "cid": 2,
+          "name": "wins",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "kills",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": "0",
+          "pk": 0
+        },
+        {
+          "cid": 4,
+          "name": "estimated",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": "0",
+          "pk": 0
+        },
+        {
+          "cid": 5,
+          "name": "profile",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 6,
+          "name": "team",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 7,
+          "name": "updated_at",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ]
+    },
+    {
+      "name": "cpu_scores",
+      "sql": "CREATE TABLE `cpu_scores` (\n\t`key` text PRIMARY KEY NOT NULL,\n\t`rating` integer NOT NULL,\n\t`profile` text NOT NULL,\n\t`team` text NOT NULL,\n\t`updated_at` integer NOT NULL\n)",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "key",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "rating",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "profile",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "team",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 4,
+          "name": "updated_at",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ]
+    },
+    {
+      "name": "cpu_season_best",
+      "sql": "CREATE TABLE `cpu_season_best` (\n\t`key` text NOT NULL,\n\t`season` text NOT NULL,\n\t`challenge` text NOT NULL,\n\t`score` integer NOT NULL,\n\t`shots` integer NOT NULL,\n\t`survivors` integer NOT NULL,\n\t`power` integer NOT NULL, `kill_total` integer DEFAULT 0 NOT NULL,\n\tPRIMARY KEY(`key`, `season`, `challenge`)\n)",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "key",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "season",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 2
+        },
+        {
+          "cid": 2,
+          "name": "challenge",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 3
+        },
+        {
+          "cid": 3,
+          "name": "score",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 4,
+          "name": "shots",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 5,
+          "name": "survivors",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 6,
+          "name": "power",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 7,
+          "name": "kill_total",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": "0",
+          "pk": 0
+        }
+      ]
+    },
+    {
+      "name": "cpu_season_scores",
+      "sql": "CREATE TABLE `cpu_season_scores` (\n\t`key` text NOT NULL,\n\t`season` text NOT NULL,\n\t`score` integer NOT NULL,\n\t`cleared_stages` integer NOT NULL,\n\t`survivors` integer NOT NULL,\n\t`shots` integer NOT NULL,\n\t`power` integer NOT NULL,\n\t`profile` text NOT NULL,\n\t`updated_at` integer NOT NULL, `kill_total` integer DEFAULT 0 NOT NULL,\n\tPRIMARY KEY(`key`, `season`)\n)",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "key",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "season",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 2
+        },
+        {
+          "cid": 2,
+          "name": "score",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "cleared_stages",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 4,
+          "name": "survivors",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 5,
+          "name": "shots",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 6,
+          "name": "power",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 7,
+          "name": "profile",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 8,
+          "name": "updated_at",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 9,
+          "name": "kill_total",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": "0",
+          "pk": 0
+        }
+      ]
+    },
+    {
+      "name": "cpu_skill_best",
+      "sql": "CREATE TABLE `cpu_skill_best` (\n\t`key` text NOT NULL,\n\t`challenge` text NOT NULL,\n\t`score` integer NOT NULL,\n\t`shots` integer NOT NULL,\n\t`survivors` integer NOT NULL,\n\tPRIMARY KEY(`key`, `challenge`)\n)",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "key",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "challenge",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 2
+        },
+        {
+          "cid": 2,
+          "name": "score",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "shots",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 4,
+          "name": "survivors",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ]
+    },
+    {
+      "name": "cpu_skill_scores",
+      "sql": "CREATE TABLE `cpu_skill_scores` (\n\t`key` text PRIMARY KEY NOT NULL,\n\t`score` integer NOT NULL,\n\t`cleared_stages` integer NOT NULL,\n\t`profile` text NOT NULL,\n\t`updated_at` integer NOT NULL\n)",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "key",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "score",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "cleared_stages",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "profile",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 4,
+          "name": "updated_at",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ]
+    },
+    {
+      "name": "deck_favorites",
+      "sql": "CREATE TABLE `deck_favorites` (\n\t`key` text NOT NULL,\n\t`slot` integer NOT NULL,\n\t`payload` text NOT NULL,\n\t`updated_at` integer NOT NULL,\n\tPRIMARY KEY(`key`, `slot`)\n)",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "key",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "slot",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 2
+        },
+        {
+          "cid": 2,
+          "name": "payload",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "updated_at",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ]
+    },
+    {
+      "name": "friend_connections",
+      "sql": "CREATE TABLE `friend_connections` (\n\t`left_key` text NOT NULL,\n\t`right_key` text NOT NULL,\n\t`requested_by` text NOT NULL,\n\t`status` text NOT NULL,\n\t`invite_code` text,\n\t`invited_by` text,\n\t`updated_at` integer NOT NULL,\n\tPRIMARY KEY(`left_key`, `right_key`)\n)",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "left_key",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "right_key",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 2
+        },
+        {
+          "cid": 2,
+          "name": "requested_by",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "status",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 4,
+          "name": "invite_code",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 5,
+          "name": "invited_by",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 6,
+          "name": "updated_at",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ]
+    },
+    {
+      "name": "friend_players",
+      "sql": "CREATE TABLE `friend_players` (\n\t`key` text PRIMARY KEY NOT NULL,\n\t`code` text NOT NULL\n)",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "key",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "code",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ]
+    },
+    {
+      "name": "friend_rooms",
+      "sql": "CREATE TABLE `friend_rooms` (\n\t`code` text PRIMARY KEY NOT NULL,\n\t`host_key` text NOT NULL,\n\t`guest_key` text,\n\t`host` text NOT NULL,\n\t`guest` text,\n\t`state` text,\n\t`status` text NOT NULL,\n\t`revision` integer DEFAULT 0 NOT NULL,\n\t`expires_at` integer NOT NULL\n, `round` integer DEFAULT 1 NOT NULL, `ready` text DEFAULT '[false,false]' NOT NULL, `departed` integer DEFAULT 0 NOT NULL, `mode` text DEFAULT 'friend' NOT NULL, `deadline` integer DEFAULT 0 NOT NULL, `grace_until` integer DEFAULT 0 NOT NULL, `seen_host` integer DEFAULT 0 NOT NULL, `seen_guest` integer DEFAULT 0 NOT NULL, `reconnect_used` integer DEFAULT 0 NOT NULL, `rule_set` text DEFAULT 'legacy' NOT NULL, `lineup_revision` integer DEFAULT 0 NOT NULL, `replay_log` text, `replay_saved` integer DEFAULT 0 NOT NULL)",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "code",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "host_key",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "guest_key",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "host",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 4,
+          "name": "guest",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 5,
+          "name": "state",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 6,
+          "name": "status",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 7,
+          "name": "revision",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": "0",
+          "pk": 0
+        },
+        {
+          "cid": 8,
+          "name": "expires_at",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 9,
+          "name": "round",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": "1",
+          "pk": 0
+        },
+        {
+          "cid": 10,
+          "name": "ready",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": "'[false,false]'",
+          "pk": 0
+        },
+        {
+          "cid": 11,
+          "name": "departed",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": "0",
+          "pk": 0
+        },
+        {
+          "cid": 12,
+          "name": "mode",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": "'friend'",
+          "pk": 0
+        },
+        {
+          "cid": 13,
+          "name": "deadline",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": "0",
+          "pk": 0
+        },
+        {
+          "cid": 14,
+          "name": "grace_until",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": "0",
+          "pk": 0
+        },
+        {
+          "cid": 15,
+          "name": "seen_host",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": "0",
+          "pk": 0
+        },
+        {
+          "cid": 16,
+          "name": "seen_guest",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": "0",
+          "pk": 0
+        },
+        {
+          "cid": 17,
+          "name": "reconnect_used",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": "0",
+          "pk": 0
+        },
+        {
+          "cid": 18,
+          "name": "rule_set",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": "'legacy'",
+          "pk": 0
+        },
+        {
+          "cid": 19,
+          "name": "lineup_revision",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": "0",
+          "pk": 0
+        },
+        {
+          "cid": 20,
+          "name": "replay_log",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 21,
+          "name": "replay_saved",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": "0",
+          "pk": 0
+        }
+      ]
+    },
+    {
+      "name": "friend_setups",
+      "sql": "CREATE TABLE `friend_setups` (\n\t`key` text PRIMARY KEY NOT NULL,\n\t`payload` text NOT NULL\n)",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "key",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "payload",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ]
+    },
+    {
+      "name": "guest_backups",
+      "sql": "CREATE TABLE guest_backups (player_id TEXT NOT NULL, revision INTEGER NOT NULL, snapshot TEXT NOT NULL, saved_at INTEGER NOT NULL, PRIMARY KEY(player_id,revision))",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "player_id",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "revision",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 2
+        },
+        {
+          "cid": 2,
+          "name": "snapshot",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "saved_at",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ]
+    },
+    {
+      "name": "guest_limits",
+      "sql": "CREATE TABLE guest_limits (key TEXT PRIMARY KEY, window INTEGER NOT NULL, count INTEGER NOT NULL)",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "key",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "window",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "count",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ]
+    },
+    {
+      "name": "guest_links",
+      "sql": "CREATE TABLE guest_links (player_id TEXT PRIMARY KEY, legacy_key TEXT NOT NULL UNIQUE)",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "player_id",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "legacy_key",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ]
+    },
+    {
+      "name": "guest_players",
+      "sql": "CREATE TABLE guest_players (id TEXT PRIMARY KEY, recovery_hash TEXT NOT NULL UNIQUE, snapshot TEXT, revision INTEGER NOT NULL DEFAULT 0, updated_at INTEGER NOT NULL)",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "id",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "recovery_hash",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "snapshot",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "revision",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": "0",
+          "pk": 0
+        },
+        {
+          "cid": 4,
+          "name": "updated_at",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ]
+    },
+    {
+      "name": "guest_sessions",
+      "sql": "CREATE TABLE guest_sessions (token_hash TEXT PRIMARY KEY, player_id TEXT NOT NULL, created_at INTEGER NOT NULL)",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "token_hash",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "player_id",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "created_at",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ]
+    },
+    {
+      "name": "leaderboard_snapshots",
+      "sql": "CREATE TABLE `leaderboard_snapshots` (\n\t`rule` text PRIMARY KEY NOT NULL,\n\t`payload` text,\n\t`generated_at` integer DEFAULT 0 NOT NULL,\n\t`lease_until` integer DEFAULT 0 NOT NULL\n)",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "rule",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "payload",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "generated_at",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": "0",
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "lease_until",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": "0",
+          "pk": 0
+        }
+      ]
+    },
+    {
+      "name": "online_queue",
+      "sql": "CREATE TABLE `online_queue` (\n\t`key` text PRIMARY KEY NOT NULL,\n\t`player` text NOT NULL,\n\t`rating` integer NOT NULL,\n\t`joined_at` integer NOT NULL,\n\t`touched_at` integer NOT NULL,\n\t`room_code` text\n, `rule_set` text DEFAULT 'balanced' NOT NULL)",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "key",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "player",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "rating",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "joined_at",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 4,
+          "name": "touched_at",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 5,
+          "name": "room_code",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 6,
+          "name": "rule_set",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": "'balanced'",
+          "pk": 0
+        }
+      ]
+    },
+    {
+      "name": "online_results",
+      "sql": "CREATE TABLE `online_results` (\n\t`code` text PRIMARY KEY NOT NULL,\n\t`host_key` text NOT NULL,\n\t`guest_key` text NOT NULL,\n\t`host_delta` integer NOT NULL,\n\t`guest_delta` integer NOT NULL,\n\t`winner` integer,\n\t`applied` integer DEFAULT 0 NOT NULL\n)",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "code",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "host_key",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "guest_key",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "host_delta",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 4,
+          "name": "guest_delta",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 5,
+          "name": "winner",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 6,
+          "name": "applied",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": "0",
+          "pk": 0
+        }
+      ]
+    },
+    {
+      "name": "online_stats",
+      "sql": "CREATE TABLE `online_stats` (\n\t`key` text PRIMARY KEY NOT NULL,\n\t`rating` integer DEFAULT 1200 NOT NULL,\n\t`wins` integer DEFAULT 0 NOT NULL,\n\t`losses` integer DEFAULT 0 NOT NULL,\n\t`draws` integer DEFAULT 0 NOT NULL\n, `profile` text, `team` text)",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "key",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "rating",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": "1200",
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "wins",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": "0",
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "losses",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": "0",
+          "pk": 0
+        },
+        {
+          "cid": 4,
+          "name": "draws",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": "0",
+          "pk": 0
+        },
+        {
+          "cid": 5,
+          "name": "profile",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 6,
+          "name": "team",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ]
+    },
+    {
+      "name": "play_events",
+      "sql": "CREATE TABLE `play_events` (\n\t`key` text NOT NULL,\n\t`event` text NOT NULL,\n\t`created_at` integer NOT NULL,\n\tPRIMARY KEY(`key`, `event`)\n)",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "key",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "event",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 2
+        },
+        {
+          "cid": 2,
+          "name": "created_at",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ]
+    },
+    {
+      "name": "play_usage",
+      "sql": "CREATE TABLE `play_usage` (\n\t`key` text NOT NULL,\n\t`char` text NOT NULL,\n\t`plays` integer DEFAULT 0 NOT NULL,\n\t`wins` integer DEFAULT 0 NOT NULL,\n\t`shots` integer DEFAULT 0 NOT NULL,\n\t`kills` integer DEFAULT 0 NOT NULL,\n\t`survived` integer DEFAULT 0 NOT NULL,\n\t`best_shot` integer DEFAULT 0 NOT NULL, `honor_wins` integer DEFAULT 0 NOT NULL,\n\tPRIMARY KEY(`key`, `char`)\n)",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "key",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "char",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 2
+        },
+        {
+          "cid": 2,
+          "name": "plays",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": "0",
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "wins",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": "0",
+          "pk": 0
+        },
+        {
+          "cid": 4,
+          "name": "shots",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": "0",
+          "pk": 0
+        },
+        {
+          "cid": 5,
+          "name": "kills",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": "0",
+          "pk": 0
+        },
+        {
+          "cid": 6,
+          "name": "survived",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": "0",
+          "pk": 0
+        },
+        {
+          "cid": 7,
+          "name": "best_shot",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": "0",
+          "pk": 0
+        },
+        {
+          "cid": 8,
+          "name": "honor_wins",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": "0",
+          "pk": 0
+        }
+      ]
+    },
+    {
+      "name": "player_profiles",
+      "sql": "CREATE TABLE `player_profiles` (\n\t`key` text PRIMARY KEY NOT NULL,\n\t`payload` text NOT NULL,\n\t`updated_at` integer NOT NULL\n)",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "key",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "payload",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "updated_at",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ]
+    },
+    {
+      "name": "practice_records",
+      "sql": "CREATE TABLE `practice_records` (\n\t`key` text NOT NULL,\n\t`challenge` text NOT NULL,\n\t`attempts` integer DEFAULT 0 NOT NULL,\n\t`clears` integer DEFAULT 0 NOT NULL,\n\t`best_shots` integer,\n\t`best_survivors` integer DEFAULT 0 NOT NULL,\n\tPRIMARY KEY(`key`, `challenge`)\n)",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "key",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "challenge",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 2
+        },
+        {
+          "cid": 2,
+          "name": "attempts",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": "0",
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "clears",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": "0",
+          "pk": 0
+        },
+        {
+          "cid": 4,
+          "name": "best_shots",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 5,
+          "name": "best_survivors",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": "0",
+          "pk": 0
+        }
+      ]
+    }
+  ],
+  "runtimeGuestDDL": [
+    "CREATE TABLE IF NOT EXISTS guest_players (id TEXT PRIMARY KEY, recovery_hash TEXT NOT NULL UNIQUE, snapshot TEXT, revision INTEGER NOT NULL DEFAULT 0, updated_at INTEGER NOT NULL)",
+    "CREATE TABLE IF NOT EXISTS guest_backups (player_id TEXT NOT NULL, revision INTEGER NOT NULL, snapshot TEXT NOT NULL, saved_at INTEGER NOT NULL, PRIMARY KEY(player_id,revision))",
+    "CREATE TABLE IF NOT EXISTS guest_links (player_id TEXT PRIMARY KEY, legacy_key TEXT NOT NULL UNIQUE)",
+    "CREATE TABLE IF NOT EXISTS guest_sessions (token_hash TEXT PRIMARY KEY, player_id TEXT NOT NULL, created_at INTEGER NOT NULL)",
+    "CREATE TABLE IF NOT EXISTS guest_limits (key TEXT PRIMARY KEY, window INTEGER NOT NULL, count INTEGER NOT NULL)"
+  ]
+}

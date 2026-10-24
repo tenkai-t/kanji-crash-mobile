@@ -1,0 +1,24 @@
+/* Keep native text input legible and avoid Safari's small-input auto zoom. */
+body input[type=search],body input[type=text],body input:not([type]),body textarea{font-size:16px!important;line-height:1.5;min-height:44px;user-select:text;-webkit-user-select:text;scroll-margin-block:20px}
+body input[type=search]:focus,body input[type=text]:focus,body input:not([type]):focus,body textarea:focus{outline:2px solid #67e8f9;outline-offset:2px;background-color:#0f172a;color:#f8fafc}
+.search-input-active .editor-overlay{top:var(--search-viewport-top,0px);bottom:auto;height:var(--search-viewport-height,100dvh);box-sizing:border-box;align-items:center}
+.search-input-active .editor-panel{max-height:calc(var(--search-viewport-height,100dvh) - 24px)}
+.search-input-active #modal-profile .profile-shell{max-height:calc(var(--search-viewport-height,100dvh) - 24px)}
+/* Give character searches the whole keyboard-visible viewport, including normal pages. */
+.search-filter-active body{position:fixed;top:var(--search-viewport-top,0px);left:0;right:0;height:var(--search-viewport-height,100dvh)!important;padding-top:0}
+.search-filter-active body>header,.search-filter-active body>nav{display:none!important}
+.search-filter-active main{flex:1;min-height:0}
+.search-filter-active .editor-overlay{padding:8px!important;align-items:stretch;top:var(--search-viewport-top,0px);height:var(--search-viewport-height,100dvh)}
+.search-filter-active .editor-panel,.search-filter-active #modal-profile .profile-shell{height:100%;max-height:100%!important;min-height:0;align-self:stretch}
+.search-filter-active .editor-panel{scroll-padding-top:64px}
+.search-focus-filters{grid-template-columns:minmax(0,1fr)!important}
+.search-focus-filters>label:not(.search-focus-region){display:none}
+.search-focus-region{width:100%;min-width:0;flex-shrink:0}
+.search-focus-region input,input.search-focus-region{width:100%;font-size:18px!important;min-height:48px!important;background:#0f172a;color:#f8fafc}
+.search-input-done{position:fixed;right:12px;top:calc(var(--search-viewport-top,0px) + 8px);z-index:200;min-height:44px;padding:8px 14px;background:#164e63;border:1px solid #67e8f9;border-radius:10px;color:#ecfeff;font-size:15px;font-weight:700;box-shadow:0 3px 12px #0008}
+.search-input-done[hidden]{display:none}
+.search-filter-active .practice-picker-filters:not(.search-focus-filters),.search-filter-active #owned-filters{display:none}
+
+.search-before-input{display:none!important}
+.search-focus-scope{padding-top:64px!important;scroll-padding-top:64px}
+.search-filter-active .search-focus-scope .search-focus-region{flex-shrink:0}

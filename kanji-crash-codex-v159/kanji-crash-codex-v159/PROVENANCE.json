@@ -1,0 +1,15 @@
+{
+  "exportedAt": "2026-10-20",
+  "siteUrl": "https://kanji-crash-mobile.prime-otter-8314.chatgpt.site",
+  "projectId": "appgprj_6ac2fbfa1e7481918719b3a9c592f01a",
+  "savedVersion": 159,
+  "versionId": "appgprj_6ac2fbfa1e7481918719b3a9c592f01a~appgver_c222a96296148191b3b1d41fecec2c15",
+  "deploymentId": "appgdep_6ad3b9ff0f448191a94e8fe6ffaad7c5",
+  "deploymentStatus": "succeeded",
+  "sourceCommit": "1e68421c502dfbc608cf76bc59af00ae11cb520c",
+  "savedArchiveSha256": "7f0da4e03552515162a638ea4d87842bca8d8accd1e1b2b00e6ef8a8d13601ec",
+  "directPublicHttp": "403 from execution environment; no live page checksum comparison available",
+  "exportMethod": "git tree exact committed bytes; excludes tracked node_modules; adds only migration docs/local tooling",
+  "productionDataExported": false,
+  "deploymentPerformed": false
+}

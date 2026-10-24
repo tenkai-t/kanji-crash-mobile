@@ -1,0 +1,1130 @@
+{
+  "readingAbilities": [
+    {
+      "id": "sturdy",
+      "name": "復活",
+      "stacks": [
+        {
+          "id": "sturdy",
+          "name": "復活",
+          "role": "survival",
+          "color": "#facc15",
+          "chance": 1,
+          "description": "相手に押されて落ちる時、相手と重ならない土俵内の別の位置へ戻って停止。1対局1回、必ず発動。安全な戻り先が必要。",
+          "readings": [
+            "とどまる",
+            "とまる",
+            "ねばる",
+            "ふんばる",
+            "のこる"
+          ],
+          "stacks": 1
+        },
+        {
+          "id": "sturdy",
+          "name": "復活",
+          "role": "survival",
+          "color": "#facc15",
+          "chance": 1,
+          "description": "相手に押されて落ちる時、相手と重ならない土俵内の別の位置へ戻って停止。1対局2回、必ず発動。安全な戻り先が必要。（同じ効果のルビ2個分）",
+          "readings": [
+            "とどまる",
+            "とまる",
+            "ねばる",
+            "ふんばる",
+            "のこる"
+          ],
+          "stacks": 2
+        },
+        {
+          "id": "sturdy",
+          "name": "復活",
+          "role": "survival",
+          "color": "#facc15",
+          "chance": 1,
+          "description": "相手に押されて落ちる時、相手と重ならない土俵内の別の位置へ戻って停止。1対局3回、必ず発動。安全な戻り先が必要。（同じ効果のルビ3個分）",
+          "readings": [
+            "とどまる",
+            "とまる",
+            "ねばる",
+            "ふんばる",
+            "のこる"
+          ],
+          "stacks": 3
+        }
+      ]
+    },
+    {
+      "id": "guard",
+      "name": "守り",
+      "stacks": [
+        {
+          "id": "guard",
+          "name": "守り",
+          "role": "defense",
+          "color": "#38bdf8",
+          "chance": 1,
+          "description": "最初に受けた相手の攻撃の吹き飛ばしを50%軽減。1対局1回、必ず発動。 同じ発射の攻撃では、見切り→守り→受け身の順に1種類だけ発動。",
+          "readings": [
+            "まもる",
+            "まもり",
+            "ふせぐ",
+            "かばう",
+            "たえる",
+            "しのぐ"
+          ],
+          "stacks": 1
+        },
+        {
+          "id": "guard",
+          "name": "守り",
+          "role": "defense",
+          "color": "#38bdf8",
+          "chance": 1,
+          "description": "最初に受けた相手の攻撃の吹き飛ばしを50%軽減。1対局2回、必ず発動。 同じ発射の攻撃では、見切り→守り→受け身の順に1種類だけ発動。（同じ効果のルビ2個分）",
+          "readings": [
+            "まもる",
+            "まもり",
+            "ふせぐ",
+            "かばう",
+            "たえる",
+            "しのぐ"
+          ],
+          "stacks": 2
+        },
+        {
+          "id": "guard",
+          "name": "守り",
+          "role": "defense",
+          "color": "#38bdf8",
+          "chance": 1,
+          "description": "最初に受けた相手の攻撃の吹き飛ばしを50%軽減。1対局3回、必ず発動。 同じ発射の攻撃では、見切り→守り→受け身の順に1種類だけ発動。（同じ効果のルビ3個分）",
+          "readings": [
+            "まもる",
+            "まもり",
+            "ふせぐ",
+            "かばう",
+            "たえる",
+            "しのぐ"
+          ],
+          "stacks": 3
+        }
+      ]
+    },
+    {
+      "id": "strike",
+      "name": "強打",
+      "stacks": [
+        {
+          "id": "strike",
+          "name": "強打",
+          "role": "attack",
+          "color": "#fb923c",
+          "chance": 1,
+          "description": "強さ60%以上の自分の発射で相手に当たると、押し出す勢い＋37.5%。1対局1回、必ず発動。",
+          "readings": [
+            "うつ",
+            "たたく",
+            "せめる",
+            "つく",
+            "ける",
+            "おす"
+          ],
+          "stacks": 1
+        },
+        {
+          "id": "strike",
+          "name": "強打",
+          "role": "attack",
+          "color": "#fb923c",
+          "chance": 1,
+          "description": "強さ60%以上の自分の発射で相手に当たると、押し出す勢い＋40%。1対局2回、必ず発動。（同じ効果のルビ2個分）",
+          "readings": [
+            "うつ",
+            "たたく",
+            "せめる",
+            "つく",
+            "ける",
+            "おす"
+          ],
+          "stacks": 2
+        },
+        {
+          "id": "strike",
+          "name": "強打",
+          "role": "attack",
+          "color": "#fb923c",
+          "chance": 1,
+          "description": "強さ60%以上の自分の発射で相手に当たると、押し出す勢い＋42.5%。1対局3回、必ず発動。（同じ効果のルビ3個分）",
+          "readings": [
+            "うつ",
+            "たたく",
+            "せめる",
+            "つく",
+            "ける",
+            "おす"
+          ],
+          "stacks": 3
+        }
+      ]
+    },
+    {
+      "id": "anchor",
+      "name": "重し",
+      "stacks": [
+        {
+          "id": "anchor",
+          "name": "重し",
+          "role": "tank",
+          "color": "#c4b5fd",
+          "impactWeightMultiplier": 1.5,
+          "description": "相手から衝突を受ける直前に重量+50%。接触中と接触後0.3秒まで維持。自分の発射・自分同士の接触では発動しない。",
+          "readings": [
+            "おもい",
+            "おもり",
+            "かさねる",
+            "しずむ",
+            "かたい"
+          ],
+          "stacks": 1
+        },
+        {
+          "id": "anchor",
+          "name": "重し",
+          "role": "tank",
+          "color": "#c4b5fd",
+          "impactWeightMultiplier": 1.65,
+          "description": "相手から衝突を受ける直前に重量+65%。接触中と接触後0.3秒まで維持。自分の発射・自分同士の接触では発動しない。（同じ効果のルビ2個分）",
+          "readings": [
+            "おもい",
+            "おもり",
+            "かさねる",
+            "しずむ",
+            "かたい"
+          ],
+          "stacks": 2
+        },
+        {
+          "id": "anchor",
+          "name": "重し",
+          "role": "tank",
+          "color": "#c4b5fd",
+          "impactWeightMultiplier": 1.8,
+          "description": "相手から衝突を受ける直前に重量+80%。接触中と接触後0.3秒まで維持。自分の発射・自分同士の接触では発動しない。（同じ効果のルビ3個分）",
+          "readings": [
+            "おもい",
+            "おもり",
+            "かさねる",
+            "しずむ",
+            "かたい"
+          ],
+          "stacks": 3
+        }
+      ]
+    },
+    {
+      "id": "counter",
+      "name": "反撃",
+      "stacks": [
+        {
+          "id": "counter",
+          "name": "反撃",
+          "role": "defense",
+          "color": "#f472b6",
+          "chance": 1,
+          "description": "正面から受けた相手の攻撃を、受けた勢いの70%で押し返す。1対局1回、必ず発動。",
+          "readings": [
+            "かえす",
+            "はねる"
+          ],
+          "stacks": 1
+        },
+        {
+          "id": "counter",
+          "name": "反撃",
+          "role": "defense",
+          "color": "#f472b6",
+          "chance": 1,
+          "description": "正面から受けた相手の攻撃を、受けた勢いの70%で押し返す。1対局2回、必ず発動。（同じ効果のルビ2個分）",
+          "readings": [
+            "かえす",
+            "はねる"
+          ],
+          "stacks": 2
+        },
+        {
+          "id": "counter",
+          "name": "反撃",
+          "role": "defense",
+          "color": "#f472b6",
+          "chance": 1,
+          "description": "正面から受けた相手の攻撃を、受けた勢いの70%で押し返す。1対局3回、必ず発動。（同じ効果のルビ3個分）",
+          "readings": [
+            "かえす",
+            "はねる"
+          ],
+          "stacks": 3
+        }
+      ]
+    },
+    {
+      "id": "dodge",
+      "name": "見切り",
+      "stacks": [
+        {
+          "id": "dodge",
+          "name": "見切り",
+          "role": "survival",
+          "color": "#67e8f9",
+          "chance": 1,
+          "description": "最初の攻撃を横へ回避し、吹き飛ばしを75%軽減。安全な空間がある時のみ、1対局1回。 同じ発射の攻撃では、見切り→守り→受け身の順に1種類だけ発動。",
+          "readings": [
+            "よける",
+            "かわす"
+          ],
+          "stacks": 1
+        },
+        {
+          "id": "dodge",
+          "name": "見切り",
+          "role": "survival",
+          "color": "#67e8f9",
+          "chance": 1,
+          "description": "最初の攻撃を横へ回避し、吹き飛ばしを75%軽減。安全な空間がある時のみ、1対局2回。 同じ発射の攻撃では、見切り→守り→受け身の順に1種類だけ発動。（同じ効果のルビ2個分）",
+          "readings": [
+            "よける",
+            "かわす"
+          ],
+          "stacks": 2
+        },
+        {
+          "id": "dodge",
+          "name": "見切り",
+          "role": "survival",
+          "color": "#67e8f9",
+          "chance": 1,
+          "description": "最初の攻撃を横へ回避し、吹き飛ばしを75%軽減。安全な空間がある時のみ、1対局3回。 同じ発射の攻撃では、見切り→守り→受け身の順に1種類だけ発動。（同じ効果のルビ3個分）",
+          "readings": [
+            "よける",
+            "かわす"
+          ],
+          "stacks": 3
+        }
+      ]
+    },
+    {
+      "id": "chase",
+      "name": "追撃",
+      "stacks": [
+        {
+          "id": "chase",
+          "name": "追撃",
+          "role": "attack",
+          "color": "#fdba74",
+          "chance": 1,
+          "description": "自分の発射で相手を押すと、0.18秒後に勢い30%の追撃。相手が近くに残っている時のみ、1対局1回。",
+          "readings": [
+            "おう",
+            "つく"
+          ],
+          "stacks": 1
+        },
+        {
+          "id": "chase",
+          "name": "追撃",
+          "role": "attack",
+          "color": "#fdba74",
+          "chance": 1,
+          "description": "自分の発射で相手を押すと、0.18秒後に勢い30%の追撃。相手が近くに残っている時のみ、1対局2回。（同じ効果のルビ2個分）",
+          "readings": [
+            "おう",
+            "つく"
+          ],
+          "stacks": 2
+        },
+        {
+          "id": "chase",
+          "name": "追撃",
+          "role": "attack",
+          "color": "#fdba74",
+          "chance": 1,
+          "description": "自分の発射で相手を押すと、0.18秒後に勢い30%の追撃。相手が近くに残っている時のみ、1対局3回。（同じ効果のルビ3個分）",
+          "readings": [
+            "おう",
+            "つく"
+          ],
+          "stacks": 3
+        }
+      ]
+    },
+    {
+      "id": "magnet",
+      "name": "送り出し",
+      "stacks": [
+        {
+          "id": "magnet",
+          "name": "送り出し",
+          "role": "support",
+          "color": "#a5b4fc",
+          "description": "自分の発射で別の自分に当てると、発射したコマの勢い80%を重量に応じて追加で渡し、自分は停止。1発射1体まで。送り出しは連鎖しない。",
+          "readings": [
+            "ひく",
+            "よぶ"
+          ],
+          "stacks": 1
+        },
+        {
+          "id": "magnet",
+          "name": "送り出し",
+          "role": "support",
+          "color": "#a5b4fc",
+          "description": "自分の発射で別の自分に当てると、発射したコマの勢い100%を重量に応じて追加で渡し、自分は停止。1発射1体まで。送り出しは連鎖しない。（同じ効果のルビ2個分）",
+          "readings": [
+            "ひく",
+            "よぶ"
+          ],
+          "stacks": 2
+        },
+        {
+          "id": "magnet",
+          "name": "送り出し",
+          "role": "support",
+          "color": "#a5b4fc",
+          "description": "自分の発射で別の自分に当てると、発射したコマの勢い115%を重量に応じて追加で渡し、自分は停止。1発射1体まで。送り出しは連鎖しない。（同じ効果のルビ3個分）",
+          "readings": [
+            "ひく",
+            "よぶ"
+          ],
+          "stacks": 3
+        }
+      ]
+    },
+    {
+      "id": "glide",
+      "name": "受け身",
+      "stacks": [
+        {
+          "id": "glide",
+          "name": "受け身",
+          "role": "defense",
+          "color": "#7dd3fc",
+          "description": "相手に吹き飛ばされた0.3秒後、自分の移動と回転を90%減速。減速前に場外へ出ると救えない。1対局1回。 同じ発射の攻撃では、見切り→守り→受け身の順に1種類だけ発動。",
+          "readings": [
+            "すべる",
+            "ながれる"
+          ],
+          "stacks": 1
+        },
+        {
+          "id": "glide",
+          "name": "受け身",
+          "role": "defense",
+          "color": "#7dd3fc",
+          "description": "相手に吹き飛ばされた0.3秒後、自分の移動と回転を90%減速。減速前に場外へ出ると救えない。1対局2回。 同じ発射の攻撃では、見切り→守り→受け身の順に1種類だけ発動。（同じ効果のルビ2個分）",
+          "readings": [
+            "すべる",
+            "ながれる"
+          ],
+          "stacks": 2
+        },
+        {
+          "id": "glide",
+          "name": "受け身",
+          "role": "defense",
+          "color": "#7dd3fc",
+          "description": "相手に吹き飛ばされた0.3秒後、自分の移動と回転を90%減速。減速前に場外へ出ると救えない。1対局3回。 同じ発射の攻撃では、見切り→守り→受け身の順に1種類だけ発動。（同じ効果のルビ3個分）",
+          "readings": [
+            "すべる",
+            "ながれる"
+          ],
+          "stacks": 3
+        }
+      ]
+    },
+    {
+      "id": "brake",
+      "name": "急停止",
+      "stacks": [
+        {
+          "id": "brake",
+          "name": "急停止",
+          "role": "survival",
+          "color": "#fda4af",
+          "description": "発射から0.9秒後、自分の速度を85%落とす。発射のたびに1回発動。",
+          "readings": [
+            "とめる",
+            "やむ"
+          ],
+          "stacks": 1
+        },
+        {
+          "id": "brake",
+          "name": "急停止",
+          "role": "survival",
+          "color": "#fda4af",
+          "description": "発射から0.9秒後、自分の速度を90%落とす。発射のたびに1回発動。（同じ効果のルビ2個分）",
+          "readings": [
+            "とめる",
+            "やむ"
+          ],
+          "stacks": 2
+        },
+        {
+          "id": "brake",
+          "name": "急停止",
+          "role": "survival",
+          "color": "#fda4af",
+          "description": "発射から0.9秒後、自分の速度を93%落とす。発射のたびに1回発動。（同じ効果のルビ3個分）",
+          "readings": [
+            "とめる",
+            "やむ"
+          ],
+          "stacks": 3
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "name": "帰還",
+      "stacks": [
+        {
+          "id": "return",
+          "name": "帰還",
+          "role": "survival",
+          "color": "#86efac",
+          "chance": 1,
+          "description": "自分の発射で落ちる時、端の内側へ戻って停止。相手に押された時は対象外。1対局1回、必ず発動。安全な戻り先が必要。",
+          "readings": [
+            "かえる",
+            "もどる"
+          ],
+          "stacks": 1
+        },
+        {
+          "id": "return",
+          "name": "帰還",
+          "role": "survival",
+          "color": "#86efac",
+          "chance": 1,
+          "description": "自分の発射で落ちる時、端の内側へ戻って停止。相手に押された時は対象外。1対局2回、必ず発動。安全な戻り先が必要。（同じ効果のルビ2個分）",
+          "readings": [
+            "かえる",
+            "もどる"
+          ],
+          "stacks": 2
+        },
+        {
+          "id": "return",
+          "name": "帰還",
+          "role": "survival",
+          "color": "#86efac",
+          "chance": 1,
+          "description": "自分の発射で落ちる時、端の内側へ戻って停止。相手に押された時は対象外。1対局3回、必ず発動。安全な戻り先が必要。（同じ効果のルビ3個分）",
+          "readings": [
+            "かえる",
+            "もどる"
+          ],
+          "stacks": 3
+        }
+      ]
+    },
+    {
+      "id": "backwater",
+      "name": "背水",
+      "stacks": [
+        {
+          "id": "backwater",
+          "name": "背水",
+          "role": "attack",
+          "color": "#fca5a5",
+          "description": "中心から土俵半径の72%以上離れている間、威力+20%・重量−10%。数値にも反映。",
+          "readings": [
+            "きわ",
+            "あぶない"
+          ],
+          "stacks": 1
+        },
+        {
+          "id": "backwater",
+          "name": "背水",
+          "role": "attack",
+          "color": "#fca5a5",
+          "description": "中心から土俵半径の72%以上離れている間、威力+30%・重量−10%。数値にも反映。（同じ効果のルビ2個分）",
+          "readings": [
+            "きわ",
+            "あぶない"
+          ],
+          "stacks": 2
+        },
+        {
+          "id": "backwater",
+          "name": "背水",
+          "role": "attack",
+          "color": "#fca5a5",
+          "description": "中心から土俵半径の72%以上離れている間、威力+35%・重量−10%。数値にも反映。（同じ効果のルビ3個分）",
+          "readings": [
+            "きわ",
+            "あぶない"
+          ],
+          "stacks": 3
+        }
+      ]
+    },
+    {
+      "id": "resonance",
+      "name": "共鳴",
+      "stacks": [
+        {
+          "id": "resonance",
+          "name": "共鳴",
+          "role": "support",
+          "color": "#d8b4fe",
+          "description": "約3コマ分以内に同じ属性の自分が1体いると威力+15%、2体なら+20%。",
+          "readings": [
+            "あわせる",
+            "かなでる"
+          ],
+          "stacks": 1
+        },
+        {
+          "id": "resonance",
+          "name": "共鳴",
+          "role": "support",
+          "color": "#d8b4fe",
+          "description": "約3コマ分以内に同じ属性の自分が1体いると威力+20%、2体なら+25%。（同じ効果のルビ2個分）",
+          "readings": [
+            "あわせる",
+            "かなでる"
+          ],
+          "stacks": 2
+        },
+        {
+          "id": "resonance",
+          "name": "共鳴",
+          "role": "support",
+          "color": "#d8b4fe",
+          "description": "約3コマ分以内に同じ属性の自分が1体いると威力+23%、2体なら+28%。（同じ効果のルビ3個分）",
+          "readings": [
+            "あわせる",
+            "かなでる"
+          ],
+          "stacks": 3
+        }
+      ]
+    },
+    {
+      "id": "charge",
+      "name": "蓄勢",
+      "stacks": [
+        {
+          "id": "charge",
+          "name": "蓄勢",
+          "role": "attack",
+          "color": "#fde047",
+          "description": "自分の発射を見送るたび、次の自分の発射の威力+10%（最大+30%）。自分が発射すると解除。",
+          "readings": [
+            "ためる",
+            "まつ"
+          ],
+          "stacks": 1
+        },
+        {
+          "id": "charge",
+          "name": "蓄勢",
+          "role": "attack",
+          "color": "#fde047",
+          "description": "自分の発射を見送るたび、次の自分の発射の威力+15%（最大+40%）。自分が発射すると解除。（同じ効果のルビ2個分）",
+          "readings": [
+            "ためる",
+            "まつ"
+          ],
+          "stacks": 2
+        },
+        {
+          "id": "charge",
+          "name": "蓄勢",
+          "role": "attack",
+          "color": "#fde047",
+          "description": "自分の発射を見送るたび、次の自分の発射の威力+20%（最大+50%）。自分が発射すると解除。（同じ効果のルビ3個分）",
+          "readings": [
+            "ためる",
+            "まつ"
+          ],
+          "stacks": 3
+        }
+      ]
+    }
+  ],
+  "traits": [
+    {
+      "char": "一",
+      "name": "一閃",
+      "shape": "bar",
+      "description": "横長の形。発射中、すぐ横をすれ違った相手を横へ弾く。直接接触せずに発動。1発射1体まで。"
+    },
+    {
+      "char": "小",
+      "name": "すり抜け",
+      "shape": "small",
+      "power": 1.2,
+      "description": "小さな体で威力＋20%。発射後1.6秒は自分をすり抜ける。"
+    },
+    {
+      "char": "口",
+      "name": "堅牢城",
+      "shape": "square",
+      "weight": 1.6,
+      "description": "重量＋60%。受ける吹き飛ばしを20%軽減。"
+    },
+    {
+      "char": "山",
+      "name": "峰打ち",
+      "shape": "triangle",
+      "description": "発射後、最初に当てた相手の次の発射の威力を30%下げる。通常どおり押し出す。弱体化は重複せず、相手が発射すると解除。"
+    },
+    {
+      "char": "大",
+      "name": "衝撃波",
+      "shape": "large",
+      "description": "大きな体。発射後の最初の衝突で、近くの別の相手へ勢い40%の衝撃波。届く範囲も拡大。1発射1回。"
+    },
+    {
+      "char": "十",
+      "name": "四方撃",
+      "shape": "cross",
+      "description": "最初の衝突後、上下左右の近くにいる別の相手へ直角に進路変更。1発射1回。"
+    },
+    {
+      "char": "凹",
+      "name": "捕縛",
+      "shape": "notch",
+      "weight": 1.15,
+      "description": "重量＋15%。両方のターンで、くぼみの内側に接触した相手を0.5秒つかみ、一緒に移動・回転。捕まえた相手の重さも受ける。各ターン1回。外側・背面では発動しない。"
+    },
+    {
+      "char": "弾",
+      "name": "跳ね返り",
+      "shape": "circle",
+      "description": "最初の衝突で跳ね返り、衝突前の勢い100%で進み、0.5秒間は空気抵抗を60%軽減。1発射1回。"
+    },
+    {
+      "char": "風",
+      "name": "追い風",
+      "shape": "circle",
+      "description": "近くを通過する発射中の自分のコマを40%加速（加速量は最大4・近くを通過させやすい広めの範囲）。1発射1回、複数の風では重複しない。"
+    },
+    {
+      "char": "粘",
+      "name": "粘着防御",
+      "shape": "circle",
+      "description": "受ける勢いを30%軽減し、ぶつかってきた相手を45%減速。"
+    },
+    {
+      "char": "回",
+      "name": "旋風",
+      "shape": "hexagon",
+      "weight": 1.05,
+      "description": "重量＋5%。発射後1.3秒回転。回転が強いほど、衝突した相手を回転方向へ強く横に弾く。"
+    },
+    {
+      "char": "矢",
+      "name": "貫矢",
+      "shape": "arrow",
+      "description": "発射時は回転せず先端を発射方向へ向ける。衝突後も直進方向を保ち、失った直進力の50%を回復。衝突による減速は残る。"
+    },
+    {
+      "char": "盾",
+      "name": "絶対防御",
+      "shape": "shield",
+      "weight": 1.2,
+      "description": "重量＋20%。平たい側が正面で、正面の吹き飛ばしを50%軽減。さらに1対局1回、落下を確実に防いで停止。"
+    },
+    {
+      "char": "合",
+      "name": "結束",
+      "shape": "circle",
+      "description": "近くの別の自分が発射すると、発射方向にいる近くの相手へ0.18秒後に追撃。1発射1回、追撃は連鎖しない。"
+    },
+    {
+      "char": "独",
+      "name": "孤高",
+      "shape": "circle",
+      "description": "近くに自分がいなければ威力＋35%・重量＋15%。最後の1体なら威力＋50%。"
+    }
+  ],
+  "elements": {
+    "wood": {
+      "name": "助け合い",
+      "color": "#4ade80",
+      "description": "約3コマ分以内の自分が受ける吹き飛ばしを25%軽減。近くに木が2体なら約44%軽減。木3体が互いに助け合いの範囲内にいる間は、それぞれ50%軽減。"
+    },
+    "fire": {
+      "name": "猛進",
+      "color": "#f87171",
+      "description": "自分から発射したとき、最初にぶつかった相手への吹き飛ばし＋35%／40%／45%（生存している自分の火が1／2／3体）。1回の発射につき1回。"
+    },
+    "earth": {
+      "name": "大地の守り",
+      "color": "#fbbf24",
+      "description": "相手の攻撃中、受ける吹き飛ばしを30%／33%／36%軽減（生存している自分の土が1／2／3体）。"
+    },
+    "metal": {
+      "name": "貫通",
+      "color": "#cbd5e1",
+      "description": "発射したコマが相手にぶつかったとき、進行方向の減速を40%／45%／50%抑えて（生存している自分の金が1／2／3体）、連続撃破を狙う。"
+    },
+    "water": {
+      "name": "流れ戻り",
+      "color": "#60a5fa",
+      "description": "自分の番の開始時、中心から盤面半径の65%以上離れていると、半径の最大16%／18%／20%だけ（生存している自分の水が1／2／3体）中央へ戻る。重なる場所には移動しません。"
+    }
+  },
+  "rarity": [
+    {
+      "name": "一般",
+      "power": 1,
+      "weight": 1,
+      "edge": "#94a3b8",
+      "glow": 0
+    },
+    {
+      "name": "希少",
+      "power": 1.15,
+      "weight": 1.5,
+      "edge": "#c4b5fd",
+      "glow": 5
+    },
+    {
+      "name": "超希少",
+      "power": 1.4,
+      "weight": 2.1,
+      "edge": "#fde68a",
+      "glow": 10
+    },
+    {
+      "name": "伝説",
+      "power": 1.65,
+      "weight": 2.9,
+      "edge": "#fcd34d",
+      "glow": 16
+    }
+  ],
+  "levels": {
+    "player": 100,
+    "cpu": 150,
+    "maxTotalExp": 495000
+  },
+  "growthRoles": {
+    "attack": {
+      "name": "攻撃型",
+      "initialPower": 1.12,
+      "initialWeight": 0.94,
+      "growthPower": 1.24,
+      "growthWeight": 0.76
+    },
+    "weight": {
+      "name": "重量型",
+      "initialPower": 0.94,
+      "initialWeight": 1.12,
+      "growthPower": 0.76,
+      "growthWeight": 1.24
+    },
+    "balanced": {
+      "name": "均衡型",
+      "initialPower": 1.03,
+      "initialWeight": 1.03,
+      "growthPower": 1,
+      "growthWeight": 1
+    }
+  },
+  "cpuDifficulty": {
+    "normal": {
+      "name": "通常",
+      "tiers": [
+        1
+      ],
+      "minLevel": 1,
+      "levelRatio": 0.9,
+      "rubies": 1,
+      "angles": [
+        0,
+        -0.07,
+        0.07
+      ],
+      "powers": [
+        0.012,
+        0.022,
+        0.034
+      ],
+      "spinCandidates": [],
+      "beam": 0,
+      "description": "JIS第1水準中心。自分の平均Lv.の約90%（最低Lv.1、上限Lv.150）。回転なしで安全な発射を優先する、練習向けのCPUです。"
+    },
+    "hard": {
+      "name": "強敵",
+      "tiers": [
+        2,
+        3
+      ],
+      "minLevel": 15,
+      "levelRatio": 1.3,
+      "rubies": 1,
+      "angles": [
+        0,
+        -0.07,
+        0.07,
+        -0.14,
+        0.14
+      ],
+      "powers": [
+        0.012,
+        0.022,
+        0.034,
+        0.046,
+        0.055
+      ],
+      "spinCandidates": [
+        -0.8,
+        0.8
+      ],
+      "beam": 3,
+      "description": "JIS第2水準・JIS第3水準。自分の平均Lv.の約130%（最低Lv.15、上限Lv.150）。回転も試し、端にいるコマを狙う強敵です。"
+    },
+    "boss": {
+      "name": "漢字王",
+      "tiers": [
+        4
+      ],
+      "minLevel": 30,
+      "levelRatio": 1.5,
+      "rubies": 2,
+      "angles": [
+        0,
+        -0.07,
+        0.07,
+        -0.14,
+        0.14,
+        -0.24,
+        0.24
+      ],
+      "powers": [
+        0.012,
+        0.022,
+        0.034,
+        0.046,
+        0.055,
+        0.065
+      ],
+      "spinCandidates": [
+        -0.8,
+        0.8,
+        -1.2,
+        1.2,
+        -2.2,
+        2.2
+      ],
+      "beam": 6,
+      "description": "JIS第4水準。自分の平均Lv.の約150%（最低Lv.30、上限Lv.150）。ルビを最大2個装備し、強い回転・多方向の狙いを使う最高難度です。"
+    }
+  },
+  "promotionTiers": [
+    {
+      "index": 0,
+      "min": 1000,
+      "title": "初級"
+    },
+    {
+      "index": 1,
+      "min": 3000,
+      "title": "中級",
+      "boss": "中級の門番",
+      "enemies": [
+        "山",
+        "川",
+        "林"
+      ],
+      "multiplier": 1.1,
+      "conditionId": "first-tier",
+      "mission": "JIS第1水準の突破",
+      "condition": "自分3体をJIS第1水準だけで編成して勝利"
+    },
+    {
+      "index": 2,
+      "min": 5000,
+      "title": "上級",
+      "boss": "五行の守護者",
+      "enemies": [
+        "鐵",
+        "銕",
+        "龜"
+      ],
+      "multiplier": 1.25,
+      "conditionId": "few-strokes",
+      "mission": "少画数の突破",
+      "condition": "自分3体の総画数を12画以下にして勝利"
+    },
+    {
+      "index": 3,
+      "min": 10000,
+      "title": "達人",
+      "boss": "鉄壁の達人",
+      "enemies": [
+        "神",
+        "淼",
+        "焰"
+      ],
+      "multiplier": 1.4,
+      "conditionId": "intact",
+      "mission": "全員生還の証",
+      "condition": "自分3体とも生き残って勝利"
+    },
+    {
+      "index": 4,
+      "min": 20000,
+      "title": "漢字王",
+      "boss": "王座の漢字王",
+      "enemies": [
+        "灩",
+        "籰",
+        "鸙"
+      ],
+      "multiplier": 1.55,
+      "conditionId": "all-killed",
+      "mission": "三文字の連携",
+      "condition": "自分3体がそれぞれ相手を1体以上落として勝利"
+    }
+  ],
+  "promotionChallenges": [
+    {
+      "id": "rank-1-boss",
+      "name": "中級の門番",
+      "kind": "promotion-boss",
+      "rank": 1,
+      "reward": 0,
+      "enemies": [
+        "山",
+        "川",
+        "林"
+      ],
+      "multiplier": 1.1,
+      "condition": "段位ボスに勝利"
+    },
+    {
+      "id": "rank-1-mission",
+      "name": "JIS第1水準の突破",
+      "kind": "promotion-mission",
+      "rank": 1,
+      "reward": 0,
+      "conditionId": "first-tier",
+      "condition": "自分3体をJIS第1水準だけで編成して勝利",
+      "enemies": [
+        "山",
+        "川",
+        "林"
+      ]
+    },
+    {
+      "id": "rank-2-boss",
+      "name": "五行の守護者",
+      "kind": "promotion-boss",
+      "rank": 2,
+      "reward": 0,
+      "enemies": [
+        "鐵",
+        "銕",
+        "龜"
+      ],
+      "multiplier": 1.25,
+      "condition": "段位ボスに勝利"
+    },
+    {
+      "id": "rank-2-mission",
+      "name": "少画数の突破",
+      "kind": "promotion-mission",
+      "rank": 2,
+      "reward": 0,
+      "conditionId": "few-strokes",
+      "condition": "自分3体の総画数を12画以下にして勝利",
+      "enemies": [
+        "鐵",
+        "巖",
+        "龜"
+      ]
+    },
+    {
+      "id": "rank-3-boss",
+      "name": "鉄壁の達人",
+      "kind": "promotion-boss",
+      "rank": 3,
+      "reward": 0,
+      "enemies": [
+        "神",
+        "淼",
+        "焰"
+      ],
+      "multiplier": 1.4,
+      "condition": "段位ボスに勝利"
+    },
+    {
+      "id": "rank-3-mission-v4",
+      "name": "全員生還の証",
+      "kind": "promotion-mission",
+      "rank": 3,
+      "reward": 0,
+      "conditionId": "intact",
+      "condition": "自分3体とも生き残って勝利",
+      "enemies": [
+        "盾",
+        "重",
+        "岩"
+      ]
+    },
+    {
+      "id": "rank-4-boss",
+      "name": "王座の漢字王",
+      "kind": "promotion-boss",
+      "rank": 4,
+      "reward": 0,
+      "enemies": [
+        "灩",
+        "籰",
+        "鸙"
+      ],
+      "multiplier": 1.55,
+      "condition": "段位ボスに勝利"
+    },
+    {
+      "id": "rank-4-mission-v3",
+      "name": "三文字の連携",
+      "kind": "promotion-mission",
+      "rank": 4,
+      "reward": 0,
+      "conditionId": "all-killed",
+      "condition": "自分3体がそれぞれ相手を1体以上落として勝利",
+      "enemies": [
+        "龍",
+        "鳳",
+        "麒"
+      ]
+    }
+  ],
+  "online": {
+    "level": 10,
+    "budget": 16,
+    "costGuide": "JIS第1水準 2・JIS第2水準 3・JIS第3水準 5・JIS第4水準 7・元素文字（JIS範囲外）5 ／ 特殊文字 +2・2個目以降の装備ルビ +1"
+  },
+  "gacha": {
+    "normal": [
+      91.8,
+      6.5,
+      1.2,
+      0.5
+    ],
+    "rare": [
+      15,
+      60,
+      20,
+      5
+    ]
+  }
+}

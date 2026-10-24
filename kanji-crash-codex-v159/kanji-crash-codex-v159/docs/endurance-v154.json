@@ -1,0 +1,14 @@
+{
+  "users": 50,
+  "realSeconds": 60.09,
+  "requests": 7200,
+  "errors": 0,
+  "requestBodyBytes": 187744,
+  "responseBodyBytes": 585275,
+  "p50": 3.94,
+  "p95": 25.22,
+  "p99": 31.46,
+  "readStatements": 13352,
+  "writeStatements": 1059,
+  "note": "isolated Worker.fetch + SQLite, real 60-second loop; no remote network/Cloudflare limits; 50 simultaneous recovery/resume requests at midpoint; backup every15s unchanged"
+}

@@ -1,0 +1,356 @@
+{
+  "originalBytes": 4045744,
+  "originalCharacters": 10710,
+  "parts": [
+    {
+      "name": "core",
+      "file": "core-e8a03bb7673b.woff2",
+      "characters": 1033,
+      "bytes": 236348
+    },
+    {
+      "name": "01a",
+      "file": "01a-12b718e159d3.woff2",
+      "characters": 22,
+      "bytes": 9736
+    },
+    {
+      "name": "01b",
+      "file": "01b-3e07fdb8cfed.woff2",
+      "characters": 17,
+      "bytes": 8900
+    },
+    {
+      "name": "01c",
+      "file": "01c-3a948358cf39.woff2",
+      "characters": 10,
+      "bytes": 5676
+    },
+    {
+      "name": "01d",
+      "file": "01d-d392e52ac8c2.woff2",
+      "characters": 19,
+      "bytes": 11656
+    },
+    {
+      "name": "01e",
+      "file": "01e-71a26b8e3ec8.woff2",
+      "characters": 10,
+      "bytes": 6616
+    },
+    {
+      "name": "01f",
+      "file": "01f-8717c737dd5b.woff2",
+      "characters": 14,
+      "bytes": 7864
+    },
+    {
+      "name": "020",
+      "file": "020-6e62ba23d780.woff2",
+      "characters": 12,
+      "bytes": 7492
+    },
+    {
+      "name": "021",
+      "file": "021-b31d181453be.woff2",
+      "characters": 11,
+      "bytes": 7484
+    },
+    {
+      "name": "022",
+      "file": "022-8953c17d6a3a.woff2",
+      "characters": 20,
+      "bytes": 11772
+    },
+    {
+      "name": "023",
+      "file": "023-830f095a4735.woff2",
+      "characters": 8,
+      "bytes": 6496
+    },
+    {
+      "name": "024",
+      "file": "024-c2cc9bd76d1e.woff2",
+      "characters": 7,
+      "bytes": 5252
+    },
+    {
+      "name": "025",
+      "file": "025-05d776d82701.woff2",
+      "characters": 8,
+      "bytes": 6832
+    },
+    {
+      "name": "026",
+      "file": "026-d09d498a0487.woff2",
+      "characters": 6,
+      "bytes": 5824
+    },
+    {
+      "name": "027",
+      "file": "027-2da143809a0a.woff2",
+      "characters": 240,
+      "bytes": 61576
+    },
+    {
+      "name": "028",
+      "file": "028-8cd8ed545c5a.woff2",
+      "characters": 246,
+      "bytes": 98364
+    },
+    {
+      "name": "029",
+      "file": "029-1a50a9e1089e.woff2",
+      "characters": 240,
+      "bytes": 83544
+    },
+    {
+      "name": "02a",
+      "file": "02a-9b9c4a01b7b8.woff2",
+      "characters": 211,
+      "bytes": 71244
+    },
+    {
+      "name": "02b",
+      "file": "02b-fdcf4410dc8f.woff2",
+      "characters": 205,
+      "bytes": 90208
+    },
+    {
+      "name": "02c",
+      "file": "02c-a8281b93944e.woff2",
+      "characters": 228,
+      "bytes": 95584
+    },
+    {
+      "name": "02d",
+      "file": "02d-5f5dd4fec470.woff2",
+      "characters": 202,
+      "bytes": 94880
+    },
+    {
+      "name": "02e",
+      "file": "02e-d7e31b58beb1.woff2",
+      "characters": 219,
+      "bytes": 88032
+    },
+    {
+      "name": "02f",
+      "file": "02f-532e943ed7e8.woff2",
+      "characters": 268,
+      "bytes": 105528
+    },
+    {
+      "name": "030",
+      "file": "030-e6108c5be628.woff2",
+      "characters": 248,
+      "bytes": 109512
+    },
+    {
+      "name": "031",
+      "file": "031-7fb2c6df5beb.woff2",
+      "characters": 232,
+      "bytes": 93020
+    },
+    {
+      "name": "032",
+      "file": "032-6deb14af4651.woff2",
+      "characters": 209,
+      "bytes": 110632
+    },
+    {
+      "name": "033",
+      "file": "033-c8075813d903.woff2",
+      "characters": 271,
+      "bytes": 93864
+    },
+    {
+      "name": "034",
+      "file": "034-2a66f2dd450b.woff2",
+      "characters": 280,
+      "bytes": 115256
+    },
+    {
+      "name": "035",
+      "file": "035-3d5153da7435.woff2",
+      "characters": 232,
+      "bytes": 124444
+    },
+    {
+      "name": "036",
+      "file": "036-bfd5012cbe39.woff2",
+      "characters": 255,
+      "bytes": 89444
+    },
+    {
+      "name": "037",
+      "file": "037-56ae6dcab2d1.woff2",
+      "characters": 238,
+      "bytes": 121208
+    },
+    {
+      "name": "038",
+      "file": "038-b304c66544bc.woff2",
+      "characters": 196,
+      "bytes": 101436
+    },
+    {
+      "name": "039",
+      "file": "039-343a5aec2a42.woff2",
+      "characters": 207,
+      "bytes": 87676
+    },
+    {
+      "name": "03a",
+      "file": "03a-b01913e7cf25.woff2",
+      "characters": 266,
+      "bytes": 116216
+    },
+    {
+      "name": "03b",
+      "file": "03b-d89f37fe586f.woff2",
+      "characters": 233,
+      "bytes": 108440
+    },
+    {
+      "name": "03c",
+      "file": "03c-6310d67750ba.woff2",
+      "characters": 210,
+      "bytes": 91916
+    },
+    {
+      "name": "03d",
+      "file": "03d-2585207787fc.woff2",
+      "characters": 249,
+      "bytes": 115908
+    },
+    {
+      "name": "03e",
+      "file": "03e-589e4f9d5ac7.woff2",
+      "characters": 262,
+      "bytes": 136080
+    },
+    {
+      "name": "03f",
+      "file": "03f-456c26ad6b06.woff2",
+      "characters": 184,
+      "bytes": 110028
+    },
+    {
+      "name": "040",
+      "file": "040-b93e521aaa09.woff2",
+      "characters": 233,
+      "bytes": 104828
+    },
+    {
+      "name": "041",
+      "file": "041-d936e53a1a43.woff2",
+      "characters": 252,
+      "bytes": 96644
+    },
+    {
+      "name": "042",
+      "file": "042-a1bf1258936a.woff2",
+      "characters": 237,
+      "bytes": 95060
+    },
+    {
+      "name": "043",
+      "file": "043-626d15f06132.woff2",
+      "characters": 219,
+      "bytes": 103476
+    },
+    {
+      "name": "044",
+      "file": "044-26e7ecb22ccc.woff2",
+      "characters": 209,
+      "bytes": 111216
+    },
+    {
+      "name": "045",
+      "file": "045-8df985672989.woff2",
+      "characters": 198,
+      "bytes": 103440
+    },
+    {
+      "name": "046",
+      "file": "046-110b18abf33f.woff2",
+      "characters": 164,
+      "bytes": 78156
+    },
+    {
+      "name": "047",
+      "file": "047-b38532f994de.woff2",
+      "characters": 196,
+      "bytes": 101816
+    },
+    {
+      "name": "048",
+      "file": "048-51ade90ff480.woff2",
+      "characters": 253,
+      "bytes": 117100
+    },
+    {
+      "name": "049",
+      "file": "049-1c42aee07f91.woff2",
+      "characters": 253,
+      "bytes": 122468
+    },
+    {
+      "name": "04a",
+      "file": "04a-79149c510ab2.woff2",
+      "characters": 106,
+      "bytes": 65276
+    },
+    {
+      "name": "04b",
+      "file": "04b-8f73caa8d463.woff2",
+      "characters": 229,
+      "bytes": 117504
+    },
+    {
+      "name": "04c",
+      "file": "04c-da945e4081b2.woff2",
+      "characters": 202,
+      "bytes": 110536
+    },
+    {
+      "name": "04d",
+      "file": "04d-4fd18dbe0e36.woff2",
+      "characters": 206,
+      "bytes": 129184
+    },
+    {
+      "name": "04e",
+      "file": "04e-bd1411eb55ad.woff2",
+      "characters": 197,
+      "bytes": 129180
+    },
+    {
+      "name": "04f",
+      "file": "04f-27a1fc8370bf.woff2",
+      "characters": 142,
+      "bytes": 96364
+    },
+    {
+      "name": "07c",
+      "file": "07c-f89c73e0984b.woff2",
+      "characters": 7,
+      "bytes": 5420
+    },
+    {
+      "name": "07d",
+      "file": "07d-55e671f0a1bc.woff2",
+      "characters": 75,
+      "bytes": 36104
+    },
+    {
+      "name": "extensions",
+      "file": "extensions-74149f6d5c8c.woff2",
+      "characters": 304,
+      "bytes": 144600
+    }
+  ],
+  "totalBytes": 4720360,
+  "everyGlyphOutlineAndAdvanceVerified": true
+}

@@ -1,0 +1,37 @@
+{
+  "name": "kanji-crash-mobile",
+  "private": true,
+  "scripts": {
+    "build": "tailwindcss -i styles.css -o dist/vendor/tailwind.css --minify && node scripts/build-online.mjs",
+    "update-readings": "python3 scripts/update-readings.py",
+    "test": "node tests/auto-ruby-unlock-v78.cjs && node tests/practice-picker-v76.cjs && node tests/dialog-controls-v75.cjs && node tests/save-protection-v73.cjs && node tests/difficulty-synthesis-v72.cjs && node tests/cpu-ai.cjs && node tests/balance.cjs && node tests/abilities.cjs && node tests/abilities-v66.cjs && node tests/stacked-abilities.cjs && node tests/ukemi-send.cjs && node tests/defense-balance.cjs && node tests/impact-defense.cjs && node tests/primary-ruby.cjs && node tests/navigation-v71.cjs && node tests/deck-favorite-form.cjs && node tests/ukemi-send-tutorial.cjs && node tests/inventory.cjs && node tests/modes.cjs && node tests/rewards.cjs && node tests/traits.cjs && node tests/opening.cjs && node tests/elements.cjs && node tests/collection.cjs && node tests/multi-readings.cjs && node tests/expanded-abilities.cjs && node tests/strong-traits.cjs && node tests/growth-special.cjs && node tests/shot-controls.cjs && node tests/honor-icons.cjs && node tests/trial-streak.cjs && node tests/level-secret.cjs && node tests/codex.cjs && node tests/bulk-ruby.cjs && node tests/adventure.cjs && node tests/practice.cjs && node tests/content-updates.cjs",
+    "test:mobile": "node tests/mobile.cjs && node tests/inventory-mobile.cjs && node tests/modes-mobile.cjs && node tests/rewards-mobile.cjs && node tests/traits-mobile.cjs && node tests/opening-mobile.cjs && node tests/collection-mobile.cjs && node tests/multi-mobile.cjs && node tests/expanded-mobile.cjs && node tests/strong-mobile.cjs && node tests/growth-special-mobile.cjs && node tests/spin-mobile.cjs",
+    "db:generate": "drizzle-kit generate",
+    "test:friends": "node tests/friends.mjs && node tests/friends-v24.mjs && node tests/friends-mobile.mjs && node tests/honor-mobile.mjs && node tests/avatar-centering.mjs && node tests/friends-v24-mobile.mjs",
+    "test:online": "node tests/online.mjs && node tests/online-mobile.mjs && node tests/trial-mobile.mjs",
+    "test:match-rules": "node tests/match-recommendation.cjs && node tests/match-rules.mjs && node tests/match-rules-mobile.mjs",
+    "test:preparation": "node tests/preparation.mjs && node tests/preparation-mobile.mjs && node tests/preparation-solo-mobile.mjs",
+    "test:challenge-rankings": "node tests/challenge-rankings.mjs && node tests/challenge-rankings-mobile.mjs",
+    "test:level-secret": "node tests/level-secret.cjs && node tests/level-secret-api.mjs && node tests/level-secret-mobile.cjs",
+    "test:performance": "node tests/performance.mjs && node tests/performance-mobile.mjs",
+    "test:codex": "node tests/codex.cjs && node tests/codex-mobile.mjs",
+    "test:bulk-ruby": "node tests/bulk-ruby.cjs && node tests/bulk-ruby-mobile.mjs",
+    "test:adventure": "node tests/adventure.cjs && node tests/adventure-api.mjs && node tests/adventure-mobile.mjs",
+    "test:practice": "node tests/practice.cjs && node tests/practice-recommendation.cjs && node tests/practice-api.mjs && node tests/practice-mobile.mjs && node tests/update-v41-mobile.mjs",
+    "test:replays": "node tests/content-updates.cjs && node tests/replays-api.mjs && node tests/replays-mobile.mjs",
+    "test:replay-favorites": "node tests/replay-favorites-api.mjs && node tests/replays-v37-mobile.mjs",
+    "test:deck-practice": "node tests/deck-practice-v38-mobile.mjs",
+    "test:avatar-style": "node tests/avatar-style.cjs && node tests/avatar-style-api.mjs && node tests/avatar-style-mobile.mjs && node tests/avatar-centering.mjs",
+    "test:promotions": "node tests/promotions.cjs && node tests/kanji-reference.cjs && node tests/promotions-api.mjs && node tests/promotions-mobile.mjs",
+    "test:one-shot": "node tests/one-shot-content.cjs && node tests/one-shot-api.mjs && node tests/one-shot-mobile.mjs",
+    "test:device-rankings": "node tests/device-rankings.mjs && node tests/device-rankings-mobile.mjs",
+    "test:auto-battle": "node tests/auto-ai.cjs && node tests/auto-match-invitations-api.mjs && node tests/auto-match-invitations-mobile.mjs",
+    "test:beginner": "node tests/beginner-mobile.mjs && node tests/owned-deck-flow-mobile.mjs"
+  },
+  "devDependencies": {
+    "tailwindcss": "3.4.17",
+    "esbuild": "0.25.5",
+    "drizzle-kit": "0.31.10",
+    "drizzle-orm": "0.45.2"
+  }
+}

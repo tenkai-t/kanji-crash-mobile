@@ -1,0 +1,30 @@
+[
+  {
+    "n": 30,
+    "beforeMs": 0.74,
+    "afterMs": 0.59,
+    "beforeCards": 30,
+    "afterCards": 30
+  },
+  {
+    "n": 1000,
+    "beforeMs": 33.58,
+    "afterMs": 6.47,
+    "beforeCards": 1000,
+    "afterCards": 36
+  },
+  {
+    "n": 5000,
+    "beforeMs": 500.84,
+    "afterMs": 25.43,
+    "beforeCards": 5000,
+    "afterCards": 36
+  },
+  {
+    "n": 10000,
+    "beforeMs": 1881.62,
+    "afterMs": 50.01,
+    "beforeCards": 10000,
+    "afterCards": 36
+  }
+]

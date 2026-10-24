@@ -1,0 +1,104 @@
+[
+  {
+    "test": "tests/migration-startup.mjs",
+    "passed": true,
+    "exitCode": 0,
+    "durationMs": 336
+  },
+  {
+    "test": "tests/save-protection-v73.cjs",
+    "passed": true,
+    "exitCode": 0,
+    "durationMs": 84
+  },
+  {
+    "test": "tests/save-reliability-v136.cjs",
+    "passed": true,
+    "exitCode": 0,
+    "durationMs": 74
+  },
+  {
+    "test": "tests/inventory.cjs",
+    "passed": true,
+    "exitCode": 0,
+    "durationMs": 132
+  },
+  {
+    "test": "tests/balance.cjs",
+    "passed": true,
+    "exitCode": 0,
+    "durationMs": 224
+  },
+  {
+    "test": "tests/abilities.cjs",
+    "passed": true,
+    "exitCode": 0,
+    "durationMs": 370
+  },
+  {
+    "test": "tests/character-fragments-v91.cjs",
+    "passed": true,
+    "exitCode": 0,
+    "durationMs": 106
+  },
+  {
+    "test": "tests/gifts-v159.cjs",
+    "passed": true,
+    "exitCode": 0,
+    "durationMs": 84
+  },
+  {
+    "test": "tests/gacha-repeat-v138.cjs",
+    "passed": true,
+    "exitCode": 0,
+    "durationMs": 83
+  },
+  {
+    "test": "tests/replay-audio-v156.cjs",
+    "passed": true,
+    "exitCode": 0,
+    "durationMs": 68
+  },
+  {
+    "test": "tests/replay-audio-engine-v156.cjs",
+    "passed": true,
+    "exitCode": 0,
+    "durationMs": 70
+  },
+  {
+    "test": "tests/replay-audio-ui-v158.cjs",
+    "passed": true,
+    "exitCode": 0,
+    "durationMs": 65
+  },
+  {
+    "test": "tests/guest-players-v140.mjs",
+    "passed": true,
+    "exitCode": 0,
+    "durationMs": 284
+  },
+  {
+    "test": "tests/friends.mjs",
+    "passed": true,
+    "exitCode": 0,
+    "durationMs": 448
+  },
+  {
+    "test": "tests/online.mjs",
+    "passed": true,
+    "exitCode": 0,
+    "durationMs": 524
+  },
+  {
+    "test": "tests/replays-api.mjs",
+    "passed": true,
+    "exitCode": 0,
+    "durationMs": 417
+  },
+  {
+    "test": "tests/replay-favorites-api.mjs",
+    "passed": true,
+    "exitCode": 0,
+    "durationMs": 396
+  }
+]

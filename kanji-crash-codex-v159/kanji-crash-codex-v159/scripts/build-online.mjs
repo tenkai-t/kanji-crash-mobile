@@ -1,0 +1,21 @@
+import {readFileSync,writeFileSync,mkdirSync,rmSync,cpSync,readdirSync} from 'node:fs';
+import vm from 'node:vm';
+import {build} from 'esbuild';
+import {createRequire} from 'node:module';
+const require=createRequire(import.meta.url),content=require('../dist/adventure-content.js');
+// Retain the existing static source layout; publish assets beside the Worker.
+const html=readFileSync('dist/index.html','utf8');
+const catalogue=JSON.parse(html.match(/const KANJI_DATABASE = (\[.*?\]);/s)[1]);
+const known=new Set(catalogue.map(i=>i.char));
+for(const char of [...content.missions.flatMap(v=>v.chars),...content.links.flatMap(v=>v.chars),...content.recipes.flatMap(v=>[...v.materials,v.result])])if(!known.has(char))throw Error('Unknown adventure character: '+char);
+const sandbox={window:{}};vm.runInNewContext(readFileSync('dist/readings.js','utf8'),sandbox);
+mkdirSync('server/generated',{recursive:true});
+writeFileSync('server/generated/catalogue.json',JSON.stringify(catalogue));
+writeFileSync('server/generated/readings.json',JSON.stringify(sandbox.window.KANJI_READINGS));
+rmSync('dist/client',{recursive:true,force:true});mkdirSync('dist/client',{recursive:true});
+for(const entry of readdirSync('dist'))if(!['client','server','.openai','_appgen_meta'].includes(entry))cpSync('dist/'+entry,'dist/client/'+entry,{recursive:true});
+mkdirSync('dist/server',{recursive:true});
+await build({entryPoints:['server/worker.mjs'],outfile:'dist/server/index.js',bundle:true,format:'esm',platform:'browser',target:'es2022',minify:true});
+writeFileSync('dist/server/package.json','{"type":"module"}');
+writeFileSync('dist/server/wrangler.json',JSON.stringify({name:'kanji-crash-mobile',main:'index.js',compatibility_date:'2026-10-01',assets:{directory:'../client',binding:'ASSETS',run_worker_first:['/api/*']},d1_databases:[{binding:'DB',database_name:'kanji-crash-friends',database_id:'local-preview-only'}]},null,2));
+mkdirSync('dist/.openai',{recursive:true});cpSync('.openai/hosting.json','dist/.openai/hosting.json');

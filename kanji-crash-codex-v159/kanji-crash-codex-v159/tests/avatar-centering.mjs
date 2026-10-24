@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';
+import {fixture} from './friend-server.mjs';
+import {createRequire} from 'node:module';
+const require=createRequire(import.meta.url),{webkit}=require(process.env.PLAYWRIGHT_MODULE||'playwright'),f=fixture(),url=await f.start(),browser=await webkit.launch({headless:true});
+try{
+ const context=await browser.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true,deviceScaleFactor:2}),p=await context.newPage();await p.goto(url);await p.waitForFunction(()=>engine&&playerBodies.length===3);await p.evaluate(()=>document.fonts.ready);
+ const result=await p.evaluate(async()=>{const box=document.createElement('div');box.style.cssText='position:fixed;top:0;left:0;z-index:999;display:flex;flex-wrap:wrap;background:#0f172a';document.body.append(box);const rows=[];
+  for(const honorId of ['',...KanjiHonors.catalogue.map(i=>i.id)])for(const char of ['一','亜','凹','盾','鬱'])for(const size of ['small','large','preview']){const el=document.createElement('span');el.className='player-avatar '+size;box.append(el);paintPlayerAvatar(el,{char,honorId,frame:'plain',color:'gold',glow:'none'});rows.push(el);}
+  await document.fonts.ready;rows.forEach(drawAvatarGlyph);const measurements=rows.map(el=>{const c=el.querySelector('canvas'),pixels=c.getContext('2d').getImageData(0,0,c.width,c.height).data;let left=c.width,right=-1,top=c.height,bottom=-1;for(let y=0;y<c.height;y++)for(let x=0;x<c.width;x++)if(pixels[(y*c.width+x)*4+3]>128){left=Math.min(left,x);right=Math.max(right,x);top=Math.min(top,y);bottom=Math.max(bottom,y);}return {honorId:el.dataset.honor||'',char:c.textContent,size:el.classList[1],ink:right>=left,dx:((left+right+1)/2-c.width*Number(c.dataset.centerX))/(c.width/el.clientWidth),dy:((top+bottom+1)/2-c.height*Number(c.dataset.centerY))/(c.height/el.clientHeight)};});box.remove();return measurements;});
+ assert.equal(result.length,(require('../dist/honor-icons.js').catalogue.length+1)*5*3);assert(result.every(r=>r.ink&&Math.abs(r.dx)<1&&Math.abs(r.dy)<1),JSON.stringify(result.filter(r=>!r.ink||Math.abs(r.dx)>=1||Math.abs(r.dy)>=1)));console.log(JSON.stringify({glyphInkCentered:true,cases:result.length,frames:28,sizes:3,glyphs:5,maxDeviationCssPixels:Math.max(...result.flatMap(r=>[Math.abs(r.dx),Math.abs(r.dy)]))}));
+}finally{await browser.close();await f.stop();}

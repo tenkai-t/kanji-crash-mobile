@@ -1,0 +1,2 @@
+CREATE INDEX `idx_rooms_host_recent` ON `friend_rooms` (`host_key`,`mode`,`expires_at`);--> statement-breakpoint
+CREATE INDEX `idx_rooms_guest_recent` ON `friend_rooms` (`guest_key`,`mode`,`expires_at`);

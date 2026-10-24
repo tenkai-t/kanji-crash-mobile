@@ -1,0 +1,43 @@
+const assert = require('assert');
+const I = require('../dist/inventory-rules.js');
+const options = { A:['ア','アイ','アイウ'], B:['ビ','ビイ'], C:['シ'], D:['ディ'] };
+const read = char => options[char];
+const make = (id,char='A',extra={}) => I.normalize({instanceId:id,id:char,char,jis:1,ruby:read(char)[0],level:1,exp:0,...extra},read);
+const old = make('old','A',{ruby:'アイウ',level:5,exp:22});
+assert.deepStrictEqual(old.unlockedReadings,['アイウ']); assert.strictEqual(old.locked,false); assert.strictEqual(old.level,5);
+let state={inventory:[make('hero','A',{locked:true,level:3,exp:7}),make('copy'),make('copy2'),make('deck','B'),make('locked','B',{locked:true}),make('free','B'),make('odd','C')],deck:['hero','deck']};
+const original=JSON.stringify(state), plan=I.buildPlan(state,'duplicate','all',read);
+assert.strictEqual(plan.operations.length,3); assert(plan.operations.every(o=>!state.deck.includes(o.materialId)&&!state.inventory.find(i=>i.instanceId===o.materialId).locked));
+let seq=0;const executeOptions={getReadings:read,pools:{1:[make('dbC','C')],2:[{...make('dbD','D'),jis:2}]},createId:()=>`new${++seq}`,rng:()=>.8};
+const result=I.executePlan(state,plan,executeOptions);
+assert.strictEqual(JSON.stringify(state),original); // Transaction leaves the input untouched.
+const hero=result.inventory.find(i=>i.instanceId==='hero');
+assert(hero.locked&&hero.ruby==='ア'); assert.deepStrictEqual(hero.unlockedReadings,['ア','アイ','アイウ']);
+assert.strictEqual(I.totalExp(hero),I.totalExp(state.inventory[0])+80);
+assert(result.inventory.some(i=>i.instanceId==='deck')&&result.inventory.some(i=>i.instanceId==='locked'));
+state={...state,inventory:result.inventory};
+state.inventory.push(make('another'));
+const complete=I.executePlan(state,I.duplicatePlan(state,'hero'),executeOptions);
+assert.strictEqual(complete.results[0].newReading,null); assert.strictEqual(complete.inventory.find(i=>i.instanceId==='hero').unlockedReadings.length,3);
+assert.deepStrictEqual(I.manualPlan(state,'hero','another').operations,[]);
+const stale=I.duplicatePlan(state,'hero');state.inventory.find(i=>i.instanceId==='another').locked=true;
+assert.throws(()=>I.executePlan(state,stale,executeOptions),/stale/);
+// Repeated consumption is rejected and never partially commits.
+state.inventory.find(i=>i.instanceId==='another').locked=false;
+const doubled=I.duplicatePlan(state,'hero');doubled.operations.push(doubled.operations[0]);
+assert.throws(()=>I.executePlan(state,doubled,executeOptions),/protected/);
+const ordinary={inventory:[make('d','A',{locked:true}),make('e','B'),make('f','C',{level:2,exp:5}),make('g','A'),{...make('h','D'),jis:2}],deck:['g']};
+const normalPlan=I.buildPlan(ordinary,'synthesis','1',read);
+assert.strictEqual(normalPlan.operations.length,1); assert.deepStrictEqual(normalPlan.operations[0].ids.sort(),['e','f']);
+const normal=I.executePlan(ordinary,normalPlan,executeOptions);
+assert.strictEqual(normal.inventory.length,ordinary.inventory.length-1);
+const output=normal.inventory.find(i=>i.instanceId===normal.results[0].instanceId);
+assert.strictEqual(output.jis,1);assert.strictEqual(I.totalExp(output),105);assert.strictEqual(output.unlockedReadings.length,1);
+assert(normal.inventory.some(i=>i.instanceId==='d')&&normal.inventory.some(i=>i.instanceId==='g')&&normal.inventory.some(i=>i.instanceId==='h'));
+assert.strictEqual(normal.results.length,1); // A new result is not a material in this batch.
+const up=I.executePlan(ordinary,normalPlan,{...executeOptions,rng:()=>0}); assert.strictEqual(up.results[0].jis,2);
+assert.deepStrictEqual(I.buildPlan({inventory:[],deck:[]},'duplicate','all',read).operations,[]);
+const huge={inventory:Array.from({length:1000},(_,i)=>make(`many${i}`)),deck:[]};
+const start=performance.now(), big=I.executePlan(huge,I.buildPlan(huge,'duplicate','all',read),executeOptions);
+assert.strictEqual(big.inventory.length,1); assert.strictEqual(big.results.length,999);
+console.log(JSON.stringify({migrationPassed:true,locksProtected:true,unlocked:hero.unlockedReadings,ordinaryResults:normal.results.length,bulk1000Ms:Math.round(performance.now()-start)}));

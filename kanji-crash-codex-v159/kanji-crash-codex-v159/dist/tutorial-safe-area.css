@@ -1,0 +1,12 @@
+/* The tutorial header stays outside the scrolling lesson, including standalone mode. */
+#modal-tutorial{left:var(--tutorial-viewport-left,0px);right:auto;width:var(--tutorial-viewport-width,100%);top:var(--tutorial-viewport-top,0px);bottom:auto;height:var(--tutorial-viewport-height,var(--app-height,100dvh));box-sizing:border-box;padding:calc(env(safe-area-inset-top,0px) + 8px) calc(env(safe-area-inset-right,0px) + 8px) calc(env(safe-area-inset-bottom,0px) + 8px) calc(env(safe-area-inset-left,0px) + 8px);overflow:hidden;isolation:isolate;z-index:110}
+#modal-tutorial>.tutorial-panel{height:100%!important;max-height:100%!important;min-height:0;display:grid!important;grid-template-rows:auto minmax(0,1fr) auto;overflow:hidden!important;padding:0!important;box-sizing:border-box}
+#modal-tutorial .editor-title{position:relative;top:auto;display:flex;align-items:center;gap:12px;min-height:64px;margin:0;padding:8px 12px;box-sizing:border-box;background:#0f172a;z-index:3;flex-shrink:0}
+#modal-tutorial .editor-title h2{flex:1;min-width:0;line-height:1.5;overflow-wrap:anywhere}
+#modal-tutorial #btn-tutorial-skip{flex:0 0 48px;width:48px;min-width:48px;height:48px;min-height:48px;padding:0;display:grid;place-items:center;line-height:1;font-size:28px;border:1px solid #64748b;border-radius:12px;touch-action:manipulation;pointer-events:auto;position:relative;z-index:4}
+#modal-tutorial .tutorial-body{min-height:0;display:flex!important;flex-direction:column;overflow-x:hidden!important;overflow-y:auto!important;overscroll-behavior:contain;padding:0 12px 8px!important}
+#modal-tutorial #tutorial-board{flex:1 0 auto!important;min-height:0;width:100%!important;max-width:none!important;display:flex;flex-direction:column;align-items:center}
+#modal-tutorial #tutorial-canvas{flex:none!important;width:min(100%,clamp(144px,calc(var(--tutorial-viewport-height,var(--app-height,100dvh)) - 360px),360px))!important;height:auto!important;min-height:0;max-height:none!important;aspect-ratio:1;object-fit:contain;align-self:center}
+#modal-tutorial .tutorial-footer{padding:8px 12px;max-height:35%;overflow:auto;box-sizing:border-box}
+#modal-tutorial .tutorial-footer button{min-height:44px;line-height:1.5}
+#modal-tutorial #btn-tutorial-skip:focus-visible{outline:3px solid #67e8f9;outline-offset:2px}

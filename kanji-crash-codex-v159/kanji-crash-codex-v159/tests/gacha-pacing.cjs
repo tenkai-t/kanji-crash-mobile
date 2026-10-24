@@ -25,6 +25,11 @@ const results=(fresh=false)=>Array.from({length:10},(_,n)=>({item:{char:String.f
  const f=fixture();f.c.showGachaResults(results(true),'normal');for(const card of f.get('gacha-result-grid').children)card.onclick();
  assert.equal(f.revealed(),10);assert(f.c.isGachaPresentationBusy());f.c.skipGachaAnimation();assert(!f.c.isGachaPresentationBusy());assert(f.get('btn-gacha-skip').hidden);assert(!f.get('btn-gacha-repeat').hidden);assert.equal(f.timers.size,0);
 }
+{
+ const f=fixture();f.c.showGachaResults(results(),'rare');f.get('gacha-result-grid').children[1].onclick();
+ assert.equal(f.get('gacha-reveal-stamp').textContent,'所持済');assert.equal(f.get('gacha-reveal-eyebrow').textContent,'選んだ文字が目を覚ます');
+ assert(f.get('gacha-discovery-meta').textContent.endsWith('重複'));assert.equal(f.revealed(),1);
+}
 for(const type of ['normal','rare','element']){
  const f=fixture(),before=JSON.stringify(f.c.gameState);f.c.showGachaResults(results(true),type);f.get('gacha-result-grid').children[3].onclick();f.c.skipGachaAnimation();f.c.skipGachaAnimation();
  assert.equal(f.revealed(),10);assert.equal(f.timers.size,0);assert(!f.c.isGachaPresentationBusy());assert(f.get('gacha-discovery').hidden);f.advance(30000);assert.equal(JSON.stringify(f.c.gameState),before);

@@ -42,9 +42,12 @@ function showGachaDiscovery(index){
  clearTimeout(view.discoveryTimer);view.discoveryActive=true;stage.hidden=false;stage.classList.remove('is-written');
  document.getElementById('gacha-discovery-char').textContent=view.results[index].item.char;
  document.getElementById('gacha-discovery-reading').textContent=view.results[index].item.ruby||'読み未装備';
- document.getElementById('gacha-discovery-meta').textContent=getCharacterTypeLabel(view.results[index].item)+'・初発見';
+ const first=view.firstFlags[index],label=first?'初発見':view.results[index].duplicate?'重複':'再入手';
+ document.getElementById('gacha-discovery-meta').textContent=getCharacterTypeLabel(view.results[index].item)+'・'+label;
+ document.getElementById('gacha-reveal-eyebrow').textContent=first?'新たな文字との出会い':'選んだ文字が目を覚ます';
+ document.getElementById('gacha-reveal-stamp').textContent=first?'初発見':view.results[index].duplicate?'所持済':'再入手';
  stage.dataset.jis=String(view.results[index].item.jis);void stage.offsetWidth;stage.classList.add('is-written');
- document.getElementById('modal-gacha').classList.add('is-discovery-active');playSound('discovery');
+ document.getElementById('modal-gacha').classList.add('is-discovery-active');playSound(first?'discovery':view.results[index].item.jis>=3?'rare':'reveal');
  view.discoveryTimer=setTimeout(()=>{if(gachaPresentation!==view)return;view.discoveryActive=false;stage.hidden=true;stage.classList.remove('is-written');document.getElementById('modal-gacha').classList.remove('is-discovery-active');finishGachaResults();},gachaPacing.discovery);gachaTimeouts.push(view.discoveryTimer);
 }
 function revealGachaResult(index,sound=true){
@@ -52,8 +55,7 @@ function revealGachaResult(index,sound=true){
  view.revealed.add(index);const b=document.querySelector(`#gacha-result-grid [data-gacha-index="${index}"]`);b.classList.add('is-revealed');
  b.setAttribute('aria-label',`${index+1}文字目：${view.results[index].item.char}、${getCharacterTypeLabel(view.results[index].item)}、${view.firstFlags[index]?'初発見':gachaDiscoveryLabel(view.results[index])}。能力を確認`);
  if(view.selected===null||(sound&&!view.userSelected))selectGachaResult(index);
- if(sound&&view.firstFlags[index])showGachaDiscovery(index);
- else if(sound)playSound(view.results[index].item.jis>=3?'rare':'reveal');
+ if(sound)showGachaDiscovery(index);
  if(view.revealed.size===view.results.length)finishGachaResults();
  else document.getElementById('gacha-reveal-progress').textContent=`開封済み ${view.revealed.size} / ${view.results.length}`;
 }

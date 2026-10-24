@@ -16,7 +16,7 @@ if (result.status !== 0) process.exit(result.status || 1);
 await build({entryPoints: ['server/cloudflare.mjs'], outfile: 'dist/server/cloudflare.js',
   bundle: true, format: 'esm', platform: 'browser', target: 'es2022', minify: true});
 writeFileSync('dist/server/wrangler.cloudflare.json', JSON.stringify({
-  name: 'kanji-crash-mobile-test',
+  name: 'kanji-crash',
   main: 'cloudflare.js',
   compatibility_date: '2026-10-01',
   workers_dev: true,

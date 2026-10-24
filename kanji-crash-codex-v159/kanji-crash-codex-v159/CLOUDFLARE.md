@@ -1,7 +1,8 @@
 # Cloudflare Workers + D1 テスト環境
 
-この手順は新しい `kanji-crash-mobile-test` と空の
-`kanji-crash-mobile-test-db` 用です。既存Sitesの公開先・本番DBは変更しません。
+この手順は当初 `kanji-crash-mobile-test` と空の
+`kanji-crash-mobile-test-db` を準備したものです。Workerの希望名は現在
+`kanji-crash` です。既存Sitesの公開先・本番DBは変更しません。
 GitHubへのpush、リモートSQL実行、デプロイは内容を確認してから別途承認します。
 
 ## 変更内容と互換性
@@ -51,7 +52,7 @@ Workers実行環境とローカルD1を通した確認ができます。
 
 `build-cloudflare.mjs` は既存ビルドを行い、追加の `cloudflare.js` と
 `wrangler.cloudflare.json` を生成します。生成先は無視対象の `dist/server/`。
-Worker名は `kanji-crash-mobile-test`、DB名は `kanji-crash-mobile-test-db`、
+Worker名は `kanji-crash`、DB名は `kanji-crash-mobile-test-db`、
 バインディング名は `DB` と `ASSETS` に固定しています。
 19本の既存SQLを `migrations_dir` に指定し、ゲスト関連DDLは既存の実行時処理を維持します。
 `dist/server/wrangler.json` は従来のSites用プレースホルダーを含むため、
@@ -93,6 +94,14 @@ Worker名を実際に別名で作成した場合は、生成スクリプトの�
 
 ビルド設定を保存すると将来のpushで自動デプロイされ得るため、
 変更レビューとテストDBの準備が済むまで保存・pushは行いません。
+
+### Worker名の変更
+
+Workerの名前と生成設定の `name` を一致させます。今回の名前変更で
+DB名・Database ID・保存キー・プレイヤーIDは変更しません。
+URLの変更はブラウザー保存領域の変更を伴います。新URLで既存の復元コードを
+使うには同じDBが必要です。変更前に旧URLでサーバー保存を確認し、復元コードと
+手動バックアップを安全に控えてください。旧Sitesのデータ移行とは別の操作です。
 
 ## リモートDB初期化と公開（この作業では未実行）
 

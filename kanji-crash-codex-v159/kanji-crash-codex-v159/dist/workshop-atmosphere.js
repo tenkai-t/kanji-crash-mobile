@@ -6,7 +6,6 @@ for(const [id,char,label]of [['screen-gacha','召','文字に、命を。'],['sc
 const workbench=$('synth-slot-1').closest('.glass-panel'),materials=$('synthesis-selectable-grid').closest('.glass-panel');
 $('screen-synthesis').querySelector('.workshop-seal').after(workbench);workbench.after(materials);
 const shell=$('modal-gacha').querySelector('.gacha-shell'),heading=shell.querySelector('.gacha-heading');heading.after(seal('召','墨が巡り、文字が宿る'));
-const skipBar=document.createElement('div');skipBar.className='gacha-skip-bar';const exit=document.createElement('button');exit.type='button';exit.textContent='閉じる';exit.onclick=()=>closeModal('modal-gacha');skipBar.append($('btn-gacha-skip'),exit);shell.prepend(skipBar);
 const discovery=document.createElement('section');discovery.id='gacha-discovery';discovery.hidden=true;discovery.className='gacha-discovery';discovery.setAttribute('aria-live','polite');discovery.innerHTML='<p class="discovery-eyebrow">新たな文字との出会い</p><strong id="gacha-discovery-char" class="kanji-font"></strong><span id="gacha-discovery-reading"></span><span id="gacha-discovery-meta"></span><b class="discovery-stamp">初発見</b>';heading.after(discovery);
 $('btn-gacha-skip').textContent='演出スキップ・結果をまとめて見る';$('btn-gacha-close').textContent='召喚に戻る';
 const wallet=document.createElement('p');wallet.className='workshop-wallet';wallet.setAttribute('role','status');$('screen-gacha').querySelector('.workshop-seal').after(wallet);

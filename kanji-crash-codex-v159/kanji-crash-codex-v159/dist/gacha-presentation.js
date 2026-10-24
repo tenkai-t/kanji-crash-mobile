@@ -33,22 +33,22 @@ function finishGachaResults(){
  const fresh=view.firstFlags.filter(Boolean).length,reacquired=view.results.filter(r=>!r.duplicate&&(r.firstDiscovery===false||r.fragmentExchange)).length;
  document.getElementById('gacha-animation-sub').textContent=`${view.results.length}文字獲得・初発見 ${fresh}文字・再入手 ${reacquired}文字`+(view.results.some(r=>r.fragments)?`・文字のかけら＋${view.results.reduce((n,r)=>n+(r.fragments||0),0)}個`:view.results.some(r=>r.fragmentExchange)?'・かけら交換':'');
  const skip=document.getElementById('btn-gacha-skip');if(document.activeElement===skip)document.getElementById('btn-gacha-close').focus({preventScroll:true});
- skip.hidden=true;document.getElementById('modal-gacha').classList.remove('is-summoning','is-discovery-active');refreshGachaRepeat();
+ skip.hidden=true;document.getElementById('modal-gacha').classList.remove('is-summoning');refreshGachaRepeat();
  document.getElementById('gacha-reveal-progress').textContent='文字をタップすると能力を確認できます';
  if(!view.userSelected)selectGachaResult(view.results.reduce((best,r,n)=>r.item.jis>view.results[best].item.jis?n:best,0));
 }
-function showGachaDiscovery(index){
+function showGachaDiscovery(index,sound=true){
  const view=gachaPresentation,stage=document.getElementById('gacha-discovery');if(!view||!stage)return;
- clearTimeout(view.discoveryTimer);view.discoveryActive=true;stage.hidden=false;stage.classList.remove('is-written');
+ clearTimeout(view.discoveryTimer);view.discoveryActive=sound;stage.hidden=false;stage.classList.remove('is-written');
  document.getElementById('gacha-discovery-char').textContent=view.results[index].item.char;
  document.getElementById('gacha-discovery-reading').textContent=view.results[index].item.ruby||'読み未装備';
  const first=view.firstFlags[index],label=first?'初発見':view.results[index].duplicate?'重複':'再入手';
  document.getElementById('gacha-discovery-meta').textContent=getCharacterTypeLabel(view.results[index].item)+'・'+label;
  document.getElementById('gacha-reveal-eyebrow').textContent=first?'新たな文字との出会い':'選んだ文字が目を覚ます';
  document.getElementById('gacha-reveal-stamp').textContent=first?'初発見':view.results[index].duplicate?'所持済':'再入手';
- stage.dataset.jis=String(view.results[index].item.jis);void stage.offsetWidth;stage.classList.add('is-written');
- document.getElementById('modal-gacha').classList.add('is-discovery-active');playSound(first?'discovery':view.results[index].item.jis>=3?'rare':'reveal');
- view.discoveryTimer=setTimeout(()=>{if(gachaPresentation!==view)return;view.discoveryActive=false;stage.hidden=true;stage.classList.remove('is-written');document.getElementById('modal-gacha').classList.remove('is-discovery-active');finishGachaResults();},gachaPacing.discovery);gachaTimeouts.push(view.discoveryTimer);
+ stage.dataset.jis=String(view.results[index].item.jis);void stage.offsetWidth;if(sound)stage.classList.add('is-written');
+ document.getElementById('modal-gacha').classList.add('is-discovery-active');if(sound)playSound(first?'discovery':view.results[index].item.jis>=3?'rare':'reveal');
+ if(sound){view.discoveryTimer=setTimeout(()=>{if(gachaPresentation!==view)return;view.discoveryActive=false;finishGachaResults();},gachaPacing.discovery);gachaTimeouts.push(view.discoveryTimer);}
 }
 function revealGachaResult(index,sound=true){
  const view=gachaPresentation;if(!view||view.revealed.has(index))return;
@@ -87,7 +87,7 @@ window.showGachaResults=(results,type)=>{
   const b=document.createElement('button'),v=getJisVisual(r.item.jis);b.type='button';b.className='gacha-result-card';b.dataset.gachaIndex=String(n);b.dataset.jis=String(r.item.jis);b.setAttribute('aria-pressed','false');const back=KanjiSummonVisuals.back(r.item);b.dataset.pattern=back.pattern;b.dataset.first=String(gachaPresentation.firstFlags[n]);b.setAttribute('aria-label',`${n+1}文字目：${back.label}。開封して能力を確認`);
   b.innerHTML=`<span class="gacha-card-seal" aria-hidden="true"><i class="gacha-back-pattern"></i><strong>${r.fragmentExchange?'換':back.seal}</strong><small>${back.label}</small></span><span class="gacha-card-face" aria-hidden="true"><span class="gacha-tier ${v.char}">${getCharacterTypeLabel(r.item)}</span><span class="gacha-glyph kanji-font ${v.char}">${r.item.char}</span><span class="gacha-card-state">${(gachaPresentation.firstFlags[n]?'NEW<br>初発見':gachaDiscoveryLabel(r)==='NEW・初発見'?'再入手':gachaDiscoveryLabel(r))+(r.fragments?'<span class="gacha-card-fragments">かけら＋'+r.fragments+'</span>':'')}</span></span>`;
   const view=gachaPresentation;
-  b.onclick=()=>{if(gachaPresentation!==view)return;view.userSelected=true;dismissGachaDiscovery();if(results.length!==10){gachaTimeouts.forEach(clearTimeout);gachaTimeouts=[];}if(!view.revealed.has(n))revealGachaResult(n);selectGachaResult(n);finishGachaResults();};grid.append(b);
+  b.onclick=()=>{if(gachaPresentation!==view)return;view.userSelected=true;dismissGachaDiscovery();if(results.length!==10){gachaTimeouts.forEach(clearTimeout);gachaTimeouts=[];}if(!view.revealed.has(n))revealGachaResult(n);else showGachaDiscovery(n,false);selectGachaResult(n);finishGachaResults();};grid.append(b);
  });
  modal.classList.remove('hidden');modal.classList.add('is-summoning');playSound('summon');
  if(results.length!==10){if(gachaReducedMotion())skipGachaAnimation();else {const view=gachaPresentation;gachaTimeouts.push(setTimeout(()=>{if(gachaPresentation===view)revealGachaResult(0);},1000));}}
@@ -103,6 +103,6 @@ document.getElementById('modal-gacha').addEventListener('keydown',e=>{
 });
 matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change',e=>{if(e.matches&&gachaPresentation?.results.length!==10)skipGachaAnimation();});
 
-document.addEventListener('visibilitychange',()=>{if(document.hidden&&gachaPresentation){if(gachaPresentation.results.length===10){dismissGachaDiscovery();finishGachaResults();}else skipGachaAnimation();}});
+document.addEventListener('visibilitychange',()=>{if(document.hidden&&gachaPresentation){if(gachaPresentation.results.length===10){clearTimeout(gachaPresentation.discoveryTimer);gachaPresentation.discoveryActive=false;window.KanjiGameAudio?.stop();finishGachaResults();}else skipGachaAnimation();}});
 
 new MutationObserver(()=>{const modal=document.getElementById('modal-gacha');if(gachaPresentation&&modal.classList.contains('hidden'))clearGachaPresentation();}).observe(document.getElementById('modal-gacha'),{attributes:true,attributeFilter:['class']});

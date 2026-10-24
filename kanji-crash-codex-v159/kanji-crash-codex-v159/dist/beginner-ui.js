@@ -51,7 +51,7 @@
   const card=$('beginner-next');card.hidden=!newcomer||!!progress.guideDismissed;if(card.hidden)return;let title,note,label;
   if(!progress.cpuWins){title='まずはCPU戦で遊ぼう';note='相手を確認し、スタートを押して対局。最初の3文字で遊べます。';label='通常CPU戦を準備';}
   else if(gameState.inventory.length<=3){title='報酬の文で文字を召喚';note='新しい文字を集めて、編成の選択肢を増やそう。';label='召喚へ';}
-  else{title='新しい文字で編成';note='おすすめ編成で3文字を選び、文字の詳細からルビを試そう。';label='編成を見る';}
+  else{title='新しい文字で編成';note='おすすめ編成で3文字を選び、文字をタップして威力・重量・装備中のルビ能力を確認しよう。';label='編成を見る';}
   $('beginner-next-title').textContent=title;$('beginner-next-note').textContent=note;$('btn-beginner-next').textContent=label;
  };
  window.takeBeginnerNextStep=()=>{if(!progress.cpuWins){selectCpuDifficulty('normal');startMatchmaking();}else if(gameState.inventory.length<=3)switchTab('gacha');else{switchTab('deck');setLettersView('team');}};

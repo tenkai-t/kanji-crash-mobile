@@ -85,3 +85,12 @@
 #modal-gacha .gacha-heading{grid-column:1/-1}
 @media(min-width:680px) and (max-height:600px){#modal-gacha .gacha-content{grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:10px 16px}}
 @media(max-width:350px),(max-height:620px){#modal-gacha .gacha-content{gap:9px}}
+
+/* Central reveal ambience stays with the selected card until the next choice. */
+#modal-gacha .gacha-discovery:not([data-jis="1"])::after{animation:summon-ambient-rays 6s ease-in-out infinite alternate}
+#modal-gacha .gacha-discovery[data-jis="4"]::after{background:repeating-conic-gradient(from 15deg,transparent 0deg 22deg,#ffdf8b22 25deg 33deg,transparent 36deg 60deg)}
+#modal-gacha .gacha-discovery[data-jis="4"]::before{inset:0;border:0;border-radius:0;background:radial-gradient(circle at 12% 28%,#fff1b5 0 1px,transparent 3px),radial-gradient(circle at 30% 76%,#ffe6a0 0 2px,transparent 4px),radial-gradient(circle at 48% 15%,#fff8da 0 1px,transparent 3px),radial-gradient(circle at 66% 66%,#ffe6a0 0 2px,transparent 4px),radial-gradient(circle at 85% 30%,#fff4c8 0 2px,transparent 4px),radial-gradient(circle at 94% 82%,#ffe6a0 0 1px,transparent 3px);animation:summon-gold-particles 4s ease-in-out infinite alternate;pointer-events:none}
+@keyframes summon-ambient-rays{from{opacity:.3;transform:rotate(-12deg) scale(1)}to{opacity:.85;transform:rotate(12deg) scale(1.08)}}
+@keyframes summon-gold-particles{from{opacity:.45;transform:translateY(10px)}to{opacity:1;transform:translateY(-10px)}}
+@media(prefers-reduced-motion:reduce){#modal-gacha .gacha-discovery::before,#modal-gacha .gacha-discovery::after{animation:none!important}}
+#modal-gacha.is-skipped .gacha-discovery::before,#modal-gacha.is-skipped .gacha-discovery::after{animation:none!important}

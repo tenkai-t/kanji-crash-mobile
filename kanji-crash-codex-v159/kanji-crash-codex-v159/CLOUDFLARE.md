@@ -1,5 +1,16 @@
 # Cloudflare Workers + D1 テスト環境
 
+## 新サイトのギフト（2026-10-24）
+
+旧Sitesのデータ引き継ぎは行わず、ユーザーの依頼により新サイト用ギフト
+`KH-START-7M4Q` を追加します。500,000文と10,000段位ポイント（CPUの
+`gameState.rating`）を現在値に加算します。対人RP・昇段試験合格状態は変更しません。
+入力場所は既存の「記録」内の「ギフトコード」。`?gift=KH-START-7M4Q` でも確認画面を開けます。
+既存の保存内 `giftClaims` と端末マーカーによる1回限りの受け取りを維持します。
+新規セーブやストレージ消去をまたいだ人物単位の制限ではありません。
+旧ギフトのID・報酬・受取履歴は変更しません。旧Sitesへはデプロイしません。
+追加確認: `node tests/new-site-gift.cjs`。実ブラウザー操作は別途確認します。
+
 この手順は当初 `kanji-crash-mobile-test` と空の
 `kanji-crash-mobile-test-db` を準備したものです。Workerの希望名は現在
 `kanji-crash` です。既存Sitesの公開先・本番DBは変更しません。

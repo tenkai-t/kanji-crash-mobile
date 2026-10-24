@@ -1,0 +1,21 @@
+const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
+const current=fs.readFileSync('dist/game-audio.js','utf8');
+function fixture(source=current,{gate=false,fx,bgm,failFetch=false}={}){
+ const listeners=new Map(),nodes=[],store=new Map(),f={resumeCalls:0,fetches:[],contexts:[],activation:null};if(fx)store.set('kanji_crash_sound_preferences_v1',JSON.stringify(fx));if(bgm)store.set('kanji_crash_bgm_preferences_v1',JSON.stringify(bgm));
+ const add=(k,fn)=>{if(!listeners.has(k))listeners.set(k,[]);listeners.get(k).push(fn);};const p=()=>({value:0,events:[],setValueAtTime(v,t){this.value=v;this.events.push(['set',v,t]);},linearRampToValueAtTime(v,t){this.value=v;this.events.push(['ramp',v,t]);},exponentialRampToValueAtTime(v,t){this.value=v;},cancelScheduledValues(){}});
+ const node=kind=>{const n={kind,gain:p(),frequency:p(),threshold:p(),knee:p(),ratio:p(),attack:p(),release:p(),connections:[],connect(to){this.connections.push(to);},disconnect(){this.disconnected=true;},start(t){this.started=true;this.startTime=t;},stop(t){this.stopped=true;this.stopTime=t;}};nodes.push(n);return n;};
+ class C{constructor(){this.state='suspended';this.currentTime=0;this.destination={};f.ctx=this;f.contexts.push(this);this.events={};}createGain(){return node('gain');}createDynamicsCompressor(){return node('compressor');}createOscillator(){return node('fx');}createBufferSource(){return node('music');}async decodeAudioData(){return {duration:38.4};}resume(){f.resumeCalls++;if(gate&&!['click','touchend','keydown'].includes(f.activation))return Promise.reject(Error('activation'));this.state='running';return Promise.resolve();}suspend(){this.state='suspended';return Promise.resolve();}addEventListener(k,fn){this.events[k]=fn;}}
+ const button={disabled:false,textContent:'テスト',getAttribute:()=>'',closest:()=>null};const env={AudioContext:C,Date,document:{hidden:false,addEventListener:add,getElementById:()=>({hidden:false})},addEventListener:add,localStorage:{getItem:k=>store.get(k),setItem:(k,v)=>store.set(k,v)},fetch:async url=>{f.fetches.push(url);if(failFetch)throw Error('offline');return{ok:true,arrayBuffer:async()=>new ArrayBuffer(4)}}};env.window=env;vm.runInNewContext(source,env);f.env=env;f.api=env.KanjiGameAudio;f.nodes=nodes;f.store=store;f.fire=(type,values={})=>{f.activation=type;for(const fn of listeners.get(type)||[])fn({isTrusted:true,target:{closest:()=>button},...values});f.activation=null;};return f;
+}
+const flush=()=>new Promise(resolve=>setImmediate(resolve));
+(async()=>{
+ const f=fixture(),a=f.api;f.fire('click');await flush();assert.equal(a.activeMusic,1);assert(a.play('launch'));
+ f.env.document.hidden=true;f.fire('visibilitychange');assert.equal(f.ctx.state,'suspended');assert.equal(a.activeVoices,0);assert.equal(a.activeMusic,0);
+ f.env.document.hidden=false;f.fire('visibilitychange');await flush();assert.equal(f.ctx.state,'running');assert.equal(a.activeMusic,1);assert.equal(a.activeVoices,0,'no queued effects replay');
+ f.fire('pagehide');assert.equal(f.ctx.state,'suspended');f.fire('pageshow');await flush();assert.equal(a.activeMusic,1);assert.equal(f.contexts.length,1);
+ a.setExporting(true);f.env.document.hidden=true;f.fire('visibilitychange');f.env.document.hidden=false;f.fire('visibilitychange');await flush();assert.equal(a.activeMusic,0,'export stays isolated');a.setExporting(false);
+ const locked=fixture();locked.fire('pageshow');assert.equal(locked.contexts.length,0,'never start without earlier interaction');
+ const muted=fixture(current,{fx:{enabled:false,volume:0},bgm:{enabled:false,volume:0}});muted.fire('click');muted.fire('pagehide');muted.fire('pageshow');assert.equal(muted.contexts.length,0);
+ const denied=fixture(current,{gate:true});denied.fire('click');await flush();denied.fire('pagehide');denied.fire('pageshow');await flush();assert.equal(denied.api.status().ready,false);denied.fire('click');await flush();assert.equal(denied.api.activeMusic,1,'gesture retry still works when Safari refuses auto-resume');
+ console.log('PASS previous audio session resumes after visibility/pageshow, no stale effects, muted/locked startup respected, export isolation and gesture fallback (mock Safari activation).');
+})().catch(e=>{console.error(e);process.exitCode=1;});

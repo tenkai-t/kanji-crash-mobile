@@ -19,17 +19,24 @@ async function verify(blob,type){
  async function webm(start,end,parent=0,depth=0){if(depth>5)return false;while(start<end&&budget-->0){const b=await read(start,16),id=vint(b,0,true);if(!id)return false;const size=vint(b,id.length);if(!size)return false;const payload=start+id.length+size.length,next=size.value===Infinity?end:payload+size.value;if(!Number.isSafeInteger(next)||next>end||next<=start)return false;if(parent===0xae&&id.value===0x83&&next-payload<=8&&uint(await read(payload,next-payload))===2)return true;const child=(!parent&&id.value===0x18538067)||(parent===0x18538067&&id.value===0x1654ae6b)||(parent===0x1654ae6b&&id.value===0xae);if(child&&await webm(payload,next,id.value,depth+1))return true;start=next;}return false;}
  try{return type==='video/mp4'?await mp4(0,blob.size):type==='video/webm'?await webm(0,blob.size):false;}catch{return false;}
 }
-function prepare(env=globalThis,volume=60){
+function prepare(env=globalThis,volume=60,options={}){
  const Constructor=env.AudioContext||env.webkitAudioContext;if(!Constructor)throw Error('この環境では音声を作成できません。「ゲームの音を入れる」をオフにして保存できます。');
  let counted=false,rejectReady;const cancelled=new Promise((resolve,reject)=>{rejectReady=reject;});cancelled.catch(()=>{});
- let ctx,destination,mix,level,compressor,limiter,timeout=0,closed=false,begun=false,epoch=0,cursor=0,events=[],failure=null,remaining=new Set();const gain=Math.min(100,Math.max(0,Number(volume)||0))/100;
- function close(){if(closed)return;closed=true;if(counted)sessions=Math.max(0,sessions-1);rejectReady(Object.assign(Error('cancelled'),{name:'AbortError'}));env.clearTimeout(timeout);for(const voice of remaining){voice.osc.onended=null;try{voice.osc.stop();}catch{}try{voice.osc.disconnect();voice.gain.disconnect();}catch{}}remaining.clear();for(const node of [mix,level,compressor,limiter,destination])try{node?.disconnect();}catch{}for(const track of destination?.stream.getTracks()||[])try{track.stop();}catch{}if(ctx&&ctx.state!=='closed')try{Promise.resolve(ctx.close()).catch(()=>{});}catch{}events=[];}
+ let ctx,destination,mix,level,compressor,limiter,musicSource,musicLevel,musicBuffer,musicRequest,timeout=0,closed=false,begun=false,epoch=0,cursor=0,events=[],failure=null,remaining=new Set();const gain=Math.min(100,Math.max(0,Number(volume)||0))/100;
+ function close(){if(closed)return;closed=true;if(counted)sessions=Math.max(0,sessions-1);rejectReady(Object.assign(Error('cancelled'),{name:'AbortError'}));env.clearTimeout(timeout);musicRequest?.abort();if(musicSource){try{musicSource.stop();}catch{}try{musicSource.disconnect();}catch{}musicSource=null;}try{musicLevel?.disconnect();}catch{}musicBuffer=null;for(const voice of remaining){voice.osc.onended=null;try{voice.osc.stop();}catch{}try{voice.osc.disconnect();voice.gain.disconnect();}catch{}}remaining.clear();for(const node of [mix,level,compressor,limiter,destination])try{node?.disconnect();}catch{}for(const track of destination?.stream.getTracks()||[])try{track.stop();}catch{}if(ctx&&ctx.state!=='closed')try{Promise.resolve(ctx.close()).catch(()=>{});}catch{}events=[];}
  try{
   ctx=new Constructor();sessions++;counted=true;destination=ctx.createMediaStreamDestination();if(!destination.stream.getAudioTracks().length)throw Error('audio-track');
   mix=ctx.createGain();mix.gain.value=.32;level=ctx.createGain();level.gain.value=gain;compressor=ctx.createDynamicsCompressor();compressor.threshold.value=-12;compressor.knee.value=6;compressor.ratio.value=12;compressor.attack.value=.003;compressor.release.value=.08;
   limiter=ctx.createWaveShaper();const curve=new Float32Array(4097);for(let i=0;i<curve.length;i++){const x=i*2/(curve.length-1)-1;curve[i]=.8*Math.tanh(2*x)/Math.tanh(2);}limiter.curve=curve;limiter.oversample='2x';mix.connect(level);level.connect(compressor);compressor.connect(limiter);limiter.connect(destination);
   // Resume inside the user's original button click, before loading/export awaits.
-  const resume=Promise.resolve(ctx.resume());const ready=Promise.race([cancelled,resume.then(()=>{if(closed)throw Object.assign(Error('音声の準備を中止しました。'),{name:'AbortError'});if(ctx.state!=='running')throw Error('audio-suspended');}),new Promise((resolve,reject)=>{timeout=env.setTimeout(()=>reject(Error('audio-timeout')),10000);})]).then(()=>env.clearTimeout(timeout)).catch(error=>{close();throw Object.assign(Error(error.name==='AbortError'?'音声の準備を中止しました。':'音声を開始できません。「ゲームの音を入れる」をオフにして保存できます。'),{name:error.name==='AbortError'?'AbortError':'Error'});});ready.catch(()=>{});
+  const resume=Promise.resolve(ctx.resume());
+  const musicReady=options.bgm===true?(async()=>{try{
+   if(env.AbortController)musicRequest=new env.AbortController();
+   const response=await env.fetch('/audio/battle-v158.wav',{credentials:'same-origin',...(musicRequest?{signal:musicRequest.signal}:{})});
+   if(!response.ok)throw Error('bgm-http');const bytes=await response.arrayBuffer();if(closed)throw Object.assign(Error('cancelled'),{name:'AbortError'});
+   const buffer=await ctx.decodeAudioData(bytes);if(closed)throw Object.assign(Error('cancelled'),{name:'AbortError'});musicBuffer=buffer;
+  }catch(error){throw Object.assign(Error(error.message),{name:error.name,code:'BGM_LOAD_FAILED'});}})():Promise.resolve();
+  const ready=Promise.race([cancelled,Promise.all([resume.then(()=>{if(closed)throw Object.assign(Error('音声の準備を中止しました。'),{name:'AbortError'});if(ctx.state!=='running')throw Error('audio-suspended');}),musicReady]),new Promise((resolve,reject)=>{timeout=env.setTimeout(()=>reject(Error('audio-timeout')),10000);})]).then(()=>env.clearTimeout(timeout)).catch(error=>{close();throw Object.assign(Error(error.name==='AbortError'?'音声の準備を中止しました。':error.code==='BGM_LOAD_FAILED'?'BGMを読み込めませんでした。「BGMを入れる」をオフにして再試行できます。':'音声を開始できません。「ゲームの音を入れる」をオフにして保存できます。'),{name:error.name==='AbortError'?'AbortError':'Error'});});ready.catch(()=>{});
   function elapsed(){if(closed||!begun||ctx.state!=='running')throw Error('音声が中断されました。画面を開いたまま再試行するか、音をオフにしてください。');if(failure)throw failure;return Math.max(0,(ctx.currentTime-epoch)*1000);}
   function voice(event){const recipe=tones[event.type],when=epoch+event.ms/1000,end=when+recipe.duration;
    const overlapping=[...remaining].filter(v=>v.when<end&&v.end>when);if(overlapping.length>=4&&event.type!=='win'&&event.type!=='lose')return;
@@ -37,7 +44,12 @@ function prepare(env=globalThis,volume=60){
    g.gain.setValueAtTime(0,when);g.gain.linearRampToValueAtTime(recipe.gain,when+.005);g.gain.exponentialRampToValueAtTime(.01,end-.005);g.gain.linearRampToValueAtTime(0,end);osc.connect(g);g.connect(mix);osc.onended=()=>{remaining.delete(entry);osc.onended=null;osc.disconnect();g.disconnect();};osc.start(when);osc.stop(end);
   }
   function advance(){const ms=elapsed();while(cursor<events.length&&events[cursor].ms<=ms+200){const event=events[cursor++];if(event.ms<ms-100)throw Error('音と映像の同期が遅れたため中止しました。「軽量」または音をオフにして再試行してください。');voice({...event,ms:Math.max(ms,event.ms)});}}
-  return {ready,verify,stream:destination.stream,volume:gain,close,elapsed,advance,begin(record,intro=800){if(closed||begun||ctx.state!=='running')throw Error('音声を開始できません。音をオフにして再試行できます。');events=timeline(record,intro);epoch=ctx.currentTime;begun=true;advance();},isLive:()=>!closed&&ctx.state==='running'&&destination.stream.getAudioTracks().some(t=>t.readyState==='live'),markFailed:error=>{failure=error;}};
+  return {ready,verify,stream:destination.stream,volume:gain,close,elapsed,advance,begin(record,intro=800){if(closed||begun||ctx.state!=='running')throw Error('音声を開始できません。音をオフにして再試行できます。');events=timeline(record,intro);epoch=ctx.currentTime;if(musicBuffer){
+   musicSource=ctx.createBufferSource();musicSource.buffer=musicBuffer;musicSource.loop=true;musicLevel=ctx.createGain();
+   const end=epoch+(record.turns.reduce((sum,turn)=>sum+turn.duration,0)+3000)/1000;
+   musicLevel.gain.setValueAtTime(0,epoch);musicLevel.gain.linearRampToValueAtTime(.16,epoch+.3);musicLevel.gain.setValueAtTime(.16,Math.max(epoch+.3,end-.6));musicLevel.gain.linearRampToValueAtTime(0,end);
+   musicSource.connect(musicLevel);musicLevel.connect(level);musicSource.start(epoch);
+  }begun=true;advance();},isLive:()=>!closed&&ctx.state==='running'&&destination.stream.getAudioTracks().some(t=>t.readyState==='live'),markFailed:error=>{failure=error;}};
  }catch{close();throw Error('音声を準備できません。「ゲームの音を入れる」をオフにして保存できます。');}
 }
 return {tones,timeline,verify,prepare,get busy(){return sessions>0;}};

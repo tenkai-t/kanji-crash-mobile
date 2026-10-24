@@ -1,0 +1,20 @@
+const assert=require('node:assert/strict'),A=require('../dist/replay-video-audio.js');
+function fixture({suspended=false,hold=false}={}){let seq=0;const timers=new Map(),nodes=[],tracks=[{readyState:'live',stop(){this.readyState='ended';}}];function param(){return{value:0,calls:[],setValueAtTime(...a){this.calls.push(['set',...a]);},exponentialRampToValueAtTime(...a){this.calls.push(['exp',...a]);},linearRampToValueAtTime(...a){this.calls.push(['linear',...a]);}};}function node(kind){const n={kind,connections:[],disconnected:false,connect(to){this.connections.push(to);return to;},disconnect(){this.disconnected=true;},gain:param(),frequency:param(),threshold:param(),knee:param(),ratio:param(),attack:param(),release:param(),start(t){this.started=t;},stop(t){this.stopped=t;}};nodes.push(n);return n;}
+class Context{constructor(){this.currentTime=0;this.state='suspended';this.destination={kind:'speakers'};Context.last=this;}createMediaStreamDestination(){const n=node('stream');n.stream={getAudioTracks:()=>tracks,getTracks:()=>tracks};return n;}createGain(){return node('gain');}createDynamicsCompressor(){return node('compressor');}createWaveShaper(){return node('limiter');}createOscillator(){return node('osc');}resume(){this.resumeCalled=true;if(hold)return new Promise(()=>{});if(!suspended)this.state='running';return Promise.resolve();}close(){this.state='closed';return Promise.resolve();}}
+return{env:{AudioContext:Context,setTimeout:(fn,ms)=>{timers.set(++seq,{fn,ms});return seq;},clearTimeout:id=>timers.delete(id)},nodes,tracks,timers,get context(){return Context.last;}};}
+
+function withMusic(f,{fail=false,pending=false}={}){
+ const calls=[],sources=[],buffer={duration:30};let resolveFetch;f.env.AbortController=AbortController;
+ f.env.fetch=(url,options)=>{calls.push({url,options});if(pending)return new Promise(resolve=>resolveFetch=resolve);return Promise.resolve({ok:!fail,arrayBuffer:async()=>new ArrayBuffer(4)});};
+ f.env.AudioContext.prototype.decodeAudioData=async()=>buffer;
+ f.env.AudioContext.prototype.createBufferSource=function(){const n={connections:[],connect(to){this.connections.push(to);},start(t){this.started=t;},stop(){this.stopped=true;},disconnect(){this.disconnected=true;}};sources.push(n);return n;};
+ return{calls,sources,buffer,resolve:()=>resolveFetch?.({ok:true,arrayBuffer:async()=>new ArrayBuffer(4)})};
+}
+const record={initial:[0,1,[]],final:[0,1,[]],turns:[{duration:100,events:[],frames:[]}],side:0,winner:0};
+(async()=>{
+ const f=fixture(),m=withMusic(f),audio=A.prepare(f.env,60,{bgm:true});assert(f.context.resumeCalled);await audio.ready;assert.equal(m.calls[0].url,'/audio/battle-v158.wav');assert.equal(m.calls[0].options.credentials,'same-origin');assert.equal(m.sources.length,0);audio.begin(record);assert.equal(m.sources.length,1);assert.equal(m.sources[0].loop,true);assert.equal(m.sources[0].buffer,m.buffer);assert.equal(m.sources[0].started,0);assert(f.nodes.every(n=>!n.connections.includes(f.context.destination)));assert(m.sources[0].connections.every(n=>n!==f.context.destination));audio.close();audio.close();assert(m.sources[0].stopped&&m.sources[0].disconnected);assert(m.calls[0].options.signal.aborted);assert(!A.busy);
+ const muted=fixture(),mm=withMusic(muted),silentBgm=A.prepare(muted.env,60,{bgm:false});await silentBgm.ready;silentBgm.begin(record);assert.equal(mm.calls.length,0);assert.equal(mm.sources.length,0);silentBgm.close();
+ const failed=fixture();withMusic(failed,{fail:true});const bad=A.prepare(failed.env,60,{bgm:true});await assert.rejects(bad.ready,/BGMを読み込めません/);assert(!A.busy);
+ const pending=fixture(),pm=withMusic(pending,{pending:true}),aborted=A.prepare(pending.env,60,{bgm:true}),rejected=assert.rejects(aborted.ready,{name:'AbortError'});aborted.close();pm.resolve();await rejected;await new Promise(resolve=>setImmediate(resolve));assert.equal(pm.sources.length,0);assert.equal(pending.context.state,'closed');assert(!A.busy);
+ console.log('PASS BGM fetch/decode readiness, audio-clock loop, output isolation, exact optional behavior, failed load, cancellation and cleanup.');
+})().catch(e=>{console.error(e);process.exitCode=1;});

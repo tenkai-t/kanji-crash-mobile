@@ -135,3 +135,22 @@ html[data-workshop-light=true] #modal-gacha *,html[data-workshop-light=true] #mo
 @media(max-width:480px){#login-bonus-days li:last-child{grid-column:span 2}}
 @media(max-height:480px){.login-bonus-intro{display:none}.login-bonus-shell>.inventory-note{font-size:11px;margin:4px 0}#login-bonus-days{margin:6px 0}.login-bonus-footer{padding-top:5px;gap:5px}#login-bonus-status{min-height:24px}}
 #btn-login-bonus-claim{background:#d8bd7f;color:#172334;border:1px solid #ecd6a4;font-weight:700}#btn-login-bonus-claim:disabled{background:#35404a;color:#c1c9ce;border-color:#68747c}
+
+/* A single summon uses one reserved footer row before and after opening. */
+#modal-gacha[data-count="1"] .gacha-footer{height:156px;min-height:156px;grid-template-columns:minmax(0,1fr) 84px;grid-template-rows:36px 100px;gap:8px;align-content:start}
+#modal-gacha[data-count="1"] .gacha-footer p{grid-column:1/-1;grid-row:1;max-height:36px;overflow:auto;margin:0}
+#modal-gacha[data-count="1"] .gacha-footer #btn-gacha-skip{grid-column:1;grid-row:2;align-self:start;height:44px;padding:6px;font-size:13px}
+#modal-gacha[data-count="1"] .gacha-footer #btn-gacha-single-repeat{grid-column:1;grid-row:2;align-self:end;height:48px;margin:0;min-width:0;white-space:normal;overflow-wrap:anywhere;font-size:13px;padding:5px 8px;line-height:1.4}
+#modal-gacha[data-count="1"] .gacha-footer #btn-gacha-close{grid-column:2;grid-row:2;height:100px;margin:0;white-space:normal;padding:8px}
+/* Long rewards and larger type must never force a flex/grid item outside its frame. */
+.login-bonus-entry{min-width:0;flex-wrap:wrap}.login-bonus-entry>div{min-width:0;flex:1 1 180px}.login-bonus-entry p{overflow-wrap:anywhere}
+#btn-login-bonus-open{min-width:0;max-width:100%;white-space:normal;overflow-wrap:anywhere;line-height:1.5;height:auto;padding:10px 14px;flex:0 1 auto}
+#modal-login-bonus button{min-width:0;max-width:100%;height:auto;white-space:normal;overflow-wrap:anywhere;line-height:1.5;padding:10px 14px}
+#modal-login-bonus .editor-title{min-width:0;gap:12px;align-items:flex-start}#login-bonus-title{min-width:0;overflow-wrap:anywhere}
+#login-bonus-days{overflow-anchor:none;grid-auto-rows:minmax(154px,auto)}#login-bonus-days li{overflow-anchor:none;min-width:0;border-width:2px}
+#login-bonus-days p,#login-bonus-days h3{min-width:0;max-width:100%;white-space:normal;overflow-wrap:anywhere;line-height:1.6}
+.login-bonus-day-state{min-height:3.2em;line-height:1.6;overflow-wrap:anywhere}
+#login-bonus-status{height:4.8em;min-height:0;overflow-y:auto;overflow-wrap:anywhere;line-height:1.6;overscroll-behavior:contain;overflow-anchor:none}
+.login-bonus-footer{min-width:0;overflow-anchor:none}.login-bonus-shell{overflow-anchor:none}
+@media(max-height:440px){.login-bonus-shell{overflow-y:auto}.login-bonus-shell #login-bonus-days{min-height:154px;flex:none;max-height:240px}.login-bonus-footer{flex:none}}
+.cpu-rank-list-row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 12px;border-bottom:1px solid #64748b44;padding:12px 0;min-width:0}.cpu-rank-list-row h4{display:flex;align-items:center;gap:8px;color:#e5ce96}.cpu-rank-list-row .cpu-rank-range{min-width:0;overflow-wrap:anywhere;color:#d1d9e1}.cpu-rank-list-row>.inventory-note{width:100%;line-height:1.7;overflow-wrap:anywhere}

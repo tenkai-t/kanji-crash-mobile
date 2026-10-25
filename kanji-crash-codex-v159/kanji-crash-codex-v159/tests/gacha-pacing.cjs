@@ -43,7 +43,7 @@ for(const type of ['normal','rare','element']){
  const g=fixture();g.c.showGachaResults(results(true),'normal');g.get('gacha-result-grid').children[2].onclick();g.doc.hidden=true;g.listeners.visibilitychange();assert.equal(g.revealed(),1,'backgrounding preserves unopened cards');assert.equal(g.timers.size,0);g.advance(30000);assert.equal(g.revealed(),1);assert(!g.get('gacha-discovery').hidden,'returning from background keeps the central result');
 }
 {
- const f=fixture();f.c.showGachaResults(results(true).slice(0,1),'normal');f.advance(999);assert.equal(f.revealed(),0);f.advance(1000);assert.equal(f.revealed(),1);assert(f.c.isGachaPresentationBusy());f.advance(2800);assert(!f.c.isGachaPresentationBusy());assert(!f.get('gacha-discovery').hidden,'single result stays visible without blocking another draw');
- const g=fixture(true);g.c.showGachaResults(results(true).slice(0,1),'normal');assert.equal(g.revealed(),1);assert.equal(g.timers.size,0);
+ for(const reduced of [false,true]){const f=fixture(reduced),before=JSON.stringify(f.c.gameState);f.c.showGachaResults(results(true).slice(0,1),'normal');f.advance(30000);assert.equal(f.revealed(),0,'single also waits for a tap');assert.equal(f.timers.size,0);f.doc.hidden=true;f.listeners.visibilitychange();assert.equal(f.revealed(),0,'background never opens a single card');f.doc.hidden=false;f.get('gacha-result-grid').children[0].onclick();assert.equal(f.revealed(),1);f.advance(31800);assert(!f.c.isGachaPresentationBusy());assert(!f.get('gacha-discovery').hidden);f.get('gacha-result-grid').children[0].onclick();assert.equal(f.revealed(),1);assert.equal(JSON.stringify(f.c.gameState),before);}
+
 }
-console.log('PASS manual ten-card order, no auto-open, one-card discovery/review, all-open idempotency, close/replacement cancellation, reduced motion/background choice, single-draw compatibility and unchanged game state (fake clock/DOM).');
+console.log('PASS manual ten-card order, no auto-open, one-card discovery/review, all-open idempotency, close/replacement cancellation, reduced motion/background choice, single-draw manual opening and unchanged game state (fake clock/DOM).');

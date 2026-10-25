@@ -471,8 +471,8 @@ body[data-active-tab="battle"] > header{display:none}
 <script src="/character-font.js?v=154"></script>
 <link rel="stylesheet" href="/tutorial-safe-area.css?v=155">
 <link rel="stylesheet" href="/replay-video.css?v=156">
-<link rel="stylesheet" href="/workshop-atmosphere.css?v=20261025-popup2">
-<script src="/game-audio.js?v=20261025-popup2"></script>
+<link rel="stylesheet" href="/workshop-atmosphere.css?v=20261025-ipad1">
+<script src="/game-audio.js?v=20261025-ipad1"></script>
 </head>
 <body data-active-tab="battle" class="h-screen w-screen flex flex-col justify-between overflow-hidden bg-slate-950">
 
@@ -915,12 +915,8 @@ body[data-active-tab="battle"] > header{display:none}
                 <section class="glass-panel rounded-2xl p-4 space-y-3" aria-labelledby="promotion-heading"><h3 id="promotion-heading" class="text-amber-300 font-bold">CPU段位・初回昇格試験</h3><p class="promotion-help">必要段位ポイント・ボス撃破・条件付きミッションの3条件で昇格。試験は各段位の初回だけです。</p><details class="promotion-help"><summary>試験のルール・引き継ぎ</summary><p>自分・相手ともLv.10。現在の装備ルビを使い、ボスの威力・重量は強化されています。試験で段位ポイント・経験値は変動しません。昇格待ちでもポイントは貯まり、獲得した段位は下がりません。更新前に到達した段位は合格済みとして引き継ぎます。</p></details><div id="rank-trials"></div></section>
                 <div class="glass-panel rounded-2xl p-4 space-y-3"><h3 class="text-amber-300 font-bold">オンラインランキング・上位10人</h3><label for="leaderboard-rule">ランキングの種類</label><select id="leaderboard-rule" onchange="loadLeaderboard()"><option value="balanced">対人RP・統一ルール</option><option value="free">対人RP・自由ルール</option><option value="cpu-skill">CPU腕試し</option><option value="endless">強敵連戦・連勝と撃破数</option></select><label id="cpu-skill-season-label" class="skill-difficulty" for="cpu-skill-season" hidden>シーズン<select id="cpu-skill-season" onchange="selectCpuSkillSeason(this.value)"></select></label><p id="leaderboard-guide" class="inventory-note">文字をタップすると、直近の対戦で使用したレベル・ルビ・能力を確認できます。</p><p id="challenge-ranking-sync" class="inventory-note">強敵連戦の最高記録をオンラインで保存します。</p><p class="inventory-note">ランキングへの反映には最大約30秒かかります。</p><p id="leaderboard-status" role="status" aria-live="polite"></p><div id="leaderboard-list"></div><button class="inventory-action secondary" onclick="loadLeaderboard()">ランキングを更新</button></div>
                 <div class="glass-panel rounded-2xl p-4 space-y-2 text-xs">
-                    <h3 class="font-bold text-slate-300 border-b border-slate-700 pb-1.5 mb-2">段位一覧</h3><p class="inventory-note">初回試験に合格した段位でのポイントの目安です。未合格の場合は前の段位で昇格待ちになります。</p>
-                    <div class="flex justify-between items-center text-slate-400"><span class="rank-list-label"><span class="rank-emblem small" data-rank-rating="1000"></span>初級</span> <span class="font-mono">1000 - 1399 段位ポイント</span></div>
-                    <div class="flex justify-between items-center text-slate-400"><span class="rank-list-label"><span class="rank-emblem small" data-rank-rating="1400"></span>中級</span> <span class="font-mono">1400 - 1799 段位ポイント</span></div>
-                    <div class="flex justify-between items-center text-slate-400"><span class="rank-list-label"><span class="rank-emblem small" data-rank-rating="1800"></span>上級</span> <span class="font-mono">1800 - 2199 段位ポイント</span></div>
-                    <div class="flex justify-between items-center text-slate-400"><span class="rank-list-label"><span class="rank-emblem small" data-rank-rating="2200"></span>達人</span> <span class="font-mono">2200 - 2599 段位ポイント</span></div>
-                    <div class="flex justify-between items-center text-amber-400 font-bold"><span class="rank-list-label"><span class="rank-emblem small" data-rank-rating="2600"></span>漢字王</span> <span class="font-mono">2600+ 段位ポイント</span></div>
+                    <h3 class="font-bold text-slate-300 border-b border-slate-700 pb-1.5 mb-2">段位一覧</h3><p class="inventory-note">CPU対戦の段位です。必要ポイントに達し、初回のボスとミッションの両方に合格すると昇段します。獲得した段位はポイントが下がっても維持されます。</p>
+                    <div id="cpu-rank-list" aria-label="CPU段位と必要ポイント"></div>
                 </div>
 <details id="guest-player-panel" class="glass-panel guest-data-panel" aria-labelledby="guest-player-title">
  <summary id="guest-player-title">データを守る・引き継ぐ <span id="guest-save-badge" aria-live="polite">保存を確認中</span></summary><div class="guest-data-content"><p class="guest-data-intro">機種変更や、データが消えたときに備えるための設定です。普段はそのまま遊べます。</p>
@@ -1220,7 +1216,7 @@ body[data-active-tab="battle"] > header{display:none}
     <script src="/team-links.js?v=143"></script>
     <script src="/special-trial-themes.js?v=143"></script><script src="/medal-rules.js?v=143"></script>
     <script src="/avatar-style.js?v=20261025"></script>
-    <script src="/rank-emblems.js?v=143"></script>
+    <script src="/rank-emblems.js?v=20261025-ipad1"></script>
     <script src="/honor-icons.js?v=143"></script>
     <script src="/level-rules.js?v=143"></script>
     <script src="/growth-rules.js?v=143"></script>
@@ -1532,7 +1528,7 @@ body[data-active-tab="battle"] > header{display:none}
                 document.querySelectorAll('[data-rank-rating]').forEach(el=>KanjiRankEmblems.paint(el,Number(el.dataset.rankRating)));
                 const nextTier=KanjiPromotions.next(gameState);
                 document.getElementById('rank-hub-next-text').textContent=nextTier?`次の${nextTier.title}：${gameState.rating>=nextTier.min?'ポイント達成・初回試験待ち':'あと'+(nextTier.min-gameState.rating)+' 段位ポイント'}`:'最高段位に到達';
-                document.getElementById('rank-hub-progress').style.width = `${Math.min(100, ((gameState.rating - 1000) / 1600) * 100)}%`;
+                document.getElementById('rank-hub-progress').style.width = `${nextTier?Math.max(0,Math.min(100,(gameState.rating-KanjiPromotions.current(gameState).min)/(nextTier.min-KanjiPromotions.current(gameState).min)*100)):100}%`;
             }
 
             const totalCount = document.getElementById('deck-total-count');
@@ -3150,7 +3146,7 @@ body[data-active-tab="battle"] > header{display:none}
         }
     </script>
 <script src="/formation-editor.js?v=143"></script>
-<script src="/guest-player.js?v=154"></script><script defer src="/login-bonus-ui.js?v=20261025-popup2"></script><script src="/network-policy.js?v=154"></script>
+<script src="/guest-player.js?v=154"></script><script defer src="/login-bonus-ui.js?v=20261025-ipad1"></script><script src="/network-policy.js?v=154"></script>
 <script src="/player-friends.js?v=20261025"></script>
 <script src="/friend-social.js?v=143"></script>
 <script src="/friend-deck.js?v=143"></script>
@@ -3163,9 +3159,9 @@ body[data-active-tab="battle"] > header{display:none}
 <script src="/challenge-rankings.js?v=143"></script>
 <script src="/collection-viewport.js?v=152"></script><script src="/practice-picker.js?v=152"></script><script src="/practice-ui.js?v=154"></script>
 <script src="/deck-reordering.js?v=143"></script>
-<script src="/summon-visuals.js?v=158"></script><script src="/gacha-presentation.js?v=20261025"></script><script src="/character-fragments-ui.js?v=143"></script><script src="/synthesis-presentation.js?v=20261025"></script>
+<script src="/summon-visuals.js?v=158"></script><script src="/gacha-presentation.js?v=20261025-ipad1"></script><script src="/character-fragments-ui.js?v=143"></script><script src="/synthesis-presentation.js?v=20261025"></script>
 <script src="/replay-ui.js?v=155"></script>
-<script src="/promotion-ui.js?v=143"></script>
+<script src="/promotion-ui.js?v=20261025-ipad1"></script>
 <aside id="friend-invitation-notice" hidden role="status" aria-live="polite" aria-label="フレンド対戦の招待"><div class="invitation-identity"><span id="friend-invitation-avatar" class="player-avatar large"></span><div><strong id="friend-invitation-name"></strong><p id="friend-invitation-message"></p></div></div><div class="invitation-actions"><button onclick="openFriendInvitations()">招待を見る</button><button onclick="dismissFriendInvitation()">あとで</button></div></aside>
 <script src="/auto-battle.js?v=143"></script>
 <script src="/friend-invitations.js?v=154"></script>
@@ -3180,8 +3176,8 @@ body[data-active-tab="battle"] > header{display:none}
 <link rel="stylesheet" href="/quality-updates.css?v=145"><script src="/quality-updates.js?v=148"></script>
 <link rel="stylesheet" href="/ui-refinement.css?v=151">
 <script src="/tutorial-viewport.js?v=155"></script>
-<script src="/replay-video-audio.js?v=20261025"></script>
+<script src="/replay-video-audio.js?v=20261025-ipad1"></script>
 <script src="/replay-video-ui.js?v=20261025"></script>
-<script src="/workshop-atmosphere.js?v=20261025-popup2"></script>
+<script src="/workshop-atmosphere.js?v=20261025-ipad1"></script>
 </body>
 </html>

@@ -1,8 +1,9 @@
 (function(root,factory){const api=factory(root);if(typeof module==='object'&&module.exports)module.exports=api;else root.KanjiGameAudio=api;})(typeof window==='undefined'?globalThis:window,function(env){
 'use strict';
 const key='kanji_crash_sound_preferences_v1',musicKey='kanji_crash_bgm_preferences_v1';
-const tracks=Object.freeze({'moon-washi':'月と和紙','quiet-garden':'静かな庭','ink-ripples':'墨の波紋'});
-const trackUrl=id=>'/audio/candidates/'+id+'.wav';
+const tracks=Object.freeze({'moon-washi':'月と和紙','quiet-garden':'木漏れ日の散歩','ink-ripples':'星渡りの空'});
+const trackDescriptions=Object.freeze({'moon-washi':'静かな和風。琴を思わせる弦と、ゆったりした間。','quiet-garden':'軽快な和風。木琴の旋律と、軽い打楽器のリズム。','ink-ripples':'幻想的で壮大。広がる持続音と、緩やかな盛り上がり。'});
+const trackUrl=id=>'/audio/candidates/'+id+'.wav?v=20261025-arrangements';
 function savedTrack(){try{const id=JSON.parse(env.localStorage?.getItem(musicKey)||'null')?.track;return Object.hasOwn(tracks,id)?id:'moon-washi';}catch{return 'moon-washi';}}
 const clamp=v=>Math.max(0,Math.min(100,v));
 function read(k,fallback){try{const v=JSON.parse(env.localStorage?.getItem(k)||'null');return v&&typeof v.enabled==='boolean'&&Number.isFinite(v.volume)?{enabled:v.enabled,volume:clamp(v.volume)}:fallback;}catch{return fallback;}}
@@ -60,5 +61,5 @@ function suspend(){resumeAfterBackground=resumeAfterBackground||ctx?.state==='ru
 function status(){return{state:ctx?.state||'locked',ready:ctx?.state==='running',muted:!settings.enabled&&!bgm.enabled,exporting:blocked(),selectedTrack:bgm.track,playingTrack:music?.name||null,loading:loads.has(bgm.track),error:trackErrors.get(bgm.track)||loadError||(lastResumeError?'音声が停止しています。「音を有効にする」をタップしてください。':'')};}
 function restoreAfterBackground(){pageHidden=false;if(resumeAfterBackground&&!hidden()){resumeAfterBackground=false;unlock();}else notify();}
 if(env.document){const gesture=e=>{if(e.isTrusted)unlock();};for(const event of ['pointerdown','touchend','click','keydown'])env.document.addEventListener(event,gesture,{passive:true,capture:true});env.document.addEventListener('visibilitychange',()=>{if(env.document.hidden)suspend();else restoreAfterBackground();});env.addEventListener('pagehide',()=>{pageHidden=true;suspend();});env.addEventListener('pageshow',restoreAfterBackground);env.document.addEventListener('click',e=>{const b=e.target.closest?.('button');if(!b||b.disabled||b.closest('#modal-sound-settings'))return;const semantic=b.getAttribute('onclick')||'';if(/drawGacha|drawTenGacha|Synthesis|Gacha|saveReplayVideo/.test(semantic))return;play(/close|cancel|戻る|閉じる|キャンセル/.test(semantic+b.textContent)?'cancel':'click');},true);}
-return {tracks,retryMusic,unlock,play,stop,configure,configureBgm,setScene,setExporting,setPreviewing,status,get settings(){return {...settings};},get bgmSettings(){return {...bgm};},get activeVoices(){return voices.size;},get activeMusic(){return musicVoices.size;},tones};
+return {tracks,trackDescriptions,retryMusic,unlock,play,stop,configure,configureBgm,setScene,setExporting,setPreviewing,status,get settings(){return {...settings};},get bgmSettings(){return {...bgm};},get activeVoices(){return voices.size;},get activeMusic(){return musicVoices.size;},tones};
 });

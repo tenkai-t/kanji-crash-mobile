@@ -3,4 +3,7 @@ by scripts/compose-ambient-candidates.py. No third-party samples were used.
 Dedicated to the public domain under CC0 1.0 Universal:
 https://creativecommons.org/publicdomain/zero/1.0/
 No attribution required. These are synthesized timbres, not recordings of a koto.
-The existing game BGM remains unchanged until the owner selects a candidate.
+Stable selection IDs retained; revised arrangements on 2026-10-25:
+moon-washi: 60 BPM, 96 seconds, sparse koto-like minor pentatonic.
+quiet-garden: 100 BPM, 96 seconds, major mallets and light percussion.
+ink-ripples: 72 BPM, 120 seconds, Dorian pads, reed-like melody and swells.

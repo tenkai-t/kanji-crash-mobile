@@ -11,7 +11,7 @@ function dismissGachaDiscovery(){
  document.getElementById('modal-gacha').classList.remove('is-discovery-active');
  window.KanjiGameAudio?.stop();
 }
-function refreshGachaRepeat(){const view=gachaPresentation,button=document.getElementById('btn-gacha-repeat');if(!button)return;const eligible=view&&view.results.length===10&&['normal','rare','element'].includes(view.type)&&view.revealed.size===10&&!view.discoveryActive;button.hidden=!eligible;if(!eligible){button.disabled=true;return;}const cost=view.type==='normal'?1000:3000;button.disabled=!!view.repeatUsed||gameState.coins<cost;button.textContent='続けて10連召喚\n'+(gameState.coins<cost?'あと'+(cost-gameState.coins).toLocaleString('ja-JP')+'文必要':'（'+cost.toLocaleString('ja-JP')+'文）');}
+function refreshGachaRepeat(){window.refreshSingleGachaRepeat?.();const view=gachaPresentation,button=document.getElementById('btn-gacha-repeat');if(!button)return;const eligible=view&&view.results.length===10&&['normal','rare','element'].includes(view.type)&&view.revealed.size===10&&!view.discoveryActive;button.hidden=!eligible;if(!eligible){button.disabled=true;return;}const cost=view.type==='normal'?1000:3000;button.disabled=!!view.repeatUsed||gameState.coins<cost;button.textContent='続けて10連召喚\n'+(gameState.coins<cost?'あと'+(cost-gameState.coins).toLocaleString('ja-JP')+'文必要':'（'+cost.toLocaleString('ja-JP')+'文）');}
 window.repeatTenGacha=()=>{const view=gachaPresentation;if(!view||Date.now()<(view.repeatAfter||0)||view.discoveryActive||view.repeatUsed||view.results.length!==10||view.revealed.size!==10||!['normal','rare','element'].includes(view.type))return;const cost=view.type==='normal'?1000:3000;if(gameState.coins<cost){refreshGachaRepeat();showToast('文が不足しています。');return;}view.repeatUsed=true;refreshGachaRepeat();try{drawTenGacha(view.type);if(gachaPresentation!==view)gachaPresentation.opener=view.opener;else{view.repeatUsed=false;refreshGachaRepeat();}}catch(error){view.repeatUsed=false;refreshGachaRepeat();throw error;}};
 function selectGachaResult(index){
  const view=gachaPresentation,r=view?.results[index];if(!r)return;
@@ -79,7 +79,7 @@ window.showGachaResults=(results,type)=>{
  const modal=document.getElementById('modal-gacha'),grid=document.getElementById('gacha-result-grid');modal.classList.remove('is-skipped','is-discovery-active');const stage=document.getElementById('gacha-discovery');if(stage){stage.hidden=true;stage.classList.remove('is-written');}grid.replaceChildren();
  modal.dataset.count=String(results.length);modal.dataset.type=type;
  document.getElementById('gacha-animation-title').textContent=type==='exchange'?'文字のかけら交換':(type==='element'?'元素文字':type==='rare'?'希少文字':'通常文字')+(results.length===10?'10連召喚':'召喚');
- document.getElementById('gacha-animation-sub').textContent=results.length===10?'気になるカードをタップして、1枚ずつ開封できます':'印に力が集まり、文字が目を覚ます';
+ document.getElementById('gacha-animation-sub').textContent=results.length===10?'気になるカードをタップして、1枚ずつ開封できます':'札をタップして、好きなタイミングで開封できます';
  document.getElementById('gacha-reveal-progress').textContent=`開封済み 0 / ${results.length}`;
  document.getElementById('gacha-selected').hidden=true;
  document.getElementById('btn-gacha-skip').hidden=false;document.getElementById('btn-gacha-skip').textContent=results.length===10?'すべて開く':'演出スキップ・結果をまとめて見る';refreshGachaRepeat();
@@ -90,8 +90,8 @@ window.showGachaResults=(results,type)=>{
   b.onclick=()=>{if(gachaPresentation!==view)return;view.userSelected=true;dismissGachaDiscovery();if(results.length!==10){gachaTimeouts.forEach(clearTimeout);gachaTimeouts=[];}if(!view.revealed.has(n))revealGachaResult(n);else showGachaDiscovery(n,false);selectGachaResult(n);finishGachaResults();};grid.append(b);
  });
  modal.classList.remove('hidden');modal.classList.add('is-summoning');playSound('summon');
- if(results.length!==10){if(gachaReducedMotion())skipGachaAnimation();else {const view=gachaPresentation;gachaTimeouts.push(setTimeout(()=>{if(gachaPresentation===view)revealGachaResult(0);},1000));}}
- (results.length===10?document.querySelector('#gacha-result-grid [data-gacha-index="0"]'):document.getElementById('btn-gacha-skip').hidden?document.getElementById('btn-gacha-close'):document.getElementById('btn-gacha-skip')).focus({preventScroll:true});
+ // Both single and ten pulls wait for an explicit tap, even with reduced motion.
+ document.querySelector('#gacha-result-grid [data-gacha-index="0"]').focus({preventScroll:true});
 };
 document.getElementById('modal-gacha').addEventListener('keydown',e=>{
  if(e.key==='Escape'){e.preventDefault();closeModal('modal-gacha');}
@@ -101,8 +101,8 @@ document.getElementById('modal-gacha').addEventListener('keydown',e=>{
   else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
  }
 });
-matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change',e=>{if(e.matches&&gachaPresentation?.results.length!==10)skipGachaAnimation();});
+matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change',e=>{if(e.matches&&gachaPresentation){clearTimeout(gachaPresentation.discoveryTimer);gachaPresentation.discoveryActive=false;window.KanjiGameAudio?.stop();finishGachaResults();}});
 
-document.addEventListener('visibilitychange',()=>{if(document.hidden&&gachaPresentation){if(gachaPresentation.results.length===10){clearTimeout(gachaPresentation.discoveryTimer);gachaPresentation.discoveryActive=false;window.KanjiGameAudio?.stop();finishGachaResults();}else skipGachaAnimation();}});
+document.addEventListener('visibilitychange',()=>{if(document.hidden&&gachaPresentation){clearTimeout(gachaPresentation.discoveryTimer);gachaPresentation.discoveryActive=false;window.KanjiGameAudio?.stop();finishGachaResults();}});
 
 new MutationObserver(()=>{const modal=document.getElementById('modal-gacha');if(gachaPresentation&&modal.classList.contains('hidden'))clearGachaPresentation();}).observe(document.getElementById('modal-gacha'),{attributes:true,attributeFilter:['class']});

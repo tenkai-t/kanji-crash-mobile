@@ -18,3 +18,6 @@ window.startPromotionTrial=(index,kind)=>{
  openPracticeChallenges(kind==='boss'?'promotion-boss':'promotion-mission');document.getElementById('modal-practice').dataset.promotion=String(index);renderPracticeChallenges();if(kind==='boss')initializeDeckFavorites().then(()=>{if(document.getElementById('modal-practice').dataset.kind==='promotion-boss')renderTrialFavorites();});
 };
 window.renderPromotionTrials=renderPromotionTrials;
+
+function renderPromotionRankList(){const box=document.getElementById('cpu-rank-list');if(!box)return;box.replaceChildren(...KanjiPromotions.tiers.map((tier,n,tiers)=>{const row=document.createElement('article');row.className='cpu-rank-list-row';row.dataset.rankMin=String(tier.min);const title=document.createElement('h4'),icon=document.createElement('span');icon.className='rank-emblem small';KanjiRankEmblems.paint(icon,tier.min);title.append(icon,document.createTextNode(tier.title));const range=document.createElement('p');range.className='cpu-rank-range';range.textContent=tier.min.toLocaleString('ja-JP')+(tiers[n+1]?'〜'+(tiers[n+1].min-1).toLocaleString('ja-JP'):'以上')+' 段位ポイント';const note=document.createElement('p');note.className='inventory-note';note.textContent=n?'初回試験：'+tier.boss+'に勝利／'+tier.condition:'最初の段位';row.append(title,range,note);return row;}));}
+renderPromotionRankList();

@@ -1,0 +1,5 @@
+const assert=require('node:assert/strict'),P=require('../dist/promotion-rules.js'),E=require('../dist/rank-emblems.js');
+assert.deepEqual(E.tiers.map(t=>[t.min,t.title]),P.tiers.map(t=>[t.min,t.title]));
+for(const t of P.tiers){for(const rating of [t.min-1,t.min,t.min+1]){assert.equal(E.get(rating).title,P.tiers[P.rawIndex(rating)].title);const state={rating,cpuPromotions:{version:1,unlocked:0},playProgress:{challenges:{}}},before=JSON.stringify(state);assert.equal(P.current(state).title,'初級');assert.equal(JSON.stringify(state),before);}}
+for(const t of P.tiers.slice(1)){const state={rating:t.min,cpuPromotions:{version:1,unlocked:t.index-1},playProgress:{challenges:{}}};assert.equal(P.reconcile(state).length,0);state.playProgress.challenges[P.trialId(t.index,'boss')]={clears:1};assert.equal(P.reconcile(state).length,0);state.playProgress.challenges[P.trialId(t.index,'mission')]={clears:1};assert.equal(P.reconcile(state)[0].title,t.title);state.rating=1000;assert.equal(P.current(state).title,t.title);}
+console.log('PASS CPU rank display shares canonical tiers at boundaries; both trials still required and earned ranks preserved.');

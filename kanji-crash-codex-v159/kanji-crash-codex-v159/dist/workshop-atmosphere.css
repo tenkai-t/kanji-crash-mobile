@@ -94,3 +94,19 @@
 @keyframes summon-gold-particles{from{opacity:.45;transform:translateY(10px)}to{opacity:1;transform:translateY(-10px)}}
 @media(prefers-reduced-motion:reduce){#modal-gacha .gacha-discovery::before,#modal-gacha .gacha-discovery::after{animation:none!important}}
 #modal-gacha.is-skipped .gacha-discovery::before,#modal-gacha.is-skipped .gacha-discovery::after{animation:none!important}
+
+/* Washi seals and a single, gentle brush stroke; ambient rarity stays visible. */
+.gacha-card-seal{background:repeating-linear-gradient(93deg,#e5d4aa08 0 1px,transparent 1px 5px),linear-gradient(135deg,#242c37,#393528);border:1px solid #b89b61;border-radius:9px}
+.gacha-card-seal strong{border:3px double #c17b62;padding:5px 9px;color:#e8c3a3;transform:rotate(-6deg)}
+.gacha-result-card.is-revealed .gacha-card-face{animation:sealed-ink-write .9s ease-out both}
+#gacha-discovery.is-written[data-jis="4"] #gacha-discovery-char{animation:legendary-brush 1.8s ease-out both;color:#ffe1a0;text-shadow:0 0 18px #eebd67}
+@keyframes sealed-ink-write{from{filter:blur(3px);opacity:.2}to{filter:none;opacity:1}}
+@keyframes legendary-brush{0%,16%{opacity:0;clip-path:inset(0 100% 0 0)}48%{opacity:1;clip-path:inset(0 65% 0 0)}100%{opacity:1;clip-path:inset(0)}}
+@media(prefers-reduced-motion:reduce){.gacha-result-card.is-revealed .gacha-card-face,#gacha-discovery.is-written[data-jis="4"] #gacha-discovery-char{animation:none}}
+#modal-gacha.hidden *{animation:none!important}
+
+html[data-workshop-light=true] #modal-gacha *,html[data-workshop-light=true] #modal-gacha *::before,html[data-workshop-light=true] #modal-gacha *::after,html[data-workshop-light=true] #modal-synthesis-result *,html[data-workshop-light=true] #modal-synthesis-result *::before{animation:none!important;transition:none!important}
+
+#modal-gacha.is-skipped .gacha-card-face{animation:none}
+
+:root[data-avatar-paused=true] #modal-gacha *, :root[data-avatar-paused=true] #modal-gacha *::before,:root[data-avatar-paused=true] #modal-gacha *::after{animation-play-state:paused!important}

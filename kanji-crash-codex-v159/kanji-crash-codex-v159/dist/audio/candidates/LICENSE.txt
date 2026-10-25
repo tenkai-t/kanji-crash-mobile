@@ -1,0 +1,6 @@
+These three scores and their synthesized recordings were created for this project
+by scripts/compose-ambient-candidates.py. No third-party samples were used.
+Dedicated to the public domain under CC0 1.0 Universal:
+https://creativecommons.org/publicdomain/zero/1.0/
+No attribution required. These are synthesized timbres, not recordings of a koto.
+The existing game BGM remains unchanged until the owner selects a candidate.

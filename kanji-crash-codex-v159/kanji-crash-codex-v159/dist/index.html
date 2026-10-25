@@ -463,16 +463,16 @@ body[data-active-tab="battle"] > header{display:none}
     <link rel="stylesheet" href="/collection-adventure.css?v=143">
     <link rel="stylesheet" href="/practice-ui.css?v=143">
     <link rel="stylesheet" href="/replay-ui.css?v=143">
-    <link rel="stylesheet" href="/avatar-style.css?v=143">
+    <link rel="stylesheet" href="/avatar-style.css?v=20261025">
     <link rel="stylesheet" href="/gacha-presentation.css?v=143">
-    <link rel="stylesheet" href="/synthesis-presentation.css?v=143">
+    <link rel="stylesheet" href="/synthesis-presentation.css?v=20261025">
     <link rel="stylesheet" href="/deck-reordering.css?v=143">
 <link rel="stylesheet" href="/battle-focus.css?v=143"><link rel="stylesheet" href="/character-font.css?v=154">
 <script src="/character-font.js?v=154"></script>
 <link rel="stylesheet" href="/tutorial-safe-area.css?v=155">
 <link rel="stylesheet" href="/replay-video.css?v=156">
-<link rel="stylesheet" href="/workshop-atmosphere.css?v=158">
-<script src="/game-audio.js?v=158"></script>
+<link rel="stylesheet" href="/workshop-atmosphere.css?v=20261025">
+<script src="/game-audio.js?v=20261025"></script>
 </head>
 <body data-active-tab="battle" class="h-screen w-screen flex flex-col justify-between overflow-hidden bg-slate-950">
 
@@ -986,7 +986,7 @@ body[data-active-tab="battle"] > header{display:none}
    </section>
    <section id="profile-panel-style" class="profile-tab-panel" role="tabpanel" aria-labelledby="profile-tab-style" hidden>
     <div class="profile-style-group"><h3>背景</h3><div class="avatar-settings"><label for="avatar-background">柄<select id="avatar-background" onchange="previewPlayerProfile()"></select></label><label for="avatar-backgroundTone">色<select id="avatar-backgroundTone" onchange="previewPlayerProfile()"></select></label></div></div>
-    <div class="profile-style-group"><h3>文字</h3><div class="avatar-settings"><label for="avatar-finish">質感<select id="avatar-finish" onchange="previewPlayerProfile()"></select></label><label for="avatar-glyphColor">色<select id="avatar-glyphColor" onchange="previewPlayerProfile()"></select></label></div><p class="honor-note">金箔・銀箔は専用の色になります。</p></div>
+    <div class="profile-style-group"><h3>文字</h3><div class="avatar-settings"><label for="avatar-finish">質感<select id="avatar-finish" onchange="previewPlayerProfile()"></select></label><label for="avatar-glyphColor">色<select id="avatar-glyphColor" onchange="previewPlayerProfile()"></select></label></div><p class="honor-note">標準色は金色です。勲章の色とは独立しています。金箔・銀箔は専用の色になります。</p></div>
     <div class="profile-style-group"><h3>枠</h3><div class="avatar-settings"><label for="avatar-frameTone">色<select id="avatar-frameTone" onchange="previewPlayerProfile()"></select></label><label for="avatar-motion">動き<select id="avatar-motion" onchange="previewPlayerProfile()"></select></label></div><p id="avatar-motion-note" class="honor-note" role="status"></p></div>
     <div class="profile-style-group" id="profile-medal-style"><h3>勲章</h3><div class="avatar-settings"><label for="profile-color">色<select id="profile-color" onchange="previewPlayerProfile()"></select></label><label for="profile-glow">輝き<select id="profile-glow" onchange="previewPlayerProfile()"><option value="none">なし</option><option value="soft">ほのか</option><option value="bright">強く</option></select></label></div></div>
    </section>
@@ -1219,7 +1219,7 @@ body[data-active-tab="battle"] > header{display:none}
     <script src="/replay-records.js?v=143"></script>
     <script src="/team-links.js?v=143"></script>
     <script src="/special-trial-themes.js?v=143"></script><script src="/medal-rules.js?v=143"></script>
-    <script src="/avatar-style.js?v=143"></script>
+    <script src="/avatar-style.js?v=20261025"></script>
     <script src="/rank-emblems.js?v=143"></script>
     <script src="/honor-icons.js?v=143"></script>
     <script src="/level-rules.js?v=143"></script>
@@ -2085,10 +2085,12 @@ body[data-active-tab="battle"] > header{display:none}
             if (window.isGachaPresentationBusy?.()) return;
             const cost = ['rare','element'].includes(type) ? 3000 : 1000;
             if (gameState.coins < cost) { showToast('文（コイン）が不足しています！'); return; }
+            const beforeWorkshop=JSON.stringify(gameState);
             gameState.coins -= cost;
             const results = [];
             for (let i = 0; i < 10; i++) results.push(grantGachaItem(chooseGachaBase(type),type));
             saveState(true);
+            if(typeof saveWarningShown!=='undefined'&&saveWarningShown){gameState=JSON.parse(beforeWorkshop);updateHeaderUI();return;}
             renderCollection();
             renderDeckSlots();
             showGachaResults(results,type);
@@ -2101,10 +2103,12 @@ body[data-active-tab="battle"] > header{display:none}
                 showToast("文（コイン）が不足しています！対局で稼ぎましょう。");
                 return;
             }
+            const beforeWorkshop=JSON.stringify(gameState);
             gameState.coins -= cost;
             const chosenBase = chooseGachaBase(type);
             const result = grantGachaItem(chosenBase,type);
             saveState(true);
+            if(typeof saveWarningShown!=='undefined'&&saveWarningShown){gameState=JSON.parse(beforeWorkshop);updateHeaderUI();return;}
             renderCollection();
             renderDeckSlots();
             showGachaResults([result],type);
@@ -2175,13 +2179,14 @@ body[data-active-tab="battle"] > header{display:none}
             document.getElementById('btn-bulk-ruby-unlock').disabled = !plan.operations.length;
         }
         function commitInventoryOutcome(outcome) {
+            const beforeWorkshop=JSON.stringify(gameState);
             gameState.inventory = outcome.inventory;
             gameState.coins -= outcome.coinsSpent || 0;
             outcome.results.filter(r=>r.type==='recipe').forEach(r=>KanjiGoals.discover(gameState,r.recipeId));
             outcome.results.forEach(r=>{const item=gameState.inventory.find(i=>i.instanceId===r.instanceId);if(item)KanjiCollection.record(gameState,item);});
             gameState.deck = gameState.deck.filter(id => !outcome.consumed.includes(id));
             gameState.synthesisSlot1 = null; gameState.synthesisSlot2 = null;
-            saveState(true); renderCollection(); renderDeckSlots(); renderSynthesisGrid(); updateBattleDeckSummary();
+            saveState(true); if(typeof saveWarningShown!=='undefined'&&saveWarningShown){gameState=JSON.parse(beforeWorkshop);updateHeaderUI();throw Error('錬成結果を保存できなかったため、素材の消費を取り消しました。');} renderCollection(); renderDeckSlots(); renderSynthesisGrid(); updateBattleDeckSummary();
             const selected = gameState.inventory.find(i=>i.instanceId===gameState.selectedRubyItemIndex);
             if (selected && !document.getElementById('modal-ruby').classList.contains('hidden')) openRubyModal(selected);
             if(typeof refreshCollectionAdventure==='function')refreshCollectionAdventure();
@@ -3145,8 +3150,8 @@ body[data-active-tab="battle"] > header{display:none}
         }
     </script>
 <script src="/formation-editor.js?v=143"></script>
-<script src="/guest-player.js?v=154"></script><script src="/network-policy.js?v=154"></script>
-<script src="/player-friends.js?v=154"></script>
+<script src="/guest-player.js?v=154"></script><script defer src="/login-bonus-ui.js"></script><script src="/network-policy.js?v=154"></script>
+<script src="/player-friends.js?v=20261025"></script>
 <script src="/friend-social.js?v=143"></script>
 <script src="/friend-deck.js?v=143"></script>
 <script src="./online-rules.js?v=143"></script>
@@ -3158,7 +3163,7 @@ body[data-active-tab="battle"] > header{display:none}
 <script src="/challenge-rankings.js?v=143"></script>
 <script src="/collection-viewport.js?v=152"></script><script src="/practice-picker.js?v=152"></script><script src="/practice-ui.js?v=154"></script>
 <script src="/deck-reordering.js?v=143"></script>
-<script src="/summon-visuals.js?v=158"></script><script src="/gacha-presentation.js?v=158"></script><script src="/character-fragments-ui.js?v=143"></script><script src="/synthesis-presentation.js?v=158"></script>
+<script src="/summon-visuals.js?v=158"></script><script src="/gacha-presentation.js?v=20261025"></script><script src="/character-fragments-ui.js?v=143"></script><script src="/synthesis-presentation.js?v=20261025"></script>
 <script src="/replay-ui.js?v=155"></script>
 <script src="/promotion-ui.js?v=143"></script>
 <aside id="friend-invitation-notice" hidden role="status" aria-live="polite" aria-label="フレンド対戦の招待"><div class="invitation-identity"><span id="friend-invitation-avatar" class="player-avatar large"></span><div><strong id="friend-invitation-name"></strong><p id="friend-invitation-message"></p></div></div><div class="invitation-actions"><button onclick="openFriendInvitations()">招待を見る</button><button onclick="dismissFriendInvitation()">あとで</button></div></aside>
@@ -3175,8 +3180,8 @@ body[data-active-tab="battle"] > header{display:none}
 <link rel="stylesheet" href="/quality-updates.css?v=145"><script src="/quality-updates.js?v=148"></script>
 <link rel="stylesheet" href="/ui-refinement.css?v=151">
 <script src="/tutorial-viewport.js?v=155"></script>
-<script src="/replay-video-audio.js?v=156"></script>
-<script src="/replay-video-ui.js?v=158"></script>
-<script src="/workshop-atmosphere.js?v=159"></script>
+<script src="/replay-video-audio.js?v=20261025"></script>
+<script src="/replay-video-ui.js?v=20261025"></script>
+<script src="/workshop-atmosphere.js?v=20261025"></script>
 </body>
 </html>

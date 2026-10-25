@@ -2,7 +2,7 @@
 let gachaPresentation=null;
 window.isGachaPresentationBusy=()=>!!gachaPresentation&&(gachaPresentation.discoveryActive||gachaPresentation.revealed.size<gachaPresentation.results.length);
 const gachaDiscoveryLabel=r=>r.duplicate?'重複':r.firstDiscovery===false||r.fragmentExchange?'再入手':'NEW・初発見';
-const gachaReducedMotion=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
+const gachaReducedMotion=()=>matchMedia('(prefers-reduced-motion: reduce)').matches||document.documentElement?.dataset?.workshopLight==='true';
 const gachaPacing=Object.freeze({discovery:1800});
 function dismissGachaDiscovery(){
  const view=gachaPresentation;if(!view)return;

@@ -11,7 +11,7 @@ window.releaseReplayVideo=()=>{replayVideoGeneration++;replayVideoJob?.cancel();
 window.saveReplayVideo=async()=>{
  if(replayVideoBusy||!replayViewer)return;const record=structuredClone(replayViewer),generation=++replayVideoGeneration;pauseReplay();clearReplayVideoFile();replayVideoControls(true);replayVideoStatus('動画の準備中…');videoEl('replay-video-progress').value=0;const includeAudio=videoEl('replay-video-sound').checked,volume=Number(videoEl('replay-video-volume').value),includeBgm=includeAudio&&!!videoEl('replay-video-bgm').checked;let board=null,session=null;
  try{
-  if(includeAudio){if(!window.KanjiReplayAudio)throw Error('音声機能を読み込めませんでした。音をオフにして保存できます。');session=window.KanjiReplayAudio.prepare(window,volume,{bgm:includeBgm});replayVideoAudio=session;}
+  if(includeAudio){if(!window.KanjiReplayAudio)throw Error('音声機能を読み込めませんでした。音をオフにして保存できます。');session=window.KanjiReplayAudio.prepare(window,volume,{bgm:includeBgm,track:window.KanjiGameAudio?.bgmSettings?.track});replayVideoAudio=session;}
   const api=await loadReplayVideoModule();if(generation!==replayVideoGeneration)return;if(!api.supported(window,includeAudio).length)throw Error('この環境は動画の書き出しに対応していません。SafariやChromeの対応版で開くか、端末の画面収録でリプレイを録画してください。');
   const text='漢字クラッシュ勝利敗北引き分け自分相手'+record.pieces.map(p=>p.char+p.ruby).join('')+record.names.join('')+record.label+record.reason+record.turns.flatMap(t=>t.events.map(e=>e.name)).join('');
   if(document.fonts?.load)await document.fonts.load('400 28px '+KanjiCharacterFont.stack(),text);if(generation!==replayVideoGeneration||videoViewer.classList.contains('hidden')||document.hidden)return;

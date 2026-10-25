@@ -1,3 +1,4 @@
+import * as LoginBonus from './login-bonus.mjs';
 import * as Guests from './guest-players.mjs';
 import {database} from './database.mjs';
 import Game from './game.cjs';
@@ -45,6 +46,7 @@ async function api(request,env){
  if(path==='/api/leaderboard'&&request.method==='GET')return json(await Leaderboards.cachedList(db,url.searchParams.get('rule')||'balanced',now,url.searchParams.get('season')||CpuSkill.seasonId(now)));
  const key=await identity(request,db),onlineKey='online:'+key;
  const backupPath=path.match(/^\/api\/guest\/backups(?:\/(\d+))?$/);if(backupPath&&request.method==='GET'){const guest=await Guests.authenticate(db,request);if(!guest||key!==(guest.legacy_key||'guest:'+guest.id))fail('ゲストの接続を確認してください。',401);return json(await Guests.backups(db,guest,backupPath[1]?Number(backupPath[1]):null));}
+ if(path==='/api/login-bonus'&&['GET','POST'].includes(request.method)){const guest=await Guests.authenticate(db,request);if(!guest||key!==(guest.legacy_key||'guest:'+guest.id))fail('ゲストの接続を確認してください。',401);return json(request.method==='GET'?await LoginBonus.status(db,guest,now):await LoginBonus.claim(db,guest,await readBody(request),now));}
  if(path==='/api/guest/state'&&['GET','PUT'].includes(request.method)){const guest=await Guests.authenticate(db,request);if(!guest||key!==(guest.legacy_key||'guest:'+guest.id))fail('ゲストの接続を確認してください。',401);return json(await Guests.state(db,guest,request.method,request.method==='PUT'?await readBody(request,4000000):null));}
  if(path==='/api/profile'){
   if(request.method==='GET'){await onlinePeak(db,key,now);const row=await db.first('SELECT payload FROM player_profiles WHERE key = ?',key);return json(profileResponse(row?JSON.parse(row.payload):null));}

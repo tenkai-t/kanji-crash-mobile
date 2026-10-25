@@ -32,7 +32,7 @@ function prepare(env=globalThis,volume=60,options={}){
   const resume=Promise.resolve(ctx.resume());
   const musicReady=options.bgm===true?(async()=>{try{
    if(env.AbortController)musicRequest=new env.AbortController();
-   const response=await env.fetch('/audio/battle-v158.wav',{credentials:'same-origin',...(musicRequest?{signal:musicRequest.signal}:{})});
+   const response=await env.fetch(['moon-washi','quiet-garden','ink-ripples'].includes(options.track)?'/audio/candidates/'+options.track+'.wav':'/audio/battle-v158.wav',{credentials:'same-origin',...(musicRequest?{signal:musicRequest.signal}:{})});
    if(!response.ok)throw Error('bgm-http');const bytes=await response.arrayBuffer();if(closed)throw Object.assign(Error('cancelled'),{name:'AbortError'});
    const buffer=await ctx.decodeAudioData(bytes);if(closed)throw Object.assign(Error('cancelled'),{name:'AbortError'});musicBuffer=buffer;
   }catch(error){throw Object.assign(Error(error.message),{name:error.name,code:'BGM_LOAD_FAILED'});}})():Promise.resolve();

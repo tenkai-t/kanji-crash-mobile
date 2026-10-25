@@ -216,3 +216,10 @@
 @media(prefers-reduced-motion:reduce){[data-motion] :is(.avatar-circling-turn,.avatar-veil,.avatar-veil-stop-a,.avatar-veil-stop-b,.avatar-veil-stop-c){animation:none!important}[data-motion=orbit] .avatar-veil{opacity:.75}}
 
 .player-avatar[data-motion-paused=true] *,:root[data-avatar-paused=true] .player-avatar *{animation-play-state:paused!important}.player-avatar.small .avatar-veil-haze{filter:blur(.8px)}.player-avatar.small .avatar-jewel-spark{filter:none}.profile-reward-filter{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:center}.profile-reward-filter select{min-width:0;min-height:44px}.ability-guide{display:grid;gap:6px;margin:8px 0;font-size:13px;line-height:1.6}.ability-guide>div{display:grid;grid-template-columns:4.5em minmax(0,1fr);gap:8px}.ability-guide dt{color:#a5b4c6}.ability-guide dd{margin:0;overflow-wrap:anywhere}
+
+/* Medal glow is deliberately independent from the avatar outline. */
+.player-avatar[data-glow]{box-shadow:none}
+.player-avatar[data-glow] .avatar-frame,.player-avatar[data-frame][data-glow]:not([data-honor]) .avatar-basic-outline{filter:none}
+
+.player-name-badge[data-glow=soft] svg{filter:drop-shadow(0 0 var(--medal-halo) currentColor)}
+.player-name-badge[data-glow=bright] svg{filter:drop-shadow(0 0 1px #fff1cbaa) drop-shadow(0 0 var(--medal-halo) currentColor)}

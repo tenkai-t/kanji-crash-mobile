@@ -9,7 +9,7 @@ function read(k,fallback){try{const v=JSON.parse(env.localStorage?.getItem(k)||'
 let settings=read(key,{enabled:true,volume:30}),bgm=read(musicKey,{enabled:true,volume:16});
 bgm.track=savedTrack();
 let ctx=null,mix=null,musicMix=null,duck=null,unlocked=false,exporting=false,previewing=false,pageHidden=false,scene='menu',resumeAfterBackground=false,music=null,musicGeneration=0,loadError='',lastResumeError=false,duckUntil=0;
-const voices=new Set(),musicVoices=new Set(),last=new Map(),buffers=new Map(),loads=new Map(),retryAt=new Map();
+const voices=new Set(),musicVoices=new Set(),last=new Map(),buffers=new Map(),loads=new Map(),retryAt=new Map(),trackErrors=new Map();
 const tones={click:[640,800,.065,'sine'],cancel:[420,280,.09,'sine'],error:[150,100,.12,'triangle'],select:[520,780,.1,'sine'],pull:[180,300,.09,'sine'],launch:[150,450,.15,'sine'],hit:[120,40,.12,'triangle'],fall:[300,65,.28,'sine'],ability:[400,900,.24,'sine'],gacha:[300,800,.3,'sine'],summon:[180,540,.6,'sine'],synth:[200,600,.4,'sine'],fusion:[160,640,.7,'triangle'],reveal:[600,900,.2,'sine'],rare:[520,1040,.45,'sine'],discovery:[523.25,1046.5,.65,'sine'],win:[400,660,.4,'triangle'],lose:[300,120,.3,'triangle']};
 const blocked=()=>exporting||previewing||!!env.KanjiReplayAudio?.busy;
 const hidden=()=>pageHidden||!!env.document?.hidden;
@@ -19,11 +19,27 @@ function stop(){for(const v of [...voices])release(v);last.clear();if(ctx&&duck)
 function stopMusic(){musicGeneration++;music=null;for(const v of [...musicVoices])release(v,musicVoices);}
 function wantedMusic(){return unlocked&&bgm.enabled&&bgm.volume>0&&!hidden()&&!blocked()&&ctx?.state==='running';}
 function level(node,value){if(!node||!ctx)return;const now=ctx.currentTime;node.gain.cancelScheduledValues(now);node.gain.setValueAtTime(value,now);}
-async function loadTrack(name){if(buffers.has(name))return buffers.get(name);if(loads.has(name))return loads.get(name);if(!env.fetch||!ctx?.decodeAudioData||Date.now()<(retryAt.get(name)||0))return null;const decodeContext=ctx;
- const pending=(async()=>{try{const r=await env.fetch(trackUrl(name),{credentials:'same-origin'});if(!r.ok)throw Error('HTTP '+r.status);const bytes=await r.arrayBuffer(),buffer=await decodeContext.decodeAudioData(bytes);buffers.set(name,buffer);loadError='';return buffer;}catch{loadError='BGMを読み込めませんでした。接続を確認して音の開始をお試しください。';retryAt.set(name,Date.now()+3000);return null;}finally{loads.delete(name);notify();}})();loads.set(name,pending);return pending;
+async function loadTrack(name){
+ if(buffers.has(name))return buffers.get(name);if(loads.has(name))return loads.get(name);
+ if(!env.fetch||!ctx?.decodeAudioData||Date.now()<(retryAt.get(name)||0))return null;
+ const decodeContext=ctx,controller=env.AbortController?new env.AbortController():null;let timer;
+ const pending=(async()=>{try{
+  const fetchAndDecode=(async()=>{const r=await env.fetch(trackUrl(name),{credentials:'same-origin',...(controller?{signal:controller.signal}:{})});if(!r.ok)throw Error('HTTP '+r.status);return decodeContext.decodeAudioData(await r.arrayBuffer());})();
+  const buffer=env.setTimeout?await Promise.race([fetchAndDecode,new Promise((_,reject)=>{timer=env.setTimeout(()=>{controller?.abort();reject(Error('bgm-timeout'));},12000);})]):await fetchAndDecode;
+  buffers.set(name,buffer);trackErrors.delete(name);retryAt.delete(name);return buffer;
+ }catch{trackErrors.set(name,'BGMを読み込めませんでした。「BGMを再試行」を押してください。');retryAt.set(name,Date.now()+3000);return null;}
+ finally{if(timer!==undefined)env.clearTimeout(timer);loads.delete(name);notify();}})();
+ loads.set(name,pending);notify();return pending;
 }
-async function syncMusic(){if(!wantedMusic()){stopMusic();return;}if(music?.name===bgm.track)return;const name=bgm.track,generation=++musicGeneration,buffer=await loadTrack(name);if(generation!==musicGeneration||!buffer||!wantedMusic()||name!==bgm.track)return;
- try{const now=ctx.currentTime,osc=ctx.createBufferSource(),gain=ctx.createGain(),v={osc,gain,name};osc.buffer=buffer;osc.loop=true;gain.gain.setValueAtTime(0,now);gain.gain.linearRampToValueAtTime(1,now+.35);osc.connect(gain);gain.connect(musicMix);osc.onended=()=>{musicVoices.delete(v);try{osc.disconnect();gain.disconnect();}catch{}};for(const fading of [...musicVoices])if(fading!==music)release(fading,musicVoices);const old=music;music=v;musicVoices.add(v);osc.start(now);if(old){old.gain.gain.cancelScheduledValues(now);old.gain.gain.setValueAtTime(old.gain.gain.value,now);old.gain.gain.linearRampToValueAtTime(0,now+.35);old.osc.stop(now+.36);}}catch{stopMusic();loadError='BGMを開始できませんでした。音の開始をもう一度お試しください。';notify();}}
+async function syncMusic(){
+ if(!wantedMusic()){stopMusic();return;}if(music?.name===bgm.track)return;
+ const name=bgm.track,generation=++musicGeneration,buffer=await loadTrack(name);
+ if(generation!==musicGeneration||!wantedMusic()||name!==bgm.track)return;
+ if(!buffer){stopMusic();notify();return;}
+ try{const now=ctx.currentTime,osc=ctx.createBufferSource(),gain=ctx.createGain(),v={osc,gain,name};osc.buffer=buffer;osc.loop=true;gain.gain.setValueAtTime(0,now);gain.gain.linearRampToValueAtTime(1,now+.35);osc.connect(gain);gain.connect(musicMix);osc.onended=()=>{musicVoices.delete(v);try{osc.disconnect();gain.disconnect();}catch{}};for(const fading of [...musicVoices])if(fading!==music)release(fading,musicVoices);const old=music;music=v;musicVoices.add(v);osc.start(now);if(old){old.gain.gain.cancelScheduledValues(now);old.gain.gain.setValueAtTime(old.gain.gain.value,now);old.gain.gain.linearRampToValueAtTime(0,now+.35);old.osc.stop(now+.36);}loadError='';trackErrors.delete(name);notify();}
+ catch{stopMusic();loadError='BGMを開始できませんでした。「BGMを再試行」を押してください。';notify();}
+}
+function retryMusic(){retryAt.delete(bgm.track);trackErrors.delete(bgm.track);loadError='';return unlock();}
 function createContext(){const C=env.AudioContext||env.webkitAudioContext;if(!C)return false;try{ctx=new C();mix=ctx.createGain();musicMix=ctx.createGain();duck=ctx.createGain();mix.gain.value=settings.enabled?settings.volume/100*.55:0;musicMix.gain.value=bgm.volume/100;duck.gain.value=1;const c=ctx.createDynamicsCompressor();c.threshold.value=-12;c.knee.value=6;c.ratio.value=8;c.attack.value=.003;c.release.value=.1;mix.connect(c);musicMix.connect(duck);duck.connect(c);c.connect(ctx.destination);ctx.addEventListener?.('statechange',()=>{if(ctx?.state!=='running'){stop();stopMusic();}else syncMusic();notify();});return true;}catch{ctx=null;return false;}}
 function prime(){try{if(!ctx.createBuffer||!ctx.createBufferSource)return;const s=ctx.createBufferSource(),g=ctx.createGain();s.buffer=ctx.createBuffer(1,1,ctx.sampleRate||44100);g.gain.value=0;s.connect(g);g.connect(ctx.destination);s.onended=()=>{s.disconnect();g.disconnect();};s.start();}catch{}}
 const audible=()=>settings.enabled&&settings.volume>0||bgm.enabled&&bgm.volume>0;
@@ -41,8 +57,8 @@ function setScene(next){const name=next==='battle'?'battle':'menu';if(name===sce
 function setExporting(value){exporting=!!value;if(exporting){stop();stopMusic();}else syncMusic();notify();}
 function setPreviewing(value){previewing=!!value;if(previewing){stop();stopMusic();}else syncMusic();}
 function suspend(){resumeAfterBackground=resumeAfterBackground||ctx?.state==='running';stop();stopMusic();if(ctx&&ctx.state!=='closed')try{Promise.resolve(ctx.suspend()).catch(()=>{});}catch{}notify();}
-function status(){return{state:ctx?.state||'locked',ready:ctx?.state==='running',muted:!settings.enabled&&!bgm.enabled,exporting:blocked(),loading:loads.size>0,error:loadError||(lastResumeError?'音声が停止しています。「音を有効にする」をタップしてください。':'')};}
+function status(){return{state:ctx?.state||'locked',ready:ctx?.state==='running',muted:!settings.enabled&&!bgm.enabled,exporting:blocked(),selectedTrack:bgm.track,playingTrack:music?.name||null,loading:loads.has(bgm.track),error:trackErrors.get(bgm.track)||loadError||(lastResumeError?'音声が停止しています。「音を有効にする」をタップしてください。':'')};}
 function restoreAfterBackground(){pageHidden=false;if(resumeAfterBackground&&!hidden()){resumeAfterBackground=false;unlock();}else notify();}
 if(env.document){const gesture=e=>{if(e.isTrusted)unlock();};for(const event of ['pointerdown','touchend','click','keydown'])env.document.addEventListener(event,gesture,{passive:true,capture:true});env.document.addEventListener('visibilitychange',()=>{if(env.document.hidden)suspend();else restoreAfterBackground();});env.addEventListener('pagehide',()=>{pageHidden=true;suspend();});env.addEventListener('pageshow',restoreAfterBackground);env.document.addEventListener('click',e=>{const b=e.target.closest?.('button');if(!b||b.disabled||b.closest('#modal-sound-settings'))return;const semantic=b.getAttribute('onclick')||'';if(/drawGacha|drawTenGacha|Synthesis|Gacha|saveReplayVideo/.test(semantic))return;play(/close|cancel|戻る|閉じる|キャンセル/.test(semantic+b.textContent)?'cancel':'click');},true);}
-return {tracks,unlock,play,stop,configure,configureBgm,setScene,setExporting,setPreviewing,status,get settings(){return {...settings};},get bgmSettings(){return {...bgm};},get activeVoices(){return voices.size;},get activeMusic(){return musicVoices.size;},tones};
+return {tracks,retryMusic,unlock,play,stop,configure,configureBgm,setScene,setExporting,setPreviewing,status,get settings(){return {...settings};},get bgmSettings(){return {...bgm};},get activeVoices(){return voices.size;},get activeMusic(){return musicVoices.size;},tones};
 });

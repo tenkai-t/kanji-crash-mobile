@@ -8,7 +8,7 @@ export async function schema(db){const key=db.schemaToken||db;if(schemas.has(key
 export async function status(db,guest,now=Date.now(),schedule=rewards){
  await schema(db);const row=await db.first('SELECT COUNT(*) AS count, MAX(day) AS lastDay FROM login_bonus_claims WHERE player_id=?',guest.id);
  const count=Number(row.count),day=japanDay(now);
- return {enabled:!!schedule,received:row.lastDay!==null&&Number(row.lastDay)>=day,ordinal:count,next:count%7+1,day,nextResetAt:(day+1)*86400000-9*3600000,rewards:schedule||proposal};
+ return {serverNow:now,enabled:!!schedule,received:row.lastDay!==null&&Number(row.lastDay)>=day,ordinal:count,next:count%7+1,day,nextResetAt:(day+1)*86400000-9*3600000,rewards:schedule||proposal};
 }
 export async function claim(db,guest,input,now=Date.now(),schedule=rewards){
  if(!schedule)fail('ログインボーナスは報酬量の確認待ちです。',503);

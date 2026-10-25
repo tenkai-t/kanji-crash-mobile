@@ -110,3 +110,28 @@ html[data-workshop-light=true] #modal-gacha *,html[data-workshop-light=true] #mo
 #modal-gacha.is-skipped .gacha-card-face{animation:none}
 
 :root[data-avatar-paused=true] #modal-gacha *, :root[data-avatar-paused=true] #modal-gacha *::before,:root[data-avatar-paused=true] #modal-gacha *::after{animation-play-state:paused!important}
+
+/* Daily gifts share the existing ink, paper and amber workshop palette. */
+.login-bonus-entry{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:16px 0;padding:16px;border:1px solid #9a845f66;border-radius:14px;background:linear-gradient(135deg,#283332,#131f2d);color:#eee1c4}
+.login-bonus-entry h3{font-size:18px;color:#e4c889}.login-bonus-entry p{font-size:13px;line-height:1.6;color:#c6cdd4}.login-bonus-entry button{flex-shrink:0;min-height:44px}
+#modal-login-bonus{z-index:90;padding:12px}.login-bonus-shell{width:100%;max-width:640px;max-height:calc(100dvh - 24px);overflow-y:auto;overscroll-behavior:contain;background:radial-gradient(ellipse at top,#34392f,#101c2b 65%);border:1px solid #b39960;border-radius:18px;color:#e9dfc8}
+.login-bonus-shell .editor-title h2{font-size:23px;color:#edce8d}.login-bonus-shell button{min-height:44px}.login-bonus-intro{margin:12px 0 6px;color:#ead4a2;font-size:17px}.login-bonus-shell .inventory-note{line-height:1.7}
+#login-bonus-days{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:18px 0;padding:0}
+#login-bonus-days li{min-width:0;min-height:126px;padding:12px 8px;border:1px solid #7e87974d;border-radius:12px;background:repeating-linear-gradient(8deg,#eee4c302 0 2px,transparent 2px 4px),#162433;color:#c6ccd5;overflow-wrap:anywhere}
+#login-bonus-days h3{font-size:14px;font-weight:700}#login-bonus-days p{font-size:12px;margin-top:8px}#login-bonus-days strong{font-size:19px;color:#eee1bc;font-variant-numeric:tabular-nums}.login-bonus-day-state{display:block;min-height:34px;margin-top:5px;font-size:11px;line-height:1.5}
+#login-bonus-days [data-state=today]{border:2px solid #e6c579;background-color:#343325;box-shadow:0 0 12px #dfbb5322}#login-bonus-days [data-state=today] .login-bonus-day-state{color:#ffe1a0;font-weight:700}
+#login-bonus-days [data-state=received],#login-bonus-days [data-state=today-received]{border-color:#83b5a0;background-color:#1b302e}#login-bonus-days [data-state=today-received]{border-width:2px}#login-bonus-days [data-state=received] .login-bonus-day-state,#login-bonus-days [data-state=today-received] .login-bonus-day-state{color:#b4d9c5}
+.login-bonus-footer{display:grid;gap:10px;background:#111e2cee;padding:12px 0 calc(4px + env(safe-area-inset-bottom))}#login-bonus-status{min-height:44px;font-size:14px;line-height:1.7;color:#e7d6ad}#login-bonus-status[data-error=true]{color:#ffbc9e}.login-bonus-footer button{width:100%}.workshop-light-setting{display:flex;gap:10px;align-items:center;margin:12px 0}
+@media(max-width:480px){#login-bonus-days{grid-template-columns:repeat(2,minmax(0,1fr))}.login-bonus-entry{align-items:stretch;flex-direction:column}.login-bonus-entry button{width:100%}}
+/* Native popup colours are controlled by the OS on iOS; the closed field remains explicit. */
+.sound-settings{max-height:calc(100dvh - 24px);overflow-y:auto;color-scheme:dark}
+#game-bgm-track{display:block;width:100%;min-height:48px;padding:10px 12px;border:1px solid #b39c69;border-radius:9px;background:#eee3c9;color:#182638;color-scheme:light;font:inherit;opacity:1}
+#game-bgm-track option{background:#eee3c9;color:#182638}#game-bgm-track:focus-visible{outline:3px solid #e8c779;outline-offset:3px}#game-bgm-track:disabled{background:#d3d5d8;color:#495668;border-color:#687688}
+#game-bgm-status{font-size:14px;line-height:1.7;color:#d7dfdf}#game-bgm-status[data-state=error]{color:#ffbc9e}
+/* Keep the receive action visible while the seven rewards scroll independently. */
+.login-bonus-shell{display:flex;flex-direction:column;height:min(780px,calc(100dvh - 24px));overflow:hidden}
+.login-bonus-shell>.editor-title,.login-bonus-shell>.login-bonus-intro,.login-bonus-shell>.inventory-note,.login-bonus-footer{flex-shrink:0}
+#login-bonus-days{min-height:0;flex:1;overflow-y:auto;overscroll-behavior:contain;align-content:start;padding:3px;scrollbar-color:#b39960 #142131}
+@media(max-width:480px){#login-bonus-days li:last-child{grid-column:span 2}}
+@media(max-height:480px){.login-bonus-intro{display:none}.login-bonus-shell>.inventory-note{font-size:11px;margin:4px 0}#login-bonus-days{margin:6px 0}.login-bonus-footer{padding-top:5px;gap:5px}#login-bonus-status{min-height:24px}}
+#btn-login-bonus-claim{background:#d8bd7f;color:#172334;border:1px solid #ecd6a4;font-weight:700}#btn-login-bonus-claim:disabled{background:#35404a;color:#c1c9ce;border-color:#68747c}

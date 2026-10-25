@@ -8,7 +8,7 @@ const initial={coins:123,characterFragments:7,rating:888,inventory:[{instanceId:
 sql.prepare('INSERT INTO guest_players VALUES(?,?,0,0)').run('test',JSON.stringify(initial));
 const guest={id:'test'},before=Date.parse('2026-10-25T14:59:59.999Z'),after=before+1;
 assert.equal(japanDay(after),japanDay(before)+1);
-assert.equal((await status(db,guest,before)).next,1);
+assert.equal((await status(db,guest,before)).next,1);assert.equal((await status(db,guest,before)).serverNow,before);
 const results=await Promise.allSettled([claim(db,guest,{revision:0},before),claim(db,guest,{revision:0},before)]);
 assert.equal(results.filter(r=>r.status==='fulfilled'&&!r.value.alreadyReceived).length,1);
 let row=sql.prepare('SELECT * FROM guest_players').get();assert.equal(JSON.parse(row.snapshot).coins,2123);assert.equal(row.revision,1);

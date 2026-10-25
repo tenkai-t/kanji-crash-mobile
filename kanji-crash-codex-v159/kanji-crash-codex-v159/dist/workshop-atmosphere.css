@@ -154,3 +154,13 @@ html[data-workshop-light=true] #modal-gacha *,html[data-workshop-light=true] #mo
 .login-bonus-footer{min-width:0;overflow-anchor:none}.login-bonus-shell{overflow-anchor:none}
 @media(max-height:440px){.login-bonus-shell{overflow-y:auto}.login-bonus-shell #login-bonus-days{min-height:154px;flex:none;max-height:240px}.login-bonus-footer{flex:none}}
 .cpu-rank-list-row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 12px;border-bottom:1px solid #64748b44;padding:12px 0;min-width:0}.cpu-rank-list-row h4{display:flex;align-items:center;gap:8px;color:#e5ce96}.cpu-rank-list-row .cpu-rank-range{min-width:0;overflow-wrap:anywhere;color:#d1d9e1}.cpu-rank-list-row>.inventory-note{width:100%;line-height:1.7;overflow-wrap:anywhere}
+
+/* A truthful hint about the already-saved ten results, never a new draw. */
+.gacha-ten-guarantee{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:12px;border:1px solid #90cce0;border-radius:16px;padding:12px;color:#cbeafa;background:radial-gradient(ellipse,#244452,#101d2d 75%);text-align:center;overflow:hidden;pointer-events:none;animation:ten-guarantee-awaken 1.8s ease-out both}
+.gacha-ten-guarantee[hidden]{display:none}.gacha-ten-guarantee strong{font-size:clamp(22px,5vw,32px);line-height:1.5;overflow-wrap:anywhere}.gacha-ten-guarantee span,.gacha-ten-guarantee small{font-size:12px;line-height:1.6}
+#modal-gacha[data-guarantee-tier="3"] .gacha-ten-guarantee{border-color:#bea4ec;color:#e2d3ff;background:radial-gradient(ellipse,#4c385d,#141d2d 75%)}
+#modal-gacha[data-guarantee-tier="4"] .gacha-ten-guarantee{border:2px solid #e9c77f;color:#ffe5a2;background:repeating-conic-gradient(from 20deg,#e3bb4c12 0deg 8deg,transparent 8deg 30deg),radial-gradient(ellipse,#65532b,#17202a 80%);box-shadow:inset 0 0 25px #e4bf5133}
+#modal-gacha[data-guarantee-tier]:not(.is-skipped) .gacha-stage>.workshop-seal{visibility:hidden}
+#modal-gacha.is-discovery-active .gacha-ten-guarantee,#modal-gacha.is-skipped .gacha-ten-guarantee{display:none}
+@keyframes ten-guarantee-awaken{from{opacity:.25;filter:brightness(.7)}to{opacity:1;filter:brightness(1)}}
+@media(prefers-reduced-motion:reduce){.gacha-ten-guarantee{animation:none}}

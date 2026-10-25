@@ -1,0 +1,4 @@
+const assert=require('node:assert/strict'),V=require('../dist/summon-visuals.js');
+const result=(tiers)=>tiers.map((jis,n)=>({item:{jis,char:String(n)},firstDiscovery:false,duplicate:true}));
+for(const tier of [2,3,4]){const r=result([1,1,1,1,1,tier,1,1,1,1]),before=JSON.stringify(r),v=V.tenGuarantee(r);assert.equal(v.tier,tier);assert(v.label.endsWith('確定'));assert.equal(JSON.stringify(r),before);}
+assert.equal(V.tenGuarantee(result(Array(10).fill(1))),null);assert.equal(V.tenGuarantee(result(Array(10).fill(5))),null,'elements do not mean legendary');assert.equal(V.tenGuarantee(result([4])),null);assert.equal(V.tenGuarantee(null),null);assert.equal(V.tenGuarantee(result([5,4,3,2,1,1,1,1,1,1])).tier,4);console.log('PASS saved-result certainty, highest normal tier, no elemental false positive, no single-draw hint and immutable results.');

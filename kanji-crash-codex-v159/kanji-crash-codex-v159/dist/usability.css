@@ -1,0 +1,30 @@
+/* Scope layout refinements to the actual screen/dialog surfaces, not the battle board. */
+.ux-refined button,.ux-refined select,.ux-refined summary,.ux-refined [role=button]{min-height:44px}
+.ux-refined :is(button,select,summary){overflow-wrap:anywhere;white-space:normal;line-height:1.5}
+.ux-refined .screen-subtabs{gap:8px}.ux-refined .screen-subtabs button{padding:8px;min-width:0}
+.ux-refined :is(.mode-card,.glass-panel,.editor-panel)>p{overflow-wrap:anywhere}
+.ux-refined .mode-card .mode-summary{font-size:14px;line-height:1.6;margin:8px 0}
+.ux-refined .mode-card{gap:10px}.ux-refined .match-cpu-group>.glass-panel{padding:10px}
+.ux-refined #btn-start-cpu{min-height:48px;width:100%;font-size:16px;background:#d6ba7a;color:#182330;border:1px solid #e9ce92}
+.ux-refined #play-hub .mode-purpose{display:none}.ux-refined #play-hub .mode-details>summary{padding:10px 0}
+.ux-refined .deck-actions{gap:10px}.ux-refined .deck-slot-card .deck-replace-action,.ux-refined .deck-slot-card .deck-remove{min-height:48px!important;margin-top:8px;white-space:normal;padding:8px;line-height:1.5;font-size:14px}
+.ux-refined .deck-slot-card .deck-replace-action{border-color:#d5af63;background:#59431f;color:#ffe2a3}
+.ux-refined .deck-slot-card .deck-remove{background:#172334;border-color:#64748b;color:#c5ced9}
+.ux-refined .quiet-action,.ux-refined .beginner-dismiss,.ux-refined .owned-item-tools summary,.ux-refined .owned-item-tools button{min-height:44px!important}
+.ux-refined .editor-title>button{min-width:44px;min-height:44px;flex-shrink:0}
+.ux-details{padding:12px;border:1px solid #526273;border-radius:12px;margin:12px 0;background:#14212e}.ux-details>summary{padding:8px 0;color:#e2c88e;cursor:pointer}.ux-details .inventory-note{font-size:14px;line-height:1.7}
+.ux-section-title{color:#e4c98f;font-size:16px;font-weight:700;line-height:1.6}
+.ux-refined #screen-synthesis>.workshop-seal{height:60px;flex-shrink:0}.ux-refined #screen-synthesis .workshop-seal{height:60px}.ux-refined #screen-synthesis .workshop-seal strong{font-size:30px}.ux-refined #screen-synthesis .workshop-seal:before,.ux-refined #screen-synthesis .workshop-seal:after,.ux-refined #screen-synthesis .workshop-seal i{width:44px;height:44px}.ux-refined #screen-synthesis .workshop-seal span{display:none}
+.ux-refined #screen-synthesis .workshop-heading{margin:8px 0}.ux-refined #screen-synthesis h2{font-size:23px}.ux-refined #screen-synthesis .glass-panel{margin-top:12px}
+#ux-synthesis-protection{font-size:14px;line-height:1.7;margin:8px 0}.ux-refined #synthesis-selectable-grid{max-height:220px;min-height:60px}.ux-refined #synthesis-selectable-grid button{min-width:0}
+#ux-record-rewards{padding:12px;margin:12px 0}.ux-reward-links{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px}.ux-reward-links button{min-width:0;width:100%;padding:10px 8px}
+.ux-refined #login-bonus-panel{display:none}.ux-refined #ux-record-rewards #recovery-code-panel{padding:0;border:0;margin-top:12px;background:none}.ux-refined #ux-record-rewards #recovery-code-panel:not([open]){display:none}.ux-refined #ux-record-rewards #recovery-code-panel>summary{display:none}
+#btn-game-settings{flex-shrink:0;min-width:44px;min-height:44px;padding:6px;border:1px solid #8e8255;border-radius:9px;background:#1a2732;color:#e7d9b9;font-size:12px}#btn-game-sound-settings[hidden]{display:none!important}
+.ux-settings{max-width:480px;width:100%;max-height:calc(100dvh - 24px);overflow:auto}#game-settings-actions{display:grid;gap:12px;margin:16px 0}.ux-settings p{font-size:14px;line-height:1.7}.ux-settings button{min-height:48px;min-width:0;width:100%}.ux-settings .editor-title>button{width:auto}.ux-settings .workshop-light-setting{min-height:48px;gap:12px;font-size:14px}.ux-settings input[type=checkbox]{width:24px;height:24px;flex-shrink:0}
+.ux-refined #app-help p{font-size:14px;line-height:1.7}.ux-refined #guest-player-title{font-size:15px;line-height:1.7}
+@media(max-width:380px){.ux-refined .deck-actions{grid-template-columns:1fr}.ux-refined .deck-slot-card{padding:8px}.ux-refined .deck-slot-card .deck-remove,.ux-refined .deck-slot-card .deck-replace-action{font-size:13px;padding:6px}}
+@media(max-height:600px){.ux-refined #screen-synthesis .workshop-seal{height:36px}.ux-refined #screen-synthesis .workshop-seal strong{font-size:24px}}
+#btn-game-settings{width:auto}
+.ux-refined #header-profile{min-width:44px;min-height:44px;width:44px;height:44px}
+.ux-refined #synthesis-selectable-grid{max-height:160px}.ux-refined #synth-slot-1,.ux-refined #synth-slot-2{height:88px;min-height:88px}
+.ux-refined #synth-slot-1>strong,.ux-refined #synth-slot-2>strong{font-size:36px}

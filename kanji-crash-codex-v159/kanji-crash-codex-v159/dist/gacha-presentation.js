@@ -70,7 +70,7 @@ window.skipGachaAnimation=()=>{
 window.clearGachaPresentation=()=>{
  window.KanjiGameAudio?.stop();document.getElementById('modal-gacha').classList.remove('is-summoning','is-discovery-active');const stage=document.getElementById('gacha-discovery');if(stage){stage.hidden=true;stage.classList.remove('is-written');}
  gachaTimeouts.forEach(clearTimeout);gachaTimeouts=[];
- const opener=gachaPresentation?.opener;gachaPresentation=null;refreshGachaRepeat();
+ const guarantee=document.getElementById('gacha-ten-guarantee');if(guarantee)guarantee.hidden=true;delete document.getElementById('modal-gacha').dataset.guaranteeTier;const opener=gachaPresentation?.opener;gachaPresentation=null;refreshGachaRepeat();
  if(opener?.isConnected)requestAnimationFrame(()=>opener.focus({preventScroll:true}));
 };
 window.showGachaResults=(results,type)=>{
@@ -78,6 +78,7 @@ window.showGachaResults=(results,type)=>{
  gachaPresentation={results,type,firstFlags:KanjiSummonVisuals.firstFlags(results),discoveryActive:false,repeatAfter:0,repeatUsed:false,revealed:new Set(),selected:null,userSelected:false,opener:document.activeElement};
  const modal=document.getElementById('modal-gacha'),grid=document.getElementById('gacha-result-grid');modal.classList.remove('is-skipped','is-discovery-active');const stage=document.getElementById('gacha-discovery');if(stage){stage.hidden=true;stage.classList.remove('is-written');}grid.replaceChildren();
  modal.dataset.count=String(results.length);modal.dataset.type=type;
+ const certainty=KanjiSummonVisuals.tenGuarantee(results),guarantee=document.getElementById('gacha-ten-guarantee');if(guarantee){guarantee.hidden=!certainty;document.getElementById('gacha-ten-guarantee-title').textContent=certainty?.label||'';if(certainty)modal.dataset.guaranteeTier=String(certainty.tier);else delete modal.dataset.guaranteeTier;}
  document.getElementById('gacha-animation-title').textContent=type==='exchange'?'文字のかけら交換':(type==='element'?'元素文字':type==='rare'?'希少文字':'通常文字')+(results.length===10?'10連召喚':'召喚');
  document.getElementById('gacha-animation-sub').textContent=results.length===10?'気になるカードをタップして、1枚ずつ開封できます':'札をタップして、好きなタイミングで開封できます';
  document.getElementById('gacha-reveal-progress').textContent=`開封済み 0 / ${results.length}`;

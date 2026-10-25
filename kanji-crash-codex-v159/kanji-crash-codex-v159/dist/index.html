@@ -471,7 +471,7 @@ body[data-active-tab="battle"] > header{display:none}
 <script src="/character-font.js?v=154"></script>
 <link rel="stylesheet" href="/tutorial-safe-area.css?v=155">
 <link rel="stylesheet" href="/replay-video.css?v=156">
-<link rel="stylesheet" href="/workshop-atmosphere.css?v=20261025-ipad1">
+<link rel="stylesheet" href="/workshop-atmosphere.css?v=20261025-guarantee1">
 <script src="/game-audio.js?v=20261025-ipad1"></script>
 </head>
 <body data-active-tab="battle" class="h-screen w-screen flex flex-col justify-between overflow-hidden bg-slate-950">
@@ -605,7 +605,7 @@ body[data-active-tab="battle"] > header{display:none}
                     </h3>
                     <div class="deck-actions">
                         <button id="btn-recommend-deck" onclick="recommendDeck()">おすすめ編成</button>
-                        <button id="btn-deck-start" onclick="startMatchmaking()">この編成で出撃</button>
+                        <button id="btn-deck-start" onclick="startMatchmaking()">CPU対戦の準備へ</button>
                     </div>
                     <p class="deck-action-help">威力・重量を比較して編成。ルビや能力の詳細は文字をタップ。文字のカードを左右にスライドすると、左端から右端まで、好きな位置へ移動できます。</p>
                     <p id="deck-recommendation-status" role="status" aria-live="polite"></p>
@@ -2266,7 +2266,7 @@ body[data-active-tab="battle"] > header{display:none}
         };
 
         window.startMatchmaking = function() {
-            if(preparationEditing&&soloBattlePending){preparationEditing=false;document.getElementById('btn-deck-start').textContent='この編成で出撃';switchTab('battle');return;}
+            if(preparationEditing&&soloBattlePending){preparationEditing=false;document.getElementById('btn-deck-start').textContent='CPU対戦の準備へ';switchTab('battle');return;}
             if (!gameState.deck.length) { showToast('「文字」の「編成」で、出撃する文字を選んでください。'); return; }
             if (!confirmLeaveEndless()) return;
             battleMode = 'classic'; endlessRun = null;specialChallenge=null;practiceRun=null;
@@ -3153,20 +3153,20 @@ body[data-active-tab="battle"] > header{display:none}
 <script src="./online-rules.js?v=143"></script>
 <script src="./match-recommendation.js?v=143"></script>
 <script src="./online-play.js?v=154"></script>
-<script src="/battle-preparation.js?v=152"></script>
+<script src="/battle-preparation.js?v=20261025-ux1"></script>
 <script src="/character-book.js?v=143"></script>
 <script src="/collection-adventure.js?v=143"></script>
 <script src="/challenge-rankings.js?v=143"></script>
 <script src="/collection-viewport.js?v=152"></script><script src="/practice-picker.js?v=152"></script><script src="/practice-ui.js?v=154"></script>
 <script src="/deck-reordering.js?v=143"></script>
-<script src="/summon-visuals.js?v=158"></script><script src="/gacha-presentation.js?v=20261025-ipad1"></script><script src="/character-fragments-ui.js?v=143"></script><script src="/synthesis-presentation.js?v=20261025"></script>
+<script src="/summon-visuals.js?v=20261025-guarantee1"></script><script src="/gacha-presentation.js?v=20261025-guarantee1"></script><script src="/character-fragments-ui.js?v=143"></script><script src="/synthesis-presentation.js?v=20261025"></script>
 <script src="/replay-ui.js?v=155"></script>
 <script src="/promotion-ui.js?v=20261025-ipad1"></script>
 <aside id="friend-invitation-notice" hidden role="status" aria-live="polite" aria-label="フレンド対戦の招待"><div class="invitation-identity"><span id="friend-invitation-avatar" class="player-avatar large"></span><div><strong id="friend-invitation-name"></strong><p id="friend-invitation-message"></p></div></div><div class="invitation-actions"><button onclick="openFriendInvitations()">招待を見る</button><button onclick="dismissFriendInvitation()">あとで</button></div></aside>
 <script src="/auto-battle.js?v=143"></script>
 <script src="/friend-invitations.js?v=154"></script>
 <div id="modal-tutorial" class="editor-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="tutorial-title"><div class="editor-panel tutorial-panel"><div class="editor-title"><h2 id="tutorial-title">遊び方を練習</h2><button id="btn-tutorial-skip" type="button" onclick="closeGameTutorial()" aria-label="練習を閉じる">×</button></div><div class="tutorial-body"><div class="tutorial-lessons" aria-label="練習を選ぶ"><button onclick="selectTutorialLesson(0)">基本操作</button><button onclick="selectTutorialLesson(1)">回転</button><button onclick="selectTutorialLesson(2)">属性</button><button onclick="selectTutorialLesson(3)">特性</button><button onclick="selectTutorialLesson(4)">ルビ</button></div><div id="tutorial-options" hidden></div><div id="tutorial-compare-result" hidden role="status"></div><div id="tutorial-instruction" class="tutorial-instruction"><span id="tutorial-step">1 / 3</span><h3 id="tutorial-action">青い文字をタップ</h3><p id="tutorial-message" role="status" aria-live="polite">青い外周があなたの文字です。まず選んでみよう。</p></div><div id="tutorial-board"><canvas id="tutorial-canvas" width="400" height="400" aria-label="青い自分を選び、画面中央を引いて発射する練習盤面"></canvas><p class="tutorial-team-key"><span>青：自分</span><span>赤：練習相手</span></p></div><div id="tutorial-tips" hidden><span id="tutorial-tip-count"></span><h3 id="tutorial-tip-title"></h3><p id="tutorial-tip-copy"></p></div></div><div class="tutorial-footer"><p>練習中はポイント・所持文字に影響しません。</p><button id="btn-tutorial-retry" class="inventory-action secondary" hidden onclick="resetGameTutorial()">もう一度試す</button><button id="btn-tutorial-next" class="inventory-action" hidden onclick="nextTutorialLesson()">回転・属性・ルビのコツを見る</button><button id="btn-tutorial-finish" class="inventory-action" hidden onclick="finishGameTutorial()">CPU戦で遊ぶ</button></div></div></div>
-<script src="/beginner-ui.js?v=152"></script>
+<script src="/beginner-ui.js?v=20261025-ux1"></script>
 <script src="/game-tutorial.js?v=143"></script>
 <div id="modal-deck-replace" class="editor-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="deck-replace-title"><div class="editor-panel deck-replace-panel"><div class="editor-title"><h2 id="deck-replace-title">入れ替える枠を選択</h2><button id="btn-deck-replace-cancel" onclick="closeOwnedDeckPicker()" aria-label="編成の入れ替えをやめる">×</button></div><p id="deck-replace-candidate"></p><p class="inventory-note">入れ替える文字をタップで確定。外れた文字は所持一覧に残ります。</p><div id="deck-replace-options"></div><button class="inventory-action secondary" onclick="closeOwnedDeckPicker()">やめる</button></div></div>
 <script src="/owned-deck-flow.js?v=143"></script>
@@ -3178,6 +3178,7 @@ body[data-active-tab="battle"] > header{display:none}
 <script src="/tutorial-viewport.js?v=155"></script>
 <script src="/replay-video-audio.js?v=20261025-ipad1"></script>
 <script src="/replay-video-ui.js?v=20261025"></script>
-<script src="/workshop-atmosphere.js?v=20261025-ipad1"></script>
+<script src="/workshop-atmosphere.js?v=20261025-guarantee1"></script>
+<link rel="stylesheet" href="/usability.css?v=20261025-ux1"><script src="/usability.js?v=20261025-ux1"></script>
 </body>
 </html>

@@ -28,3 +28,16 @@
 .ux-refined #header-profile{min-width:44px;min-height:44px;width:44px;height:44px}
 .ux-refined #synthesis-selectable-grid{max-height:160px}.ux-refined #synth-slot-1,.ux-refined #synth-slot-2{height:88px;min-height:88px}
 .ux-refined #synth-slot-1>strong,.ux-refined #synth-slot-2>strong{font-size:36px}
+
+/* Keep header text outside a backdrop-filter compositing layer on iOS. */
+#app-header.glass-panel{background:#0f172a;backdrop-filter:none;-webkit-backdrop-filter:none;filter:none;transform:none}
+#app-header .header-balances{text-shadow:none;filter:none;transform:none}
+#auto-prepare-options{padding:0;border:0;background:transparent;margin:4px 0;color:#cbd5e1}
+#auto-prepare-options>summary{min-height:44px;line-height:1.5;padding:10px 0;cursor:pointer;font-size:13px;color:#94a3b8;overflow-wrap:anywhere}
+#auto-prepare-options[open]>label{min-height:44px;margin:4px 0}
+#auto-prepare-options>p{margin-bottom:8px}
+/* Grow with large type rather than clipping the two lines of balances. */
+#app-header{height:auto;min-height:56px;padding-top:6px;padding-bottom:6px}
+#app-header #game-title{white-space:normal;overflow-wrap:anywhere}
+#app-header .header-balances{min-width:0;max-width:55%}
+#app-header .header-balances>div{min-width:0;white-space:normal;overflow-wrap:anywhere}

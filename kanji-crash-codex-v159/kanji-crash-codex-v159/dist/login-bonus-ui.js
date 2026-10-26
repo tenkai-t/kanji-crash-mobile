@@ -11,7 +11,7 @@
   const light=document.createElement('label');light.className='inventory-note workshop-light-setting';const toggle=document.createElement('input');toggle.type='checkbox';try{toggle.checked=localStorage.getItem('kanji_workshop_light_v1')==='1';}catch{}
   const applyLight=()=>{document.documentElement.dataset.workshopLight=String(toggle.checked);};applyLight();toggle.onchange=()=>{applyLight();try{localStorage.setItem('kanji_workshop_light_v1',toggle.checked?'1':'0');}catch{}};light.append(toggle,document.createTextNode('召喚・錬成の演出を軽くする'));entry.after(light);
   new MutationObserver(()=>{if(entry.parentElement!==anchor.parentElement){anchor.after(entry);entry.after(light);}}).observe(document.body,{childList:true,subtree:true});
-  const button=$('btn-login-bonus-claim');let current=null,busy=false,checking=null,opener=null,autoTimer=null,refreshTimer=null,pendingAuto=false,loaded=false;
+  const button=$('btn-login-bonus-claim');let current=null,busy=false,checking=null,opener=null,autoTimer=null,refreshTimer=null,pendingAuto=false,loaded=false,pendingClaim=null;
   const shown=new Set();
   const player=()=>typeof guestCredentials!=='undefined'?guestCredentials?.guestId||'':'';
   const displayKey=()=> 'kanji_login_bonus_display_v1:'+player();
@@ -40,15 +40,37 @@
   function queueAuto(){clearTimeout(autoTimer);if(!pendingAuto||!current||current.received||!current.enabled||wasShown(current.day)){pendingAuto=false;return;}if(document.hidden)return;
    autoTimer=setTimeout(()=>{if(!pendingAuto||!current||current.received||wasShown(current.day)){pendingAuto=false;return;}if(checking||unavailable()){queueAuto();return;}pendingAuto=false;if(show())setNote(`${current.next}回目の報酬です。「受け取る」で保存します。`);},500);
   }
+  async function bonusRequest(path,method='GET',body){const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),15000);try{return await guestRequest(path,method,body,{signal:controller.signal});}finally{clearTimeout(timer);}}
+  // Reconcile a lost response only when the server differs by exactly one known
+  // login reward. Never replace unrelated progress or an unknown conflict.
+  async function reconcile(value){
+   const local=gameState.loginBonusOrdinal||0;
+   if(value.ordinal===local){
+    if(pendingClaim){const latest=await bonusRequest('/api/guest/state');if(JSON.stringify(gameState)!==pendingClaim.raw||JSON.stringify(latest.state)!==pendingClaim.raw||latest.revision!==pendingClaim.revision)throw Error('保存内容が異なります。保存・復元から確認してください。');guestBackupConflict=false;pendingClaim=null;}
+    return;
+   }
+   if(guestBackupBusy||saveRecoveryBlocked)throw Error('保存処理の完了後に再確認してください。');
+   const original=JSON.stringify(gameState),wasRestoring=guestRestoring;guestRestoring=true;
+   try{
+    const latest=await bonusRequest('/api/guest/state'),next=migrateCatalogueSave(latest.state),reward=value.rewards[local%7];
+    const rest=state=>{const copy={...state};delete copy.coins;delete copy.characterFragments;delete copy.loginBonusOrdinal;return JSON.stringify(copy);};
+    if(JSON.stringify(gameState)!==original||value.ordinal!==local+1||next?.loginBonusOrdinal!==value.ordinal||!reward||next.coins!==gameState.coins+reward.coins||(next.characterFragments||0)!==(gameState.characterFragments||0)+reward.fragments||rest(next)!==rest(gameState))throw Error('端末とサーバーの保存内容が異なります。保存・復元から最新データを確認してください。');
+    await applySaved({...latest,state:next});guestBackupConflict=false;pendingClaim=null;
+   }finally{guestRestoring=wasRestoring;}
+  }
+  async function applySaved(result){
+   const next=migrateCatalogueSave(result.state);if(!validSave(next)||!saveStore)throw Error('報酬の端末保存を確認できません。保存・復元から最新データを確認してください。');
+   saveStore.replace(next);gameState=next;rememberGuest({...guestCredentials,revision:result.revision,savedAt:result.savedAt,backupHash:await guestSnapshotHash(JSON.stringify(next))});guestBackupRaw=JSON.stringify(next);guestBackupDirty=false;guestBackupStatus='saved';updateHeaderUI();renderCollection();renderGuestPlayer();
+  }
   async function refresh(auto=false){
    if(busy)return;if(checking)return checking;
    button.disabled=true;button.textContent='確認中…';$('btn-login-bonus-refresh').disabled=true;
    checking=(async()=>{try{
-    await ensureGuestSession();const id=player(),value=await guestRequest('/api/login-bonus');if(id!==player())throw Error('接続情報が変わりました。再確認してください。');current=value;
+    await ensureGuestSession();const id=player(),value=await bonusRequest('/api/login-bonus');if(id!==player())throw Error('接続情報が変わりました。再確認してください。');await reconcile(value);current=value;
     setNote(value.received?'本日は受取済みです。次の贈りものは日本時間の午前0時から。':value.enabled?`${value.next}回目の報酬を受け取れます。`:'ただいま準備中です。');
     armRefresh(value);
     pendingAuto=pendingAuto||auto&&!value.received&&!wasShown(value.day);
-   }catch(error){current=null;pendingAuto=false;setNote('受取状況を確認できません。通信を確認し、「受取状況を再確認」を押してください。',true);$('login-bonus-entry-status').textContent='受取状況を確認できません。報酬画面から再確認できます。';$('login-bonus-days').replaceChildren();button.disabled=true;button.textContent='受取状況を確認できません';clearTimeout(refreshTimer);refreshTimer=setTimeout(()=>{if(!document.hidden)refresh(true);},30000);
+   }catch(error){current=null;pendingAuto=false;setNote('受取状況を確認できません。'+error.message+' 「受取状況を再確認」でやり直せます。',true);$('login-bonus-entry-status').textContent='受取状況を確認できません。報酬画面から再確認できます。';$('login-bonus-days').replaceChildren();button.disabled=true;button.textContent='受取状況を確認できません';clearTimeout(refreshTimer);refreshTimer=setTimeout(()=>{if(!document.hidden)refresh(true);},30000);
    }finally{checking=null;$('btn-login-bonus-refresh').disabled=false;render();queueAuto();}})();
    return checking;
   }
@@ -60,13 +82,19 @@
    const restoreFocus=document.activeElement===button;busy=true;render();$('btn-login-bonus-close').disabled=true;$('btn-login-bonus-refresh').disabled=true;modal.setAttribute('aria-busy','true');setNote('今日の贈りものを保存しています…');let original=null,attempted=false;
    try{
     await backupGuestNow({manual:true});if(guestBackupStatus!=='saved'||guestBackupDirty||guestBackupBusy)throw Error('最新のデータを保存できませんでした。');
-    original=JSON.stringify(gameState);guestRestoring=true;attempted=true;const result=await guestRequest('/api/login-bonus','POST',{revision:guestCredentials.revision});
-    if(result.alreadyReceived){current=result;armRefresh(result);setNote('本日は受取済みです。');return;}
+    original=JSON.stringify(gameState);pendingClaim={raw:original,revision:guestCredentials.revision};guestRestoring=true;attempted=true;const result=await bonusRequest('/api/login-bonus','POST',{revision:guestCredentials.revision});
+    if(result.alreadyReceived){await reconcile(result);current=result;armRefresh(result);setNote('本日は受取済みです。');return;}
     if(JSON.stringify(gameState)!==original)throw Error('保存中に端末の状態が変わりました。上書きを停止しました。復元コードから最新データを確認してください。');
-    const next=migrateCatalogueSave(result.state);if(!validSave(next)||!saveStore)throw Error('報酬の端末保存を確認できません。復元コードで最新データを確認してください。');
-    saveStore.replace(next);gameState=next;rememberGuest({...guestCredentials,revision:result.revision,savedAt:result.savedAt,backupHash:await guestSnapshotHash(JSON.stringify(next))});guestBackupRaw=JSON.stringify(next);guestBackupDirty=false;guestBackupStatus='saved';current=result;armRefresh(result);updateHeaderUI();renderCollection();renderGuestPlayer();markShown();
+    await applySaved(result);pendingClaim=null;current=result;armRefresh(result);markShown();
     const rewards=[];if(result.reward.coins)rewards.push(result.reward.coins.toLocaleString('ja-JP')+'文');if(result.reward.fragments)rewards.push('文字のかけら'+result.reward.fragments+'個');setNote(rewards.join('と')+'を受け取りました。');
-   }catch(error){if(attempted){guestBackupConflict=true;setNote(error.message+' 通信後の失敗では受取済みの可能性があります。復元コードから保存状態を確認してください。',true);}else setNote(error.message+' 保存完了を待って、もう一度受取ボタンを押してください。',true);}
+   }catch(error){if(attempted){
+     guestBackupConflict=true;
+     try{
+      const value=await bonusRequest('/api/login-bonus');
+      if(value.ordinal>(gameState.loginBonusOrdinal||0)){await reconcile(value);current=value;armRefresh(value);setNote('サーバーの受取記録と報酬を確認しました。');}
+      else{const latest=await bonusRequest('/api/guest/state');if(JSON.stringify(gameState)!==original||JSON.stringify(latest.state)!==original||latest.revision!==guestCredentials.revision)throw Error('保存内容が更新されています。');guestBackupConflict=false;pendingClaim=null;current=value;setNote('受取は確定していません。もう一度受取ボタンを押してください。',true);}
+     }catch{current=null;button.disabled=true;button.textContent='受取状況を再確認してください';setNote(error.message+' 受取結果は未確認です。「受取状況を再確認」を押してください。保存内容が異なる場合は保存・復元から確認してください。',true);}
+    }else setNote(error.message+' 保存完了を待って、もう一度受取ボタンを押してください。',true);}
    finally{guestRestoring=false;busy=false;modal.removeAttribute('aria-busy');$('btn-login-bonus-close').disabled=false;$('btn-login-bonus-refresh').disabled=false;render();if(restoreFocus)(current?.received?$('btn-login-bonus-close'):button).focus({preventScroll:true});}
   };
   modal.addEventListener('keydown',e=>{if(e.key==='Escape'){e.preventDefault();e.stopPropagation();close();}if(e.key==='Tab'){const items=[...modal.querySelectorAll('button,[tabindex="0"]')].filter(n=>!n.disabled&&!n.hidden),first=items[0],last=items.at(-1);if(e.shiftKey&&document.activeElement===first){e.preventDefault();last?.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first?.focus();}}});

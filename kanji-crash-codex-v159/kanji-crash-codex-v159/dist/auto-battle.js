@@ -7,7 +7,7 @@ function autoBattleBlocked(){return !!document.querySelector('[id^="modal-"]:not
 function renderAutoBattleControls(){
  const supported=autoBattleSupported(),result=supported&&isBattleEnded&&!autoEl('modal-result').classList.contains('hidden'),seconds=autoNextDue?Math.max(1,Math.ceil((autoNextDue-performance.now())/1000)):0;
  const signature=[supported,result,autoBattleEnabled,autoContinueEnabled,seconds,autoWinner,soloBattlePending].join('|');if(signature===autoControlSignature)return;autoControlSignature=signature;
- autoEl('auto-prepare-options').hidden=!supported;autoEl('btn-auto-battle').hidden=!supported;autoEl('auto-result-controls').hidden=!result;
+ autoEl('auto-prepare-title').textContent='オート設定：'+(autoBattleEnabled?(autoContinueEnabled?'ON・勝利後も自動で次へ':'ON・この対局を自動操作'):'OFF');autoEl('auto-prepare-options').hidden=!supported;autoEl('btn-auto-battle').hidden=!supported;autoEl('auto-result-controls').hidden=!result;
  for(const id of ['auto-prepare-enabled'])autoEl(id).checked=autoBattleEnabled;
  for(const id of ['auto-prepare-continue','auto-result-continue'])autoEl(id).checked=autoContinueEnabled;
  autoEl('btn-auto-battle').setAttribute('aria-pressed',String(autoBattleEnabled));autoEl('btn-auto-battle').textContent=autoBattleEnabled?'自動操作中・停止':'オートで操作';

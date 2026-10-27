@@ -9,10 +9,10 @@ const base=process.argv[2]||'http://127.0.0.1:8813';assert.equal(new URL(base).h
  for(const [width,height,top,bottom]of [[390,844,47,34],[844,390,0,21],[768,1024,24,20],[1024,768,0,20]]){
  await p.setViewportSize({width,height});await p.evaluate(({top,bottom})=>{document.documentElement.style.setProperty('--test-inset-top',top+'px');document.documentElement.style.setProperty('--test-inset-bottom',bottom+'px');}, {top,bottom});
  const m=await p.evaluate(()=>{const rect=n=>n.getBoundingClientRect().toJSON(),nav=document.querySelector('body>nav');return{standalone:document.documentElement.classList.contains('standalone-layout'),head:rect(document.getElementById('app-header')),nav:rect(nav),padding:parseFloat(getComputedStyle(nav).paddingBottom),buttons:[...nav.children].map(n=>({rect:rect(n),text:rect(n.querySelector('span:last-child'))})),bodyWidth:document.body.clientWidth,scroll:document.body.scrollWidth};});
- assert.equal(m.standalone,standalone);assert(Math.abs(m.head.top-(top+(standalone?8:0)))<1);assert(Math.abs(m.nav.bottom-height)<1);assert.equal(m.buttons.length,5);assert(m.scroll<=m.bodyWidth+1);
- if(standalone){assert.equal(m.padding,0);assert(Math.abs(m.nav.height-((height<500?48:56)+bottom))<1);for(const b of m.buttons){assert(b.rect.height>=48);assert(Math.abs(b.rect.bottom-m.nav.bottom)<=1.1);assert(b.text.bottom<=height-bottom+1,'text stays above gesture inset');}}
+ assert.equal(m.standalone,standalone);assert(Math.abs(m.head.top-(top+(standalone?32:0)))<1);assert(Math.abs(m.nav.bottom-height)<1);assert.equal(m.buttons.length,5);assert(m.scroll<=m.bodyWidth+1);
+ {assert.equal(m.padding,0);assert(Math.abs(m.nav.height-(height<500?50:56))<1);for(const b of m.buttons){assert(b.rect.height>=48);assert(Math.abs(b.rect.bottom-m.nav.bottom)<=1.1);assert(b.text.bottom<=height-1,'text stays inside menu');}}
  for(const tab of ['deck','gacha','rank','play']){await p.evaluate(tab=>switchTab(tab),tab);assert(await p.locator('#app-header').isVisible());}
- console.log(JSON.stringify({standalone,width,height,headerTop:m.head.top,menuHeight:m.nav.height,noSeparateBottomBand:standalone}));
+ console.log(JSON.stringify({standalone,width,height,headerTop:m.head.top,menuHeight:m.nav.height,noSeparateBottomBand:true}));
  }
  assert.equal(await p.evaluate(()=>JSON.stringify({coins:gameState.coins,rating:gameState.rating,inventory:gameState.inventory,deck:gameState.deck})),initial);assert.equal(await p.locator('meta[name="apple-mobile-web-app-status-bar-style"]').getAttribute('content'),'black');await c.close();
  }

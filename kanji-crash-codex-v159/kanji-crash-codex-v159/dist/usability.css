@@ -43,7 +43,7 @@
 #app-header .header-balances>div{min-width:0;white-space:normal;overflow-wrap:anywhere}
 
 /* Move home-screen content below the system's translucent top region. */
-:root.standalone-layout body{padding-top:calc(env(safe-area-inset-top,0px) + 32px)}
+:root.standalone-layout body{padding-top:calc(env(safe-area-inset-top,0px) + 16px)}
 /* No bottom safe-area spacer inside or below the five menu buttons. */
 body>nav{height:56px!important;padding-bottom:0;background:#0f172a;backdrop-filter:none;-webkit-backdrop-filter:none}
 body.ux-refined>nav>button{height:100%;box-sizing:border-box;padding:4px 0;min-height:48px}

@@ -32,3 +32,24 @@ export async function protectSave(db,guest,state){
  await schema(db);const row=await db.first('SELECT MAX(ordinal) AS ordinal FROM login_bonus_claims WHERE player_id=?',guest.id);
  if((state.loginBonusOrdinal||0)!==(Number(row.ordinal)||0))fail('ログイン報酬の保存状態が異なります。復元コードから最新データを確認してください。');
 }
+
+// Explicit owner action: preserve device progress, acknowledge existing receipts,
+// and archive the former server snapshot. No receipt or reward is issued here.
+export async function reconcileDevice(db,guest,input,now=Date.now()){
+ await schema(db);
+ if(input.confirmPreserveDevice!==true)fail('端末データを維持する確認が必要です。',400);
+ const local=input.state;
+ if(!local||!Array.isArray(local.inventory)||!Array.isArray(local.deck)||local.deck.length>3||!Number.isSafeInteger(local.coins)||local.coins<0||!Number.isFinite(local.rating)||!Number.isSafeInteger(local.characterFragments??0)||(local.characterFragments??0)<0)fail('端末の保存内容を確認してください。',400);
+ const received=await db.first('SELECT MAX(ordinal) AS ordinal FROM login_bonus_claims WHERE player_id=?',guest.id),ordinal=Number(received.ordinal)||0,localOrdinal=local.loginBonusOrdinal||0;
+ if(!Number.isSafeInteger(localOrdinal)||localOrdinal<0||localOrdinal>=ordinal||input.ordinal!==ordinal)fail('受取状況が変わりました。もう一度確認してください。');
+ const row=await db.first('SELECT snapshot,revision,updated_at FROM guest_players WHERE id=?',guest.id),state={...local,loginBonusOrdinal:ordinal},raw=JSON.stringify(state);
+ if(row?.snapshot===raw)return {state,revision:row.revision,savedAt:row.updated_at,reconciled:true};
+ if(!row?.snapshot||row.revision!==input.revision||(JSON.parse(row.snapshot).loginBonusOrdinal||0)!==ordinal)fail('サーバーの保存内容が変わりました。もう一度確認してください。');
+ if((JSON.parse(row.snapshot).giftClaims||[]).some(id=>!(local.giftClaims||[]).includes(id)))fail('サーバーにだけあるギフト受取履歴が見つかりました。履歴を保護するため修復を停止しました。');
+ const result=await db.batch([
+ ['INSERT OR IGNORE INTO guest_backups(player_id,revision,snapshot,saved_at) SELECT id,revision,snapshot,updated_at FROM guest_players WHERE id=? AND revision=? AND COALESCE((SELECT MAX(ordinal) FROM login_bonus_claims WHERE player_id=?),0)=?',guest.id,row.revision,guest.id,ordinal],
+ ['UPDATE guest_players SET snapshot=?,revision=revision+1,updated_at=? WHERE id=? AND revision=? AND COALESCE((SELECT MAX(ordinal) FROM login_bonus_claims WHERE player_id=?),0)=?',raw,now,guest.id,row.revision,guest.id,ordinal]
+ ]);
+ if(!result[1].meta.changes)fail('保存または受取状況が変わりました。もう一度確認してください。');
+ return {state,revision:row.revision+1,savedAt:now,reconciled:true};
+}

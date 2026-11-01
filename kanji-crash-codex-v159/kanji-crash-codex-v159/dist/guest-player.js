@@ -52,15 +52,38 @@ window.restoreGuestBackup=async(revision,button)=>{if(guestRestoring||guestBacku
 
 // Read-only diagnosis: never clears a protection flag or replaces either save.
 window.inspectGuestSave=async()=>{
- const button=document.getElementById('btn-guest-diagnose'),note=document.getElementById('guest-save-diagnosis');button.disabled=true;note.textContent='端末とサーバーの保存状態を確認しています…';
+ const button=document.getElementById('btn-guest-diagnose'),note=document.getElementById('guest-save-diagnosis');button.disabled=true;document.getElementById('btn-guest-repair-login').hidden=true;note.textContent='端末とサーバーの保存状態を確認しています…';
  try{
   await ensureGuestSession();const latest=await guestRequest('/api/guest/state');
   const summary=state=>state?`${Number(state.coins).toLocaleString('ja-JP')}文・所持${state.inventory?.length||0}体・段位ポイント${state.rating}`:'保存なし';
   const lines=[`この端末：${summary(gameState)}`,`サーバー：${summary(latest.state)}`];
   if(saveRecoveryBlocked)lines.push('端末保存の保護が働いています。バックアップ保存と端末の自動バックアップを確認してください。');
-  else if(latest.state&&(latest.state.loginBonusOrdinal||0)!==(gameState.loginBonusOrdinal||0))lines.push('ログイン報酬の受取記録が異なります。ログインボーナスの「受取状況を再確認」で確認してください。一致しない場合は端末バックアップを保存してから復元内容を確認してください。');
+  else if(latest.state&&(latest.state.loginBonusOrdinal||0)>(gameState.loginBonusOrdinal||0)){document.getElementById('btn-guest-repair-login').hidden=false;lines.push('ログイン報酬の受取記録が異なります。ログインボーナスの「受取状況を再確認」で確認してください。一致しない場合は端末バックアップを保存してから「端末の進行を維持して保存を修復」を選べます。');}
   else if(guestBackupConflict)lines.push('サーバーとの保存内容に差があり、上書きを停止しています。端末バックアップを保存してから、復元する保存内容を確認してください。');
   else lines.push('今のデータをサーバーに保存して再試行できます。');
   note.textContent=lines.join(' ／ ');
  }catch(error){note.textContent='確認できませんでした：'+error.message;}finally{button.disabled=false;}
+};
+
+window.repairGuestLoginSave=async()=>{
+ const button=document.getElementById('btn-guest-repair-login');if(guestRestoring||guestBackupBusy||saveRecoveryBlocked)return;
+ if(typeof friendRoom!=='undefined'&&friendRoom||typeof onlineSearching!=='undefined'&&onlineSearching||document.getElementById('screen-battle')?.classList.contains('hidden')===false||window.isGachaPresentationBusy?.()){guestNote('対局・召喚・マッチングを終了してから修復してください。');return;}
+ button.disabled=true;let original=null,overlay=null,attempted=false;
+ try{
+  await ensureGuestSession();const latest=await guestRequest('/api/guest/state'),bonus=await guestRequest('/api/login-bonus');
+  original=JSON.stringify(gameState);const local=JSON.parse(original),ordinal=bonus.ordinal;
+  if(!validSave(local)||!saveStore||saveStore.blocked)throw Error('端末の保存を保護しています。バックアップを確認してください。');
+  if(ordinal<=(local.loginBonusOrdinal||0)||(latest.state?.loginBonusOrdinal||0)!==ordinal)throw Error('受取状況が変わりました。「保存が止まった理由を確認」から再確認してください。');
+  const summary=s=>`${s.coins.toLocaleString('ja-JP')}文・所持${s.inventory.length}体・段位ポイント${s.rating}`;
+  if(!confirm('端末バックアップをファイルに保存してから実行してください。\n\n維持する端末データ：'+summary(local)+'\n置き換えるサーバーデータ：'+summary(latest.state)+'\n\n端末の文・かけら・文字・育成・編成・段位を維持し、受取記録だけを合わせます。受取済み報酬は追加しません。旧サーバー保存はバックアップに残します。\nこの内容で修復しますか？'))return;
+  if(JSON.stringify(gameState)!==original)throw Error('端末の状態が変わりました。もう一度確認してください。');
+  saveStore.write(local);guestRestoring=true;clearTimeout(guestBackupTimer);guestBackupTimer=null;
+  overlay=document.createElement('div');overlay.className='editor-overlay';overlay.setAttribute('role','dialog');overlay.setAttribute('aria-modal','true');overlay.setAttribute('aria-label','保存の修復中');overlay.innerHTML='<section class="editor-panel"><p role="status">端末の進行を維持して保存を修復しています…</p></section>';document.body.append(overlay);overlay.tabIndex=-1;overlay.addEventListener('keydown',event=>{if(event.key==='Tab'||event.key==='Escape'){event.preventDefault();event.stopPropagation();}});overlay.focus({preventScroll:true});pausePlayerOverlay();
+  const payload={state:local,revision:latest.revision,ordinal,confirmPreserveDevice:true};attempted=true;
+  let result;try{result=await guestRequest('/api/guest/reconcile-login','POST',payload);}catch(error){const check=await guestRequest('/api/guest/state'),expected={...local,loginBonusOrdinal:ordinal};if(JSON.stringify(check.state)!==JSON.stringify(expected))throw error;result=check;}
+  const expected={...local,loginBonusOrdinal:ordinal};if(JSON.stringify(gameState)!==original||JSON.stringify(result.state)!==JSON.stringify(expected))throw Error('保存中に状態が変わりました。再確認してください。');
+  saveStore.write(expected);gameState=expected;rememberGuest({...guestCredentials,revision:result.revision,savedAt:result.savedAt,backupHash:await guestSnapshotHash(JSON.stringify(expected))});guestBackupRaw=JSON.stringify(expected);guestBackupDirty=false;guestBackupConflict=false;guestBackupStatus='saved';button.hidden=true;
+  guestNote('端末の進行を維持して保存を修復しました。受取済み報酬は追加していません。');document.getElementById('guest-save-diagnosis').textContent='修復完了：'+summary(expected)+'。ログインボーナスの受取状況を再確認できます。';
+ }catch(error){if(attempted)guestBackupConflict=true;guestNote('修復を完了できませんでした：'+error.message+' 端末データは初期化していません。');}
+ finally{guestRestoring=false;button.disabled=false;if(overlay){overlay.remove();resumePlayerEngine();(button.hidden?document.getElementById('btn-guest-diagnose'):button).focus({preventScroll:true});}renderGuestPlayer();}
 };

@@ -933,6 +933,7 @@ body[data-active-tab="battle"] > header{display:none}
  <details class="guest-history-card" ontoggle="if(this.open)loadGuestBackups()"><summary>過去のサーバーバックアップから戻す</summary><p>最新の保存に加えて、過去5回分を残します。戻す前のデータもサーバーに保存します。対人RPやフレンド情報は変更しません。</p><div id="guest-backup-list" class="guest-details-body"></div></details>
  <details class="guest-file-card"><summary>ファイルでデータを保存・復元する</summary><div class="guest-details-body"><p>復元コードとは別に、所持文字・文・段位などをファイルに保存できます。ファイルを読み込んでも、ゲストIDやフレンドコードは切り替わりません。</p><button type="button" class="inventory-action secondary" onclick="exportSave()">バックアップファイルを保存</button><button type="button" class="inventory-action secondary" onclick="document.getElementById('save-file').click()">バックアップファイルを読み込む</button></div></details>
  <button type="button" id="btn-guest-diagnose" class="inventory-action secondary" onclick="inspectGuestSave()">保存が止まった理由を確認</button>
+ <button type="button" id="btn-guest-repair-login" class="inventory-action secondary" hidden onclick="repairGuestLoginSave()">端末の進行を維持して保存を修復</button>
  <p id="guest-save-diagnosis" class="guest-action-status" role="status" aria-live="polite"></p>
  <p id="guest-player-status" class="guest-action-status" role="status" aria-live="polite"></p>
 </div></details>
@@ -3148,7 +3149,7 @@ body[data-active-tab="battle"] > header{display:none}
         }
     </script>
 <script src="/formation-editor.js?v=143"></script>
-<script src="/guest-player.js?v=20261101-save1"></script><script defer src="/login-bonus-ui.js?v=20261101-save1"></script><script src="/network-policy.js?v=154"></script>
+<script src="/guest-player.js?v=20261101-reconcile1"></script><script defer src="/login-bonus-ui.js?v=20261101-save1"></script><script src="/network-policy.js?v=154"></script>
 <script src="/player-friends.js?v=20261025"></script>
 <script src="/friend-social.js?v=143"></script>
 <script src="/friend-deck.js?v=143"></script>

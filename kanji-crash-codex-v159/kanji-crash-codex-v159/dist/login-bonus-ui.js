@@ -78,10 +78,10 @@
   $('btn-login-bonus-refresh').onclick=()=>{setNote('受取状況を確認しています…');refresh();};$('btn-login-bonus-close').onclick=close;
   button.onclick=async()=>{
    if(busy||checking||!current?.enabled||current.received)return;
-   if(guestBackupBusy||guestRestoring||saveRecoveryBlocked||guestBackupConflict){setNote('保存処理の完了と保存状態を確認してください。',true);return;}
+   if(guestRestoring||saveRecoveryBlocked||guestBackupConflict){setNote('保存状態を確認してください。記録の「保存・復元」から理由を確認できます。',true);return;}
    const restoreFocus=document.activeElement===button;busy=true;render();$('btn-login-bonus-close').disabled=true;$('btn-login-bonus-refresh').disabled=true;modal.setAttribute('aria-busy','true');setNote('今日の贈りものを保存しています…');let original=null,attempted=false;
    try{
-    await backupGuestNow({manual:true});if(guestBackupStatus!=='saved'||guestBackupDirty||guestBackupBusy)throw Error('最新のデータを保存できませんでした。');
+    await backupGuestNow({manual:true});if(guestBackupStatus!=='saved'||guestBackupDirty||guestBackupBusy)throw Error($('guest-player-status')?.textContent||'最新のデータを保存できませんでした。');
     original=JSON.stringify(gameState);pendingClaim={raw:original,revision:guestCredentials.revision};guestRestoring=true;attempted=true;const result=await bonusRequest('/api/login-bonus','POST',{revision:guestCredentials.revision});
     if(result.alreadyReceived){await reconcile(result);current=result;armRefresh(result);setNote('本日は受取済みです。');return;}
     if(JSON.stringify(gameState)!==original)throw Error('保存中に端末の状態が変わりました。上書きを停止しました。復元コードから最新データを確認してください。');

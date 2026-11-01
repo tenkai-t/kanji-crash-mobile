@@ -11,7 +11,7 @@
   const light=document.createElement('label');light.className='inventory-note workshop-light-setting';const toggle=document.createElement('input');toggle.type='checkbox';try{toggle.checked=localStorage.getItem('kanji_workshop_light_v1')==='1';}catch{}
   const applyLight=()=>{document.documentElement.dataset.workshopLight=String(toggle.checked);};applyLight();toggle.onchange=()=>{applyLight();try{localStorage.setItem('kanji_workshop_light_v1',toggle.checked?'1':'0');}catch{}};light.append(toggle,document.createTextNode('召喚・錬成の演出を軽くする'));entry.after(light);
   new MutationObserver(()=>{if(entry.parentElement!==anchor.parentElement){anchor.after(entry);entry.after(light);}}).observe(document.body,{childList:true,subtree:true});
-  const button=$('btn-login-bonus-claim');let current=null,busy=false,checking=null,opener=null,autoTimer=null,refreshTimer=null,pendingAuto=false,loaded=false,pendingClaim=null;
+  const button=$('btn-login-bonus-claim');let current=null,busy=false,checking=null,opener=null,autoTimer=null,refreshTimer=null,pendingAuto=false,loaded=false;
   const shown=new Set();
   const player=()=>typeof guestCredentials!=='undefined'?guestCredentials?.guestId||'':'';
   const displayKey=()=> 'kanji_login_bonus_display_v1:'+player();
@@ -41,26 +41,58 @@
    autoTimer=setTimeout(()=>{if(!pendingAuto||!current||current.received||wasShown(current.day)){pendingAuto=false;return;}if(checking||unavailable()){queueAuto();return;}pendingAuto=false;if(show())setNote(`${current.next}回目の報酬です。「受け取る」で保存します。`);},500);
   }
   async function bonusRequest(path,method='GET',body){const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),15000);try{return await guestRequest(path,method,body,{signal:controller.signal});}finally{clearTimeout(timer);}}
-  // Reconcile a lost response only when the server differs by exactly one known
-  // login reward. Never replace unrelated progress or an unknown conflict.
-  async function reconcile(value){
-   const local=gameState.loginBonusOrdinal||0;
+  const journalKey=()=> 'kanji_login_bonus_pending_v1:'+player();
+  const withoutReward=state=>{const copy={...state};delete copy.coins;delete copy.characterFragments;delete copy.loginBonusOrdinal;return JSON.stringify(copy);};
+  function readJournal(){try{const proof=JSON.parse(localStorage.getItem(journalKey())||'null');return proof?.player===player()&&Number.isSafeInteger(proof.ordinal)&&proof.ordinal>=0&&Number.isSafeInteger(proof.coins)&&Number.isSafeInteger(proof.fragments)&&Number.isSafeInteger(proof.revision)&&proof.reward&&[proof.reward.coins,proof.reward.fragments].every(n=>Number.isSafeInteger(n)&&n>=0)&&/^[a-f0-9]{64}$/.test(proof.hash||'')?proof:null;}catch{return null;}}
+  function clearJournal(){try{localStorage.removeItem(journalKey());}catch{}}
+  async function prepareJournal(raw){
+   const state=JSON.parse(raw),ordinal=state.loginBonusOrdinal||0,reward=current.rewards[ordinal%7];
+   const proof={player:player(),ordinal,revision:guestCredentials.revision,coins:state.coins,fragments:state.characterFragments||0,reward,hash:await guestSnapshotHash(withoutReward(state))};
+   if(JSON.stringify(gameState)!==raw)throw Error('保存中に状態が更新されました。もう一度受取ボタンを押してください。');
+   try{localStorage.setItem(journalKey(),JSON.stringify(proof));if(localStorage.getItem(journalKey())!==JSON.stringify(proof))throw Error('journal');}catch{throw Error('受取前の記録を端末に保存できないため、報酬の受取を開始していません。端末の保存容量を確認してください。');}
+  }
+  async function matchesProof(result,proof,awarded){
+   const state=result.state,reward=proof.reward;
+   return !!state&&result.revision===proof.revision+(awarded?1:0)&&(state.loginBonusOrdinal||0)===proof.ordinal+(awarded?1:0)&&state.coins===proof.coins+(awarded?reward.coins:0)&&(state.characterFragments||0)===proof.fragments+(awarded?reward.fragments:0)&&await guestSnapshotHash(withoutReward(state))===proof.hash;
+  }
+  // The durable pre-request proof identifies the exact credited snapshot. Only
+  // its reward delta is merged; unrelated device progress is never replaced.
+  async function reconcile(value,confirmed=null){
+   const local=gameState.loginBonusOrdinal||0,proof=readJournal();
    if(value.ordinal===local){
-    if(pendingClaim){const latest=await bonusRequest('/api/guest/state');if(JSON.stringify(gameState)!==pendingClaim.raw||JSON.stringify(latest.state)!==pendingClaim.raw||latest.revision!==pendingClaim.revision)throw Error('保存内容が異なります。保存・復元から確認してください。');guestBackupConflict=false;pendingClaim=null;}
+    if(proof){
+     const latest=confirmed?.state?confirmed:await bonusRequest('/api/guest/state');
+     if(local===proof.ordinal+1&&await matchesProof(latest,proof,true)){
+      const raw=JSON.stringify(latest.state);rememberGuest({...guestCredentials,revision:latest.revision,savedAt:latest.savedAt,backupHash:await guestSnapshotHash(raw)});guestBackupRaw=raw;guestBackupDirty=JSON.stringify(gameState)!==raw;guestBackupConflict=false;guestBackupStatus='saved';clearJournal();
+     }else if(local===proof.ordinal&&await matchesProof(latest,proof,false)){guestBackupConflict=false;}
+     else if(local===proof.ordinal+1){clearJournal();}
+     else if(local===proof.ordinal&&latest.revision>proof.revision&&(latest.state?.loginBonusOrdinal||0)===local){clearJournal();}
+     else throw Error('保存内容が異なります。保存・復元から確認してください。');
+    }
     return;
    }
    if(guestBackupBusy||saveRecoveryBlocked)throw Error('保存処理の完了後に再確認してください。');
-   const original=JSON.stringify(gameState),wasRestoring=guestRestoring;guestRestoring=true;
+   const wasRestoring=guestRestoring;guestRestoring=true;
    try{
-    const latest=await bonusRequest('/api/guest/state'),next=migrateCatalogueSave(latest.state),reward=value.rewards[local%7];
-    const rest=state=>{const copy={...state};delete copy.coins;delete copy.characterFragments;delete copy.loginBonusOrdinal;return JSON.stringify(copy);};
-    if(JSON.stringify(gameState)!==original||value.ordinal!==local+1||next?.loginBonusOrdinal!==value.ordinal||!reward||next.coins!==gameState.coins+reward.coins||(next.characterFragments||0)!==(gameState.characterFragments||0)+reward.fragments||rest(next)!==rest(gameState))throw Error('端末とサーバーの保存内容が異なります。保存・復元から最新データを確認してください。');
-    await applySaved({...latest,state:next});guestBackupConflict=false;pendingClaim=null;
+    const latest=confirmed?.state?confirmed:await bonusRequest('/api/guest/state');
+    if(proof&&local===proof.ordinal&&value.ordinal===local+1&&await matchesProof(latest,proof,true)){
+     if((gameState.loginBonusOrdinal||0)!==local)throw Error('受取記録が更新されました。再確認してください。');
+     const original=JSON.stringify(gameState),next={...gameState,coins:gameState.coins+proof.reward.coins,characterFragments:(gameState.characterFragments||0)+proof.reward.fragments,loginBonusOrdinal:value.ordinal};
+     await applySaved({...latest,state:next},latest.state,original);
+    }else{
+     const original=JSON.stringify(gameState),next=migrateCatalogueSave(latest.state),reward=value.rewards[local%7];
+     if(value.ordinal!==local+1||next?.loginBonusOrdinal!==value.ordinal||!reward||next.coins!==gameState.coins+reward.coins||(next.characterFragments||0)!==(gameState.characterFragments||0)+reward.fragments||withoutReward(next)!==withoutReward(gameState))throw Error('端末とサーバーの保存内容が異なります。保存・復元から確認してください。');
+     await applySaved({...latest,state:next},latest.state,original);
+    }
+    guestBackupConflict=false;clearJournal();
    }finally{guestRestoring=wasRestoring;}
   }
-  async function applySaved(result){
-   const next=migrateCatalogueSave(result.state);if(!validSave(next)||!saveStore)throw Error('報酬の端末保存を確認できません。保存・復元から最新データを確認してください。');
-   saveStore.replace(next);gameState=next;rememberGuest({...guestCredentials,revision:result.revision,savedAt:result.savedAt,backupHash:await guestSnapshotHash(JSON.stringify(next))});guestBackupRaw=JSON.stringify(next);guestBackupDirty=false;guestBackupStatus='saved';updateHeaderUI();renderCollection();renderGuestPlayer();
+  async function applySaved(result,serverState=result.state,original=JSON.stringify(gameState)){
+   const next=migrateCatalogueSave(result.state),raw=JSON.stringify(serverState),hash=await guestSnapshotHash(raw);
+   if(JSON.stringify(gameState)!==original)throw Error('端末の状態が更新されました。「受取状況を再確認」で反映を続けられます。');
+   if(!validSave(next)||!saveStore)throw Error('報酬の端末保存を確認できません。保存・復元から確認してください。');
+   saveStore.write(next);gameState=next;rememberGuest({...guestCredentials,revision:result.revision,savedAt:result.savedAt,backupHash:hash});guestBackupRaw=raw;guestBackupDirty=JSON.stringify(next)!==raw;guestBackupStatus='saved';
+   try{updateHeaderUI();renderCollection();renderGuestPlayer();}catch{setNote('報酬の保存は完了しました。画面を開き直してください。');}
   }
   async function refresh(auto=false){
    if(busy)return;if(checking)return checking;
@@ -71,7 +103,7 @@
     armRefresh(value);
     pendingAuto=pendingAuto||auto&&!value.received&&!wasShown(value.day);
    }catch(error){current=null;pendingAuto=false;setNote('受取状況を確認できません。'+error.message+' 「受取状況を再確認」でやり直せます。',true);$('login-bonus-entry-status').textContent='受取状況を確認できません。報酬画面から再確認できます。';$('login-bonus-days').replaceChildren();button.disabled=true;button.textContent='受取状況を確認できません';clearTimeout(refreshTimer);refreshTimer=setTimeout(()=>{if(!document.hidden)refresh(true);},30000);
-   }finally{checking=null;$('btn-login-bonus-refresh').disabled=false;render();queueAuto();}})();
+   }finally{checking=null;$('btn-login-bonus-refresh').disabled=false;render();renderGuestPlayer();if(guestBackupDirty&&!guestBackupConflict&&!guestRestoring&&!saveRecoveryBlocked)queueGuestBackup(true);queueAuto();}})();
    return checking;
   }
   $('btn-login-bonus-open').onclick=()=>{if(unavailable()){ $('login-bonus-entry-status').textContent='対局やほかの画面を閉じてから確認してください。';return;}show();setNote('受取状況を確認しています…');refresh();};
@@ -82,20 +114,19 @@
    const restoreFocus=document.activeElement===button;busy=true;render();$('btn-login-bonus-close').disabled=true;$('btn-login-bonus-refresh').disabled=true;modal.setAttribute('aria-busy','true');setNote('今日の贈りものを保存しています…');let original=null,attempted=false;
    try{
     await backupGuestNow({manual:true});if(guestBackupStatus!=='saved'||guestBackupDirty||guestBackupBusy)throw Error($('guest-player-status')?.textContent||'最新のデータを保存できませんでした。');
-    original=JSON.stringify(gameState);pendingClaim={raw:original,revision:guestCredentials.revision};guestRestoring=true;attempted=true;const result=await bonusRequest('/api/login-bonus','POST',{revision:guestCredentials.revision});
+    original=JSON.stringify(gameState);guestRestoring=true;await prepareJournal(original);attempted=true;const result=await bonusRequest('/api/login-bonus','POST',{revision:guestCredentials.revision});
     if(result.alreadyReceived){await reconcile(result);current=result;armRefresh(result);setNote('本日は受取済みです。');return;}
-    if(JSON.stringify(gameState)!==original)throw Error('保存中に端末の状態が変わりました。上書きを停止しました。復元コードから最新データを確認してください。');
-    await applySaved(result);pendingClaim=null;current=result;armRefresh(result);markShown();
+    await reconcile(result,result);current=result;armRefresh(result);markShown();
     const rewards=[];if(result.reward.coins)rewards.push(result.reward.coins.toLocaleString('ja-JP')+'文');if(result.reward.fragments)rewards.push('文字のかけら'+result.reward.fragments+'個');setNote(rewards.join('と')+'を受け取りました。');
    }catch(error){if(attempted){
      guestBackupConflict=true;
      try{
       const value=await bonusRequest('/api/login-bonus');
       if(value.ordinal>(gameState.loginBonusOrdinal||0)){await reconcile(value);current=value;armRefresh(value);setNote('サーバーの受取記録と報酬を確認しました。');}
-      else{const latest=await bonusRequest('/api/guest/state');if(JSON.stringify(gameState)!==original||JSON.stringify(latest.state)!==original||latest.revision!==guestCredentials.revision)throw Error('保存内容が更新されています。');guestBackupConflict=false;pendingClaim=null;current=value;setNote('受取は確定していません。もう一度受取ボタンを押してください。',true);}
+      else{const latest=await bonusRequest('/api/guest/state');if(JSON.stringify(gameState)!==original||JSON.stringify(latest.state)!==original||latest.revision!==guestCredentials.revision)throw Error('保存内容が更新されています。');guestBackupConflict=false;current=value;setNote('受取は確定していません。もう一度受取ボタンを押してください。',true);}
      }catch{current=null;button.disabled=true;button.textContent='受取状況を再確認してください';setNote(error.message+' 受取結果は未確認です。「受取状況を再確認」を押してください。保存内容が異なる場合は保存・復元から確認してください。',true);}
-    }else setNote(error.message+' 保存完了を待って、もう一度受取ボタンを押してください。',true);}
-   finally{guestRestoring=false;busy=false;modal.removeAttribute('aria-busy');$('btn-login-bonus-close').disabled=false;$('btn-login-bonus-refresh').disabled=false;render();if(restoreFocus)(current?.received?$('btn-login-bonus-close'):button).focus({preventScroll:true});}
+    }else{setNote(error.message+' 保存完了を待って、もう一度受取ボタンを押してください。',true);}}
+   finally{guestRestoring=false;busy=false;renderGuestPlayer();if(guestBackupDirty&&!guestBackupConflict&&!saveRecoveryBlocked)queueGuestBackup(true);modal.removeAttribute('aria-busy');$('btn-login-bonus-close').disabled=false;$('btn-login-bonus-refresh').disabled=false;render();if(restoreFocus)(current?.received?$('btn-login-bonus-close'):button).focus({preventScroll:true});}
   };
   modal.addEventListener('keydown',e=>{if(e.key==='Escape'){e.preventDefault();e.stopPropagation();close();}if(e.key==='Tab'){const items=[...modal.querySelectorAll('button,[tabindex="0"]')].filter(n=>!n.disabled&&!n.hidden),first=items[0],last=items.at(-1);if(e.shiftKey&&document.activeElement===first){e.preventDefault();last?.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first?.focus();}}});
   const start=()=>{if(loaded)return;loaded=true;setTimeout(()=>refresh(true),750);};if(document.readyState==='complete')start();else window.addEventListener('load',start,{once:true});
